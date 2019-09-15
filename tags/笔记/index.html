@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Category: Hexo - ssttkkl&#39;s Blog</title>
+<title>Tag: 笔记 - ssttkkl&#39;s Blog</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="ssttkkl&#39;s Blog">
-<meta property="og:url" content="https://ssttkkl.github.io/categories/test/Hexo/index.html">
+<meta property="og:url" content="https://ssttkkl.github.io/tags/笔记/index.html">
 <meta property="og:site_name" content="ssttkkl&#39;s Blog">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ssttkkl.github.io/images/og_image.png">
@@ -144,11 +144,8 @@
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">Categories</a></li>
-            
-            <li><a href="/categories/test/">test</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">Hexo</a></li>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">笔记</a></li>
         </ul>
         </nav>
     </div>
@@ -160,17 +157,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-09-14T08:44:30.000Z">2019-09-14</time>
+                <time class="level-item has-text-grey" datetime="2019-09-15T05:02:36.000Z">2019-09-15</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/test/">test</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/test/Hexo/">Hexo</a>
+                <a class="has-link-grey -link" href="/categories/笔记/">笔记</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/笔记/线代/">线代</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 0 words)
+                    11 minutes read (About 1663 words)
                 </span>
                 
                 
@@ -179,11 +176,241 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/test/Hexo/2019/09/Test/">Test</a>
+                <a class="has-link-black-ter" href="/笔记/线代/2019/09/线代笔记（1）/">线代笔记（1）——n阶行列式</a>
             
         </h1>
         <div class="content">
-            
+            <h1 id="逆序数"><a href="#逆序数" class="headerlink" title="逆序数"></a>逆序数</h1><p>$n$个自然数$1,2,\cdots,n$按从小到大的顺序排列，称为<strong>自然排列</strong>。</p>
+<p>在排列$p_1p_2\cdots p_n$中，如果一个较大的数排在一个较小的数之前，则称这两个数构成一个<strong>逆序</strong>。一个排列中出现的逆序的总个数称为这个排列的<strong>逆序数</strong>，记为$t(p_1p_2\cdots p_n)$.</p>
+<p>如果一个排列的逆序数为奇数，则称此排列为<strong>奇排列</strong>。如果一个排列的逆序数为偶数，则称此排列为<strong>偶排列</strong>。</p>
+<p>在一个排列中，将某两个数的位置对调（其他数不动）的变换叫做一个<strong>对换</strong>。<strong>一个排列中任意两个数对换后，排列改变奇偶性。</strong></p>
+<h1 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h1>
+$$
+\begin{align}
+D_n &= 
+\begin{vmatrix}
+a_{11}&a_{12}&\cdots&a_{1n}\\
+a_{21}&a_{22}&\cdots&a_{2n}\\
+\vdots&\vdots&\ddots&\vdots \\
+a_{n1}&a_{n2}&\cdots&a_{nn}\\
+\end{vmatrix} \\ 
+ & = \sum_{p_1p_2\cdots p_n} (-1)^{t(p_1p_2\cdots p_n)}a_{1p_1}a_{2p_2}\cdots a_{np_n} \\
+ & = \sum_{p_1p_2\cdots p_n} (-1)^{t(p_1p_2\cdots p_n)}a_{p_11}a_{p_22}\cdots a_{p_nn} \\
+ & = \sum_{p_1p_2\cdots p_n} \sum_{q_1q_2\cdots q_n} (-1)^{t(p_1p_2\cdots p_n) + t(q_1q_2\cdots q_n)}a_{p_1q_1}a_{p_2q_2}\cdots a_{p_nq_n}
+ \end{align}
+$$
+
+
+<p><strong>它是$n$阶方阵中所有不同行不同列元素乘积的代数和。</strong>每一项的符号是这样确定的：把该项的相乘元素依行（列）标自然排列，记列（行）标排列为$p_1,p_2,\cdots p_n$，则该项的符号为$(-1)^{t(p_1p_2\cdots p_n)}$。</p>
+<p>n阶行列式可简记为$D=\Delta(a_{ij})$.</p>
+<h2 id="特殊行列式"><a href="#特殊行列式" class="headerlink" title="特殊行列式"></a>特殊行列式</h2><ul>
+<li><p><strong>有一行（或一列）全为0的行列式的值等于0.</strong></p>
+</li>
+<li><p>主对角线外的元素全为0的行列式称为<strong>对角形行列式</strong>。且有：</p>
+
+  $$
+  D_n=\begin{vmatrix}
+  a_{11}&\space&\space&\space \\
+  \space&a_{22}&\space&\space \\
+  \space&\space&\ddots&\space \\
+  \space&\space&\space&a_{nn}
+  \end{vmatrix}=\prod_{i=1}^n a_{ii}
+  $$
+  
+</li>
+<li><p>主对角线左下方的元素全为0的行列式称为<strong>上三角形行列式</strong>。主对角线右上方的元素全为零的行列式称为<strong>下三角形行列式</strong>。且有：</p>
+
+  $$
+  D_n=\begin{vmatrix}
+  a_{11}&a_{12}&\cdots&a_{1n} \\
+  \space&a_{22}&\cdots&a_{2n} \\
+  \space&\space&\ddots&\vdots \\
+  \space&\space&\space&a_{nn}
+  \end{vmatrix}=\prod_{i=1}^n a_{ii}
+  $$
+
+  $$
+  D_n=\begin{vmatrix}
+  a_{11}&\space&\space&\space \\
+  a_{21}&a_{22}&\space&\space \\
+  \vdots&\vdots&\ddots&\space \\
+  a_{n1}&a_{n2}&a_{n3}&a_{nn}
+  \end{vmatrix}=\prod_{i=1}^n a_{ii}
+  $$
+  
+</li>
+<li><p><strong>范德蒙行列式</strong></p>
+
+  $$
+  V_n = \begin{vmatrix}
+  1&1&1&\cdots&1 \\
+  a_1&a_2&a_3&\cdots&a_n \\
+  a_1^2&a_2^2&a_3^2&\cdots&a_n^2 \\
+  \vdots&\vdots&\vdots&\ddots&\vdots \\
+  a_1^{n-1}&a_2^{n-1}&a_3^{n-1}&\cdots&a_n^{n-1}
+  \end{vmatrix} = \prod_{1 \le j < i \le n} (a_i-a_j)
+  $$
+  
+
+</li>
+</ul>
+<h2 id="行列式性质"><a href="#行列式性质" class="headerlink" title="行列式性质"></a>行列式性质</h2><ol>
+<li>把行列式$D$中行与列依次对换位置，得到行列式$D’$.则称$D’$是$D$的<strong>转置行列式</strong>，且有$D’=D$. 由此可知对于行列式而言，关于“行”成立的性质，对于“列”也同样成立。</li>
+</ol>
+   
+$$
+   D=\begin{vmatrix}
+   a_{11}&a_{12}&\cdots&a_{1n}\\
+   a_{21}&a_{22}&\cdots&a_{2n}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{n1}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix}, 
+   D'=\begin{vmatrix}
+   a_{11}&a_{21}&\cdots&a_{n1}\\
+   a_{12}&a_{22}&\cdots&a_{n2}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{1n}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix}
+$$
+   
+
+<ol start="2">
+<li><p>数$k$乘行列式等于用此数乘行列式中的某一行（列）：</p>
+
+   $$
+   k\begin{vmatrix}
+   a_{11}&a_{12}&\cdots&a_{1n}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{i1}&a_{i2}&\cdots&a_{in}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{n1}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix}
+   =
+   \begin{vmatrix}
+   a_{11}&a_{12}&\cdots&a_{1n}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   ka_{i1}&ka_{i2}&\cdots&ka_{in}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{n1}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix}
+   $$
+   
+</li>
+<li><p>对换行列式中的两行（列），行列式的值改变符号。</p>
+
+   $$
+   \begin{vmatrix}
+   a_{11}&a_{12}&\cdots&a_{1n}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{i1}&a_{i2}&\cdots&a_{in}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{j1}&a_{j2}&\cdots&a_{jn}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{n1}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix}
+   =
+   -\begin{vmatrix}
+   a_{11}&a_{12}&\cdots&a_{1n}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{j1}&a_{j2}&\cdots&a_{jn}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{i1}&a_{i2}&\cdots&a_{in}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{n1}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix}
+   $$
+   
+</li>
+<li><p>两行（列）元素对应成比例的行列式等于0.</p>
+</li>
+<li><p>如果行列式中某一行（列）是两项和的形式，那么这个行列式就可分解两个行列式的和。这两个行列式除该行（列）外其他行（列）与原行列式相同。</p>
+
+   $$
+   \begin{vmatrix}
+   a_{11}&a_{12}&\cdots&a_{1n}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   b_{i1}+c_{i1}&b_{i2}+c_{i2}&\cdots&b_{in}+c_{in}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{n1}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix} \\
+   =
+   \begin{vmatrix}
+   a_{11}&a_{12}&\cdots&a_{1n}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   b_{i1}&b_{i2}&\cdots&b_{in}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{n1}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix}
+   +
+   \begin{vmatrix}
+   a_{11}&a_{12}&\cdots&a_{1n}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   c_{i1}&c_{i2}&\cdots&c_{in}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{n1}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix}
+   $$
+   
+</li>
+<li><p>行列式中某行（列）的各元素加上另一行（列）的倍数，行列式的值不变。</p>
+
+   $$
+   \begin{vmatrix}
+   a_{11}&a_{12}&\cdots&a_{1n}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{i1}&a_{i2}&\cdots&a_{in}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{j1}&a_{j2}&\cdots&a_{jn}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{n1}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix}
+   =
+   \begin{vmatrix}
+   a_{11}&a_{12}&\cdots&a_{1n}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{i1}+ka_{j1}&a_{i2}+ka_{j2}&\cdots&a_{in}+ka_{j2}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{j1}&a_{j2}&\cdots&a_{jn}\\
+   \vdots&\vdots&\ddots&\vdots \\
+   a_{n1}&a_{n2}&\cdots&a_{nn}\\
+   \end{vmatrix}
+   $$
+   
+
+</li>
+</ol>
+<h2 id="展开定理"><a href="#展开定理" class="headerlink" title="展开定理"></a>展开定理</h2><p>在行列式 $D=\Delta(a_{ij})$中，划去元素$a_{ij}$所在行和列，余下的元素组成的行列式称为元素$a_{ij}$的<strong>余子式</strong>，记为$M_{ij}$. 定义$a_{ij}$的<strong>代数余子式</strong>为$A_{ij}=(-1)^{i+j}M_{ij}$.</p>
+<p><strong>展开定理：行列式等于它的任一行（列）的各元素与其代数余子式的乘积之和。</strong>即</p>
+
+$$
+D=a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in} \quad i=1,2,\cdots,n \\
+D=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots+a_{nj}A_{nj} \quad j=1,2,\cdots,n
+$$
+
+<p>推论：行列式的任一行（列）的元素与另一行（列）对应元素的代数余子式乘积之和等于0.即</p>
+
+$$
+a_{i1}A_{k1}+a_{i2}A_{k2}+\cdots+a_{in}A_{kn}=0 \quad k \neq i \\
+a_{1j}A_{1k}+a_{2j}A_{2k}+\cdots+a_{nj}A_{nk}=0 \quad k \neq j \\
+$$
+
+
+<h2 id="Cramer-法则"><a href="#Cramer-法则" class="headerlink" title="Cramer 法则"></a>Cramer 法则</h2><p>对于$n$元线性方程组</p>
+
+$$
+\begin{cases}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n=b_1 \\
+a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n=b_2 \\
+\cdots\cdots\\
+a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n=b_n \\
+\end{cases}
+$$
+
+
+<p>若方程组的系数行列式$D_n=\Delta(a_{ij})\neq 0$，则方程组存在唯一解。解可表示为</p>
+<p>$$<br>x_j = \frac{D_j} {D} \quad j=1,2,\cdots,n<br>$$</p>
+<p>其中$D_j$是把系数行列式$D$中第$j$列元素$a_{1j},a_{2j},\cdots,a_{nj}$分别用$b_1,b_2,\cdots,b_n$替换之后的$n$阶行列式。</p>
+
         </div>
         
         
@@ -262,7 +489,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        3
                     </p>
                 </div>
             </div>
@@ -285,17 +512,17 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/test/">
+        <a class="level is-marginless" href="/categories/笔记/">
             <span class="level-start">
-                <span class="level-item">test</span>
+                <span class="level-item">笔记</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
             </span>
         </a><ul><li>
-        <a class="level is-marginless" href="/categories/test/Hexo/">
+        <a class="level is-marginless" href="/categories/笔记/线代/">
             <span class="level-start">
-                <span class="level-item">Hexo</span>
+                <span class="level-item">线代</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -312,7 +539,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/test1/" style="font-size: 10px;">test1</a> <a href="/tags/test2/" style="font-size: 10px;">test2</a>
+        <a href="/tags/数学/" style="font-size: 10px;">数学</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a>
     </div>
 </div>
 
@@ -326,15 +553,22 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/test1/">
-                        <span class="tag">test1</span>
+                    <a class="tags has-addons" href="/tags/数学/">
+                        <span class="tag">数学</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/test2/">
-                        <span class="tag">test2</span>
+                    <a class="tags has-addons" href="/tags/笔记/">
+                        <span class="tag">笔记</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/线性代数/">
+                        <span class="tag">线性代数</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -358,18 +592,18 @@
         
         <article class="media">
             
-            <a href="/test/Hexo/2019/09/Test/" class="media-left">
+            <a href="/笔记/线代/2019/09/线代笔记（1）/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Test">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="线代笔记（1）——n阶行列式">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T08:44:30.000Z">2019-09-14</time></div>
-                    <a href="/test/Hexo/2019/09/Test/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Test</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T05:02:36.000Z">2019-09-15</time></div>
+                    <a href="/笔记/线代/2019/09/线代笔记（1）/" class="title has-link-black-ter is-size-6 has-text-weight-normal">线代笔记（1）——n阶行列式</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/test/">test</a> / <a class="has-link-grey -link" href="/categories/test/Hexo/">Hexo</a>
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a> / <a class="has-link-grey -link" href="/categories/笔记/线代/">线代</a>
                     </p>
                 </div>
             </div>
@@ -425,18 +659,18 @@
         
         <article class="media">
             
-            <a href="/test/Hexo/2019/09/Test/" class="media-left">
+            <a href="/笔记/线代/2019/09/线代笔记（1）/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Test">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="线代笔记（1）——n阶行列式">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-14T08:44:30.000Z">2019-09-14</time></div>
-                    <a href="/test/Hexo/2019/09/Test/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Test</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-09-15T05:02:36.000Z">2019-09-15</time></div>
+                    <a href="/笔记/线代/2019/09/线代笔记（1）/" class="title has-link-black-ter is-size-6 has-text-weight-normal">线代笔记（1）——n阶行列式</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/test/">test</a> / <a class="has-link-grey -link" href="/categories/test/Hexo/">Hexo</a>
+                        <a class="has-link-grey -link" href="/categories/笔记/">笔记</a> / <a class="has-link-grey -link" href="/categories/笔记/线代/">线代</a>
                     </p>
                 </div>
             </div>
