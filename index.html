@@ -149,11 +149,15 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-10-17T02:48:01.000Z">2019-10-17</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 735 words)
+                    5 minutes read (About 737 words)
                 </span>
                 
                 
@@ -162,11 +166,12 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/uncategorized/2019/10/Codeforces-Global-Round-5/">Codeforces Global Round 5</a>
+                <a class="has-link-black-ter" href="/Codeforces/2019/10/Codeforces-Global-Round-5/">Codeforces Global Round 5</a>
             
         </h1>
         <div class="content">
-            <h1 id="A-Balanced-Rating-Changes"><a href="#A-Balanced-Rating-Changes" class="headerlink" title="A - Balanced Rating Changes"></a><a href="https://codeforces.com/contest/1237/problem/A" target="_blank" rel="noopener">A - Balanced Rating Changes</a></h1><p>偶数直接除。奇数的话只要上取整的数目等于下取整的数目就可以了。</p>
+            <p><strong>JUST KOTLIN!!!</strong></p>
+<h1 id="A-Balanced-Rating-Changes"><a href="#A-Balanced-Rating-Changes" class="headerlink" title="A - Balanced Rating Changes"></a><a href="https://codeforces.com/contest/1237/problem/A" target="_blank" rel="noopener">A - Balanced Rating Changes</a></h1><p>偶数直接除。奇数的话只要上取整的数目等于下取整的数目就可以了。</p>
 <figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> java.util.*</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">val</span> s = Scanner(System.`<span class="hljs-keyword">in</span>`)</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;</span><br><span class="line">    <span class="hljs-keyword">val</span> n = s.nextInt()</span><br><span class="line">    <span class="hljs-keyword">val</span> a = Array(n) &#123; s.nextInt() &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="hljs-keyword">var</span> zheng = <span class="hljs-number">1</span></span><br><span class="line">    <span class="hljs-keyword">var</span> fu = <span class="hljs-number">1</span></span><br><span class="line">    a.forEach &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (it % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>)</span><br><span class="line">            println(it / <span class="hljs-number">2</span>)</span><br><span class="line">        <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (it &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">                println(it / <span class="hljs-number">2</span> + zheng)</span><br><span class="line">                zheng = <span class="hljs-number">1</span> - zheng</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                println(it / <span class="hljs-number">2</span> - fu)</span><br><span class="line">                fu = <span class="hljs-number">1</span> - fu</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="B-Balanced-Tunnel"><a href="#B-Balanced-Tunnel" class="headerlink" title="B - Balanced Tunnel"></a><a href="https://codeforces.com/contest/1237/problem/B" target="_blank" rel="noopener">B - Balanced Tunnel</a></h1><p>如果一辆车$i$超车了，那么就会存在至少一辆车$j$，使得进来的序列中$j$在$i$前面，但出来的序列中$j$在$i$后面。</p>
@@ -342,7 +347,7 @@
                 <span class="level-item">Codeforces</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -356,7 +361,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Codeforces/" style="font-size: 10px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a>
+        <a href="/tags/Codeforces/" style="font-size: 20px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a>
     </div>
 </div>
 
@@ -372,7 +377,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Codeforces/">
                         <span class="tag">Codeforces</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -402,7 +407,7 @@
         
         <article class="media">
             
-            <a href="/uncategorized/2019/10/Codeforces-Global-Round-5/" class="media-left">
+            <a href="/Codeforces/2019/10/Codeforces-Global-Round-5/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Codeforces Global Round 5">
                 </p>
@@ -411,9 +416,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-17T02:48:01.000Z">2019-10-17</time></div>
-                    <a href="/uncategorized/2019/10/Codeforces-Global-Round-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Codeforces Global Round 5</a>
+                    <a href="/Codeforces/2019/10/Codeforces-Global-Round-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Codeforces Global Round 5</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a>
                     </p>
                 </div>
             </div>
@@ -488,7 +493,7 @@
         
         <article class="media">
             
-            <a href="/uncategorized/2019/10/Codeforces-Global-Round-5/" class="media-left">
+            <a href="/Codeforces/2019/10/Codeforces-Global-Round-5/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Codeforces Global Round 5">
                 </p>
@@ -497,9 +502,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-17T02:48:01.000Z">2019-10-17</time></div>
-                    <a href="/uncategorized/2019/10/Codeforces-Global-Round-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Codeforces Global Round 5</a>
+                    <a href="/Codeforces/2019/10/Codeforces-Global-Round-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Codeforces Global Round 5</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a>
                     </p>
                 </div>
             </div>
