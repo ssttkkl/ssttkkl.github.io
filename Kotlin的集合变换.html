@@ -7,18 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Categories - ssttkkl&#39;s Blog</title>
+<title>ssttkkl&#39;s Blog</title>
 
 
-    <meta name="keywords" content="Codeforces,kotlin,Contest,数据结构">
+    <meta name="description" content="变换 Mapping  map()/mapNotNull() mapIndexed()/mapIndexedNotNull()  123val numbers = setOf(1, 2, 3)println(numbers.map &amp;#123; it * 3 &amp;#125;) // [3, 6, 9]println(numbers.mapIndexed &amp;#123; idx, value">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ssttkkl&#39;s Blog">
-<meta property="og:url" content="https://ssttkkl.github.io/categories/index.html">
+<meta property="og:url" content="https://ssttkkl.github.io/Kotlin的集合变换.html">
 <meta property="og:site_name" content="ssttkkl&#39;s Blog">
+<meta property="og:description" content="变换 Mapping  map()/mapNotNull() mapIndexed()/mapIndexedNotNull()  123val numbers = setOf(1, 2, 3)println(numbers.map &amp;#123; it * 3 &amp;#125;) // [3, 6, 9]println(numbers.mapIndexed &amp;#123; idx, value">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ssttkkl.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-10-25T03:27:24.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssttkkl&#39;s Blog">
+<meta name="twitter:description" content="变换 Mapping  map()/mapNotNull() mapIndexed()/mapIndexedNotNull()  123val numbers = setOf(1, 2, 3)println(numbers.map &amp;#123; it * 3 &amp;#125;) // [3, 6, 9]println(numbers.mapIndexed &amp;#123; idx, value">
 <meta name="twitter:image" content="https://ssttkkl.github.io/images/og_image.png">
 
 
@@ -91,7 +94,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="ssttkkl&#39;s Blog" height="28">
+                <img src="/images/logo.svg" alt="" height="28">
             
             </a>
         </div>
@@ -105,7 +108,7 @@
                 <a class="navbar-item"
                 href="/archives">Archives</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/categories">Categories</a>
                 
                 <a class="navbar-item"
@@ -141,43 +144,110 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Codeforces/">
-            <span class="level-start">
-                <span class="level-item">Codeforces</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/模板/">
-            <span class="level-start">
-                <span class="level-item">模板</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/练手/">
-            <span class="level-start">
-                <span class="level-item">练手</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                
+            
+        </h1>
+        <div class="content">
+            <h1 id="变换">变换</h1>
+<h2 id="mapping">Mapping</h2>
+<ul>
+<li><code>map()</code>/<code>mapNotNull()</code></li>
+<li><code>mapIndexed()</code>/<code>mapIndexedNotNull()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numbers = setOf(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)</span><br><span class="line">println(numbers.map &#123; it * <span class="hljs-number">3</span> &#125;) <span class="hljs-comment">// [3, 6, 9]</span></span><br><span class="line">println(numbers.mapIndexed &#123; idx, value -&gt; value * idx &#125;) <span class="hljs-comment">// [0, 2, 6]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numbers = setOf(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)</span><br><span class="line">println(numbers.mapNotNull &#123; <span class="hljs-keyword">if</span> ( it == <span class="hljs-number">2</span>) <span class="hljs-literal">null</span> <span class="hljs-keyword">else</span> it * <span class="hljs-number">3</span> &#125;) <span class="hljs-comment">// [3, 9]</span></span><br><span class="line">println(numbers.mapIndexedNotNull &#123; idx, value -&gt; <span class="hljs-keyword">if</span> (idx == <span class="hljs-number">0</span>) <span class="hljs-literal">null</span> <span class="hljs-keyword">else</span> value * idx &#125;) <span class="hljs-comment">// [2, 6]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>mapKeys()</code></li>
+<li><code>mapValues()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numbersMap = mapOf(<span class="hljs-string">"key1"</span> to <span class="hljs-number">1</span>, <span class="hljs-string">"key2"</span> to <span class="hljs-number">2</span>, <span class="hljs-string">"key3"</span> to <span class="hljs-number">3</span>, <span class="hljs-string">"key11"</span> to <span class="hljs-number">11</span>)</span><br><span class="line">println(numbersMap.mapKeys &#123; it.key.toUpperCase() &#125;) <span class="hljs-comment">// &#123;KEY1=1, KEY2=2, KEY3=3, KEY11=11&#125;</span></span><br><span class="line">println(numbersMap.mapValues &#123; it.value + it.key.length &#125;) <span class="hljs-comment">// &#123;key1=5, key2=6, key3=7, key11=16&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="zipping">Zipping</h2>
+<ul>
+<li><code>zip()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> colors = listOf(<span class="hljs-string">"red"</span>, <span class="hljs-string">"brown"</span>, <span class="hljs-string">"grey"</span>)</span><br><span class="line"><span class="hljs-keyword">val</span> animals = listOf(<span class="hljs-string">"fox"</span>, <span class="hljs-string">"bear"</span>, <span class="hljs-string">"wolf"</span>)</span><br><span class="line">println(colors zip animals) <span class="hljs-comment">// [(red, fox), (brown, bear), (grey, wolf)]</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">val</span> twoAnimals = listOf(<span class="hljs-string">"fox"</span>, <span class="hljs-string">"bear"</span>)</span><br><span class="line">println(colors.zip(twoAnimals)) <span class="hljs-comment">// [(red, fox), (brown, bear)]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> colors = listOf(<span class="hljs-string">"red"</span>, <span class="hljs-string">"brown"</span>, <span class="hljs-string">"grey"</span>)</span><br><span class="line"><span class="hljs-keyword">val</span> animals = listOf(<span class="hljs-string">"fox"</span>, <span class="hljs-string">"bear"</span>, <span class="hljs-string">"wolf"</span>)</span><br><span class="line"></span><br><span class="line">println(colors.zip(animals) &#123; color, animal -&gt; <span class="hljs-string">"The <span class="hljs-subst">$&#123;animal.capitalize()&#125;</span> is <span class="hljs-variable">$color</span>"</span>&#125;) <span class="hljs-comment">// [The Fox is red, The Bear is brown, The Wolf is grey]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>unzip()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numberPairs = listOf(<span class="hljs-string">"one"</span> to <span class="hljs-number">1</span>, <span class="hljs-string">"two"</span> to <span class="hljs-number">2</span>, <span class="hljs-string">"three"</span> to <span class="hljs-number">3</span>, <span class="hljs-string">"four"</span> to <span class="hljs-number">4</span>)</span><br><span class="line">println(numberPairs.unzip()) <span class="hljs-comment">// ([one, two, three, four], [1, 2, 3, 4])</span></span><br></pre></td></tr></table></figure>
+<h2 id="association">Association</h2>
+<ul>
+<li><code>associateWith()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numbers = listOf(<span class="hljs-string">"one"</span>, <span class="hljs-string">"two"</span>, <span class="hljs-string">"three"</span>, <span class="hljs-string">"four"</span>)</span><br><span class="line">println(numbers.associateWith &#123; it.length &#125;) <span class="hljs-comment">// &#123;one=3, two=3, three=5, four=4&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>associateBy()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numbers = listOf(<span class="hljs-string">"one"</span>, <span class="hljs-string">"two"</span>, <span class="hljs-string">"three"</span>, <span class="hljs-string">"four"</span>)</span><br><span class="line"></span><br><span class="line">println(numbers.associateBy &#123; it.first().toUpperCase() &#125;) <span class="hljs-comment">// &#123;O=one, T=three, F=four&#125;</span></span><br><span class="line">println(numbers.associateBy(keySelector = &#123; it.first().toUpperCase() &#125;, valueTransform = &#123; it.length &#125;)) <span class="hljs-comment">// &#123;O=3, T=5, F=4&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>associate()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> names = listOf(<span class="hljs-string">"Alice Adams"</span>, <span class="hljs-string">"Brian Brown"</span>, <span class="hljs-string">"Clara Campbell"</span>)</span><br><span class="line">println(names.associate &#123; name -&gt; parseFullName(name).let &#123; it.lastName to it.firstName &#125; &#125;)  <span class="hljs-comment">// &#123;Adams=Alice, Brown=Brian, Campbell=Clara&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="flattening">Flattening</h2>
+<ul>
+<li><code>flatten()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numberSets = listOf(setOf(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>), setOf(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>), setOf(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>))</span><br><span class="line">println(numberSets.flatten()) <span class="hljs-comment">// [1, 2, 3, 4, 5, 6, 1, 2]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>flatMap()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> containers = listOf(</span><br><span class="line">    StringContainer(listOf(<span class="hljs-string">"one"</span>, <span class="hljs-string">"two"</span>, <span class="hljs-string">"three"</span>)),</span><br><span class="line">    StringContainer(listOf(<span class="hljs-string">"four"</span>, <span class="hljs-string">"five"</span>, <span class="hljs-string">"six"</span>)),</span><br><span class="line">    StringContainer(listOf(<span class="hljs-string">"seven"</span>, <span class="hljs-string">"eight"</span>))</span><br><span class="line">)</span><br><span class="line">println(containers.flatMap &#123; it.values &#125;) <span class="hljs-comment">// [one, two, three, four, five, six, seven, eight]</span></span><br></pre></td></tr></table></figure>
+<h2 id="string-representation">String representation</h2>
+<ul>
+<li><code>joinToString()</code>/<code>joinTo()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numbers = listOf(<span class="hljs-string">"one"</span>, <span class="hljs-string">"two"</span>, <span class="hljs-string">"three"</span>, <span class="hljs-string">"four"</span>)</span><br><span class="line">println(numbers.joinToString()) <span class="hljs-comment">// one, two, three, four</span></span><br><span class="line">println(numbers.joinToString(separator = <span class="hljs-string">" | "</span>, prefix = <span class="hljs-string">"start: "</span>, postfix = <span class="hljs-string">": end"</span>)) <span class="hljs-comment">// start: one | two | three | four: end</span></span><br><span class="line">println(numbers.joinToString &#123; <span class="hljs-string">"Element: <span class="hljs-subst">$&#123;it.toUpperCase()&#125;</span>"</span>&#125;) <span class="hljs-comment">// Element: ONE, Element: TWO, Element: THREE, Element: FOUR</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">val</span> listString = StringBuffer(<span class="hljs-string">"The list of numbers: "</span>)</span><br><span class="line">numbers.joinTo(listString)</span><br><span class="line">println(listString) <span class="hljs-comment">// The list of numbers: one, two, three, four</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">val</span> numbers2 = (<span class="hljs-number">1</span>..<span class="hljs-number">100</span>).toList()</span><br><span class="line">println(numbers2.joinToString(limit = <span class="hljs-number">10</span>, truncated = <span class="hljs-string">"&lt;...&gt;"</span>)) <span class="hljs-comment">// 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, &lt;...&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="过滤">过滤</h1>
+<ul>
+<li><code>filter()</code></li>
+<li><code>filterIndexed()</code></li>
+<li><code>filterNot()</code></li>
+<li><code>filterIsInstance()</code></li>
+<li><code>filterNotNull()</code></li>
+</ul>
+<h1 id="划分">划分</h1>
+<ul>
+<li><code>partition()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numbers = listOf(<span class="hljs-string">"one"</span>, <span class="hljs-string">"two"</span>, <span class="hljs-string">"three"</span>, <span class="hljs-string">"four"</span>)</span><br><span class="line"><span class="hljs-keyword">val</span> (match, rest) = numbers.partition &#123; it.length &gt; <span class="hljs-number">3</span> &#125;</span><br><span class="line"></span><br><span class="line">println(match) <span class="hljs-comment">// [three, four]</span></span><br><span class="line">println(rest) <span class="hljs-comment">// [one, two]</span></span><br></pre></td></tr></table></figure>
+<h1 id="测试">测试</h1>
+<ul>
+<li><code>any()</code></li>
+<li><code>none()</code></li>
+<li><code>all()</code></li>
+</ul>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numbers = listOf(<span class="hljs-string">"one"</span>, <span class="hljs-string">"two"</span>, <span class="hljs-string">"three"</span>, <span class="hljs-string">"four"</span>)</span><br><span class="line"></span><br><span class="line">println(numbers.any &#123; it.endsWith(<span class="hljs-string">"e"</span>) &#125;) <span class="hljs-comment">// true</span></span><br><span class="line">println(numbers.none &#123; it.endsWith(<span class="hljs-string">"a"</span>) &#125;) <span class="hljs-comment">// true</span></span><br><span class="line">println(numbers.all &#123; it.endsWith(<span class="hljs-string">"e"</span>) &#125;) <span class="hljs-comment">// false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">println(emptyList&lt;<span class="hljs-built_in">Int</span>&gt;().all &#123; it &gt; <span class="hljs-number">5</span> &#125;) <span class="hljs-comment">// true</span></span><br><span class="line">println(emptyList&lt;<span class="hljs-built_in">Int</span>&gt;().any &#123; it &gt; <span class="hljs-number">5</span> &#125;) <span class="hljs-comment">// false</span></span><br><span class="line">println(emptyList&lt;<span class="hljs-built_in">Int</span>&gt;().none &#123; it &gt; <span class="hljs-number">5</span> &#125;) <span class="hljs-comment">// true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">val</span> numbers = listOf(<span class="hljs-string">"one"</span>, <span class="hljs-string">"two"</span>, <span class="hljs-string">"three"</span>, <span class="hljs-string">"four"</span>)</span><br><span class="line"><span class="hljs-keyword">val</span> empty = emptyList&lt;String&gt;()</span><br><span class="line"></span><br><span class="line">println(numbers.any()) <span class="hljs-comment">// true</span></span><br><span class="line">println(empty.any()) <span class="hljs-comment">// false</span></span><br><span class="line"></span><br><span class="line">println(numbers.none()) <span class="hljs-comment">// false</span></span><br><span class="line">println(empty.none()) <span class="hljs-comment">// true</span></span><br></pre></td></tr></table></figure>
+<h1 id="plus和minus"><code>plus</code>和<code>minus</code></h1>
+<h1 id="分组">分组</h1>
+<h1 id="截取">截取</h1>
+<h1 id="section"></h1>
+
         </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
     </div>
-</div></div>
+</div>
+
+
+
+
+
+
+</div>
                 
 
 
@@ -619,7 +689,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="ssttkkl&#39;s Blog" height="28">
+                    <img src="/images/logo.svg" alt="" height="28">
                 
                 </a>
                 <p class="is-size-7">
