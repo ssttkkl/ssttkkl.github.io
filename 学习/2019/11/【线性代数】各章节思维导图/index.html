@@ -7,17 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Tag: 数据结构 - ssttkkl&#39;s Blog</title>
+<title>【线性代数】各章节思维导图 - ssttkkl&#39;s Blog</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="ssttkkl&#39;s Blog">
-<meta property="og:url" content="https://ssttkkl.github.io/tags/数据结构/index.html">
+    <meta name="description" content="第一章 - n阶行列式  1  第二章 - 矩阵  2  第三章 - 几何向量  3">
+<meta name="keywords" content="线性代数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【线性代数】各章节思维导图">
+<meta property="og:url" content="https://ssttkkl.github.io/学习/2019/11/【线性代数】各章节思维导图/index.html">
 <meta property="og:site_name" content="ssttkkl&#39;s Blog">
+<meta property="og:description" content="第一章 - n阶行列式  1  第二章 - 矩阵  2  第三章 - 几何向量  3">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ssttkkl.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-08T05:03:24.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ssttkkl&#39;s Blog">
+<meta name="twitter:title" content="【线性代数】各章节思维导图">
+<meta name="twitter:description" content="第一章 - n阶行列式  1  第二章 - 矩阵  2  第三章 - 几何向量  3">
 <meta name="twitter:image" content="https://ssttkkl.github.io/images/og_image.png">
 
 
@@ -90,7 +95,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="ssttkkl&#39;s Blog" height="28">
+                <img src="/images/logo.svg" alt="【线性代数】各章节思维导图" height="28">
             
             </a>
         </div>
@@ -127,6 +132,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -141,55 +150,68 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">Tags</a></li>
-            <li class="is-active"><a href="#" aria-current="page">数据结构</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-17T04:21:57.000Z">2019-10-17</time>
+                <time class="level-item has-text-grey" datetime="2019-11-08T05:00:41.000Z">2019-11-08</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/模板/">模板</a>
+                <a class="has-link-grey -link" href="/categories/学习/">学习</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 430 words)
+                    a few seconds read (About 23 words)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span> visits
+                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/模板/2019/10/数据结构模板-in-Kotlin/">数据结构模板 in Kotlin</a>
+                【线性代数】各章节思维导图
             
         </h1>
         <div class="content">
-            <h1 id="st表">ST表</h1>
-<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SparseTable</span></span>(<span class="hljs-keyword">val</span> <span class="hljs-keyword">data</span>: List&lt;<span class="hljs-built_in">Int</span>&gt;,</span><br><span class="line">                  <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> rmq: (<span class="hljs-built_in">Int</span>, <span class="hljs-built_in">Int</span>) -&gt; <span class="hljs-built_in">Int</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> table = Array(<span class="hljs-keyword">data</span>.size) &#123;</span><br><span class="line">        Array(log2s[<span class="hljs-keyword">data</span>.size] + <span class="hljs-number">1</span>) &#123; <span class="hljs-number">0</span> &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">init</span> &#123;</span><br><span class="line">        repeat(<span class="hljs-keyword">data</span>.size) &#123;</span><br><span class="line">            table[it][<span class="hljs-number">0</span>] = <span class="hljs-keyword">data</span>[it]</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>..log2s[<span class="hljs-keyword">data</span>.size]) &#123;</span><br><span class="line">            repeat(<span class="hljs-keyword">data</span>.size - (<span class="hljs-number">1</span> shl (j - <span class="hljs-number">1</span>))) &#123; i -&gt;</span><br><span class="line">                table[i][j] = rmq(table[i][j - <span class="hljs-number">1</span>], table[i + (<span class="hljs-number">1</span> shl (j - <span class="hljs-number">1</span>))][j - <span class="hljs-number">1</span>])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">operator</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">get</span><span class="hljs-params">(range: <span class="hljs-type">IntRange</span>)</span></span>: <span class="hljs-built_in">Int</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> k = log2s[range.last - range.first + <span class="hljs-number">1</span>]</span><br><span class="line">        <span class="hljs-keyword">return</span> rmq(table[range.first][k], table[range.last - (<span class="hljs-number">1</span> shl k) + <span class="hljs-number">1</span>][k])</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">companion</span> <span class="hljs-keyword">object</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> log2s = Array(MAXN) &#123; <span class="hljs-number">0</span> &#125;.apply &#123;</span><br><span class="line">            <span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-keyword">while</span> ((<span class="hljs-number">1</span> shl (x - <span class="hljs-number">1</span>)) &lt; size) &#123;</span><br><span class="line">                <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> ((<span class="hljs-number">1</span> shl (x - <span class="hljs-number">1</span>)) until min(<span class="hljs-number">1</span> shl x, size)))</span><br><span class="line">                    <span class="hljs-keyword">this</span>[i] = x - <span class="hljs-number">1</span></span><br><span class="line">                x++</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="树状数组">树状数组</h1>
-<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TreeArray</span></span>(<span class="hljs-keyword">val</span> size: <span class="hljs-built_in">Int</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">val</span> array = Array&lt;<span class="hljs-built_in">Int</span>&gt;(size + <span class="hljs-number">1</span>) &#123; <span class="hljs-number">0</span> &#125;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">lowbit</span><span class="hljs-params">(x: <span class="hljs-type">Int</span>)</span></span> = x and (-x)</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">add</span><span class="hljs-params">(pos: <span class="hljs-type">Int</span>, value: <span class="hljs-type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (pos !<span class="hljs-keyword">in</span> <span class="hljs-number">1</span>..size)</span><br><span class="line">            <span class="hljs-keyword">throw</span> IndexOutOfBoundsException()</span><br><span class="line">        <span class="hljs-keyword">var</span> i = pos</span><br><span class="line">        <span class="hljs-keyword">while</span> (i &lt;= size) &#123;</span><br><span class="line">            array[i] += value</span><br><span class="line">            i += lowbit(i)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">perfixSum</span><span class="hljs-params">(pos: <span class="hljs-type">Int</span>)</span></span>: <span class="hljs-built_in">Int</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (pos !<span class="hljs-keyword">in</span> <span class="hljs-number">1</span>..size)</span><br><span class="line">            <span class="hljs-keyword">throw</span> IndexOutOfBoundsException()</span><br><span class="line">        <span class="hljs-keyword">var</span> i = pos</span><br><span class="line">        <span class="hljs-keyword">var</span> ans = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (i &gt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            ans += array[i]</span><br><span class="line">            i -= lowbit(i)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> ans</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="线段树">线段树</h1>
-<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> kotlin.math.max</span><br><span class="line"><span class="hljs-keyword">import</span> kotlin.math.min</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SegmentTree</span></span>(<span class="hljs-keyword">val</span> size: <span class="hljs-built_in">Int</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span></span>(<span class="hljs-keyword">val</span> range: IntRange) &#123;</span><br><span class="line">        <span class="hljs-keyword">lateinit</span> <span class="hljs-keyword">var</span> left: Node</span><br><span class="line">        <span class="hljs-keyword">lateinit</span> <span class="hljs-keyword">var</span> right: Node</span><br><span class="line">        <span class="hljs-keyword">var</span> sum: <span class="hljs-built_in">Long</span> = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">var</span> addTag: <span class="hljs-built_in">Long</span> = <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> mid = (range.first + range.last) / <span class="hljs-number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">pushDown</span><span class="hljs-params">()</span></span> &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (addTag != <span class="hljs-number">0L</span>) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!::left.isInitialized)</span><br><span class="line">                    left = Node(range.first..mid)</span><br><span class="line">                <span class="hljs-keyword">if</span> (!::right.isInitialized) </span><br><span class="line">                    right = Node(mid + <span class="hljs-number">1</span>..range.last)</span><br><span class="line">                left.addTag += addTag</span><br><span class="line">                left.sum += addTag * (mid - range.first + <span class="hljs-number">1</span>)</span><br><span class="line">                right.addTag += addTag</span><br><span class="line">                right.sum += addTag * (range.last - mid)</span><br><span class="line">                addTag = <span class="hljs-number">0</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">add</span><span class="hljs-params">(addRange: <span class="hljs-type">IntRange</span>, value: <span class="hljs-type">Long</span>)</span></span> &#123;</span><br><span class="line">            sum += value * (addRange.last - addRange.first + <span class="hljs-number">1</span>)</span><br><span class="line">            <span class="hljs-keyword">if</span> (range == addRange) &#123;</span><br><span class="line">                addTag += value</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (addRange.first &lt;= mid) &#123;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (!::left.isInitialized)</span><br><span class="line">                        left = Node(range.first..mid)</span><br><span class="line">                    left.add(addRange.first..min(mid, addRange.last), value)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">if</span> (mid + <span class="hljs-number">1</span> &lt;= addRange.last) &#123;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (!::right.isInitialized)</span><br><span class="line">                        right = Node((mid + <span class="hljs-number">1</span>)..range.last)</span><br><span class="line">                    right.add(max(mid + <span class="hljs-number">1</span>, addRange.first)..addRange.last, value)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">operator</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">get</span><span class="hljs-params">(queryRange: <span class="hljs-type">IntRange</span>)</span></span>: <span class="hljs-built_in">Long</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (queryRange == range)</span><br><span class="line">                <span class="hljs-keyword">return</span> sum</span><br><span class="line">            pushDown()</span><br><span class="line">            <span class="hljs-keyword">var</span> ans = <span class="hljs-number">0L</span></span><br><span class="line">            <span class="hljs-keyword">if</span> (::left.isInitialized &amp;&amp; queryRange.first &lt;= mid)</span><br><span class="line">                ans += left[queryRange.first..min(mid, queryRange.last)]</span><br><span class="line">            <span class="hljs-keyword">if</span> (::right.isInitialized &amp;&amp; (mid + <span class="hljs-number">1</span>) &lt;= queryRange.last)</span><br><span class="line">                ans += right[max((mid + <span class="hljs-number">1</span>), queryRange.first)..queryRange.last]</span><br><span class="line">            <span class="hljs-keyword">return</span> ans</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> root = Node(<span class="hljs-number">0</span> until size)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">constructor</span>(<span class="hljs-keyword">data</span>: List&lt;<span class="hljs-built_in">Long</span>&gt;) : <span class="hljs-keyword">this</span>(<span class="hljs-keyword">data</span>.size) &#123;</span><br><span class="line">        <span class="hljs-keyword">data</span>.forEachIndexed &#123; idx, it -&gt; add(idx, it) &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">add</span><span class="hljs-params">(addRange: <span class="hljs-type">IntRange</span>, value: <span class="hljs-type">Long</span>)</span></span> = root.add(addRange, value)</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">add</span><span class="hljs-params">(position: <span class="hljs-type">Int</span>, value: <span class="hljs-type">Long</span>)</span></span> = root.add(position..position, value)</span><br><span class="line">    <span class="hljs-keyword">operator</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">get</span><span class="hljs-params">(queryRange: <span class="hljs-type">IntRange</span>)</span></span> = root[queryRange]</span><br><span class="line">    <span class="hljs-keyword">operator</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">get</span><span class="hljs-params">(position: <span class="hljs-type">Int</span>)</span></span> = root[position..position]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="第一章---n阶行列式">第一章 - n阶行列式</h1>
+<figure>
+<img src="1.svg" alt><figcaption>1</figcaption>
+</figure>
+<h1 id="第二章---矩阵">第二章 - 矩阵</h1>
+<figure>
+<img src="2.svg" alt><figcaption>2</figcaption>
+</figure>
+<h1 id="第三章---几何向量">第三章 - 几何向量</h1>
+<figure>
+<img src="3.svg" alt><figcaption>3</figcaption>
+</figure>
 
         </div>
         
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/线性代数/">线性代数</a>
+                </div>
+            </div>
+        </div>
         
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
@@ -198,7 +220,19 @@
 
 
 
-
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Android/2019/11/【安卓开发】CameraX实现简单的扫二维码应用/">
+                <span class="level-item">【Android开发】CameraX实现简单的扫二维码应用</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -424,6 +458,29 @@
         <div class="column-right-shadow is-hidden-widescreen ">
         
             
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#第一章---n阶行列式">
+        <span class="has-mr-6">1</span>
+        <span>第一章 - n阶行列式</span>
+        </a></li><li>
+        <a class="is-flex" href="#第二章---矩阵">
+        <span class="has-mr-6">2</span>
+        <span>第二章 - 矩阵</span>
+        </a></li><li>
+        <a class="is-flex" href="#第三章---几何向量">
+        <span class="has-mr-6">3</span>
+        <span>第三章 - 几何向量</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
         
             
 <div class="card widget">
@@ -578,6 +635,29 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catalogue
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#第一章---n阶行列式">
+        <span class="has-mr-6">1</span>
+        <span>第一章 - n阶行列式</span>
+        </a></li><li>
+        <a class="is-flex" href="#第二章---矩阵">
+        <span class="has-mr-6">2</span>
+        <span>第二章 - 矩阵</span>
+        </a></li><li>
+        <a class="is-flex" href="#第三章---几何向量">
+        <span class="has-mr-6">3</span>
+        <span>第三章 - 几何向量</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 <div class="card widget">
@@ -732,7 +812,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="ssttkkl&#39;s Blog" height="28">
+                    <img src="/images/logo.svg" alt="【线性代数】各章节思维导图" height="28">
                 
                 </a>
                 <p class="is-size-7">
