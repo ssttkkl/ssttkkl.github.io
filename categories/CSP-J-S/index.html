@@ -168,7 +168,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes read (About 859 words)
+                    5 minutes read (About 777 words)
                 </span>
                 
                 
@@ -177,25 +177,21 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/CSP-J-S/2019/11/【云-玩-家】CSP-S-2019-第二轮/">【云 玩 家】CSP-S 2019 第二轮</a>
+                <a class="has-link-black-ter" href="/CSP-J-S/2019/11/【CSP-S-2019-2】括号树/">【CSP-S 2019-2】括号树</a>
             
         </h1>
         <div class="content">
-            <h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><h2 id="T1-格雷码"><a href="#T1-格雷码" class="headerlink" title="T1 - 格雷码"></a>T1 - 格雷码</h2><p><del>可能是本场比赛唯一的签到题？惨·小野·惨</del></p>
-<p>直接递推求，看码。</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">generate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (k &lt; (<span class="hljs-number">1u</span>ll &lt;&lt; (n - <span class="hljs-number">1</span>)))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">0</span>;</span><br><span class="line">        generate(n - <span class="hljs-number">1</span>, k);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">1</span>;</span><br><span class="line">        generate(n - <span class="hljs-number">1</span>, (<span class="hljs-number">1u</span>ll &lt;&lt; n) - <span class="hljs-number">1</span> - k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> n;</span><br><span class="line">    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> k;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    generate(n, k);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="T2-括号树"><a href="#T2-括号树" class="headerlink" title="T2 - 括号树"></a>T2 - 括号树</h1><p>$O(n^2)$暴力：</p>
+            <p><span class="math inline">\(O(n^2)\)</span>暴力：</p>
 <p>DFS一遍，在每个节点暴力求出以它结尾的合法括号子串数目。</p>
-<p>$O(n)$正解：</p>
+<hr>
+<p><span class="math inline">\(O(n)\)</span>正解：</p>
 <p>DFS一遍，在每个节点通过递推求出以它结尾的合法括号子串数目。</p>
-<p>首先定义$\textrm{match}_v$为节点v的祖先中使得路径上的括号串为合法括号串的深度最浅的节点，换句话说就是从v往上爬最多能爬到哪个节点使得路径为合法括号串；定义$\textrm{ansr}_v$为节点v的祖先中使得路径上的括号串为合法括号串的个数，换句话说就是答案所求的合法括号串中以v结尾的个数。</p>
+<p>首先定义<span class="math inline">\(\textrm{match}_v\)</span>为节点v的祖先中使得路径上的括号串为合法括号串的深度最浅的节点，换句话说就是从v往上爬最多能爬到哪个节点使得路径为合法括号串；定义<span class="math inline">\(\textrm{ansr}_v\)</span>为节点v的祖先中使得路径上的括号串为合法括号串的个数，换句话说就是答案所求的合法括号串中以v结尾的个数。</p>
 <p>遍历到节点v时：如果v是左括号直接忽略。如果是右括号则看下它的父亲是不是左括号，如果是则直接和它的父亲匹配，否则和<strong>它的父亲上朔的左括号节点的父亲</strong>（如果是左括号，否则匹配失败）匹配。</p>
 <p>然后根据所匹配到的左括号的父亲判断，如果父亲也存在匹配，则可以继续上朔，即v的match节点为所匹配到的左括号的父亲的match节点。否则v的match节点就是所匹配到的左括号。</p>
 <p>v的ansr值就是所匹配到的左括号节点的父亲的ansr值（若存在）加1。</p>
 <p>v的最终答案就是它的ansr值加上父亲的ansr值。</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 500005</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to, next;</span><br><span class="line">&#125; edges[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> head[MAXN], cnt = <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add_edge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    edges[cnt].to = to;</span><br><span class="line">    edges[cnt].next = head[from];</span><br><span class="line">    head[from] = cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// 记match[v]为节点v的祖先中使得路径上的括号串为合法括号串的深度最浅的节点</span></span><br><span class="line"><span class="hljs-comment">// 记ans[v]为根到节点v的路径上的括号串的合法子括号串</span></span><br><span class="line"><span class="hljs-comment">// 记ansr[v]为根到节点v的路径上的括号串中以v结束的合法子括号串</span></span><br><span class="line"><span class="hljs-keyword">int</span> n, pa[MAXN], match[MAXN];</span><br><span class="line"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ansr[MAXN], ans[MAXN];</span><br><span class="line"><span class="hljs-keyword">char</span> s[MAXN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (s[v] == <span class="hljs-string">')'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (s[pa[v]] == <span class="hljs-string">'('</span>) <span class="hljs-comment">// 直接和上一个字符匹配</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (match[pa[pa[v]]]) <span class="hljs-comment">// 若该字符匹配的左括号的上一个字符仍存在匹配，则继续往上爬</span></span><br><span class="line">            &#123;</span><br><span class="line">                match[v] = match[pa[pa[v]]];</span><br><span class="line">                ansr[v] = ansr[pa[pa[v]]] + <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                match[v] = pa[v];</span><br><span class="line">                ansr[v] = <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s[pa[v]] == <span class="hljs-string">')'</span> &amp;&amp; s[pa[match[pa[v]]]] == <span class="hljs-string">'('</span>) <span class="hljs-comment">// 和上一个字符配对的左括号的上一个字符匹配</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (match[pa[pa[match[pa[v]]]]]) <span class="hljs-comment">// 若该字符匹配的左括号的上一个字符仍存在匹配，则继续往上爬</span></span><br><span class="line">            &#123;</span><br><span class="line">                match[v] = match[pa[pa[match[pa[v]]]]];</span><br><span class="line">                ansr[v] = ansr[pa[pa[match[pa[v]]]]] + <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                match[v] = pa[match[pa[v]]];</span><br><span class="line">                ansr[v] = <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ans[v] = ansr[v] + ans[pa[v]];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[v]; i != <span class="hljs-number">-1</span>; i = edges[i].next)</span><br><span class="line">        dfs(edges[i].to);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(head, <span class="hljs-number">0xff</span>, <span class="hljs-keyword">sizeof</span>(head));</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; n &gt;&gt; (s + <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; pa[i];</span><br><span class="line">        add_edge(pa[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> xorsum = ans[<span class="hljs-number">1</span>];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++)</span><br><span class="line">        xorsum ^= i * ans[i];</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; xorsum &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -255,7 +251,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        11
+                        12
                     </p>
                 </div>
             </div>
@@ -275,7 +271,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        15
+                        16
                     </p>
                 </div>
             </div>
@@ -301,6 +297,14 @@
         <a class="level is-marginless" href="/categories/Android/">
             <span class="level-start">
                 <span class="level-item">Android</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CSP/">
+            <span class="level-start">
+                <span class="level-item">CSP</span>
             </span>
             <span class="level-end">
                 <span class="level-item tag">1</span>
@@ -346,14 +350,6 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/算法/">
-            <span class="level-start">
-                <span class="level-item">算法</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/练手/">
             <span class="level-start">
                 <span class="level-item">练手</span>
@@ -373,7 +369,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/CSP-S/" style="font-size: 10px;">CSP-S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 20px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数学分析/" style="font-size: 10px;">数学分析</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 15px;">日本語</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a>
+        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/CSP/" style="font-size: 10px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 20px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 15px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a>
     </div>
 </div>
 
@@ -401,8 +397,15 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/CSP-S/">
-                        <span class="tag">CSP-S</span>
+                    <a class="tags has-addons" href="/tags/CSP/">
+                        <span class="tag">CSP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CSP-J-S/">
+                        <span class="tag">CSP-J/S</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -457,13 +460,6 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/数学分析/">
-                        <span class="tag">数学分析</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/数据结构/">
                         <span class="tag">数据结构</span>
                         <span class="tag is-grey">1</span>
@@ -478,8 +474,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/算法/">
-                        <span class="tag">算法</span>
+                    <a class="tags has-addons" href="/tags/树/">
+                        <span class="tag">树</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -487,6 +483,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/线性代数/">
                         <span class="tag">线性代数</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/递推/">
+                        <span class="tag">递推</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -510,6 +513,44 @@
         
         <article class="media">
             
+            <a href="/CSP/2019/12/【CSP-201903】损坏的RAID-5/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201903】损坏的RAID-5">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T06:52:03.000Z">2019-12-02</time></div>
+                    <a href="/CSP/2019/12/【CSP-201903】损坏的RAID-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】损坏的RAID-5</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/uncategorized/2019/11/Codeforces-Round-602-Div-2-based-on-Technocup-2020-Elimination-Round-3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Codeforces Round #602 (Div. 2, based on Technocup 2020 Elimination Round 3)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-27T01:53:11.000Z">2019-11-27</time></div>
+                    <a href="/uncategorized/2019/11/Codeforces-Round-602-Div-2-based-on-Technocup-2020-Elimination-Round-3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Codeforces Round #602 (Div. 2, based on Technocup 2020 Elimination Round 3)</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/日本語/2019/11/【日中翻訳練習】ギフト-Argonavis/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】ギフト - Argonavis">
@@ -529,35 +570,16 @@
         
         <article class="media">
             
-            <a href="/算法/2019/11/牛顿迭代法/" class="media-left">
+            <a href="/CSP-J-S/2019/11/【CSP-S-2019-2】括号树/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="牛顿迭代法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T04:56:03.000Z">2019-11-20</time></div>
-                    <a href="/算法/2019/11/牛顿迭代法/" class="title has-link-black-ter is-size-6 has-text-weight-normal">牛顿迭代法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/CSP-J-S/2019/11/【云-玩-家】CSP-S-2019-第二轮/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【云 玩 家】CSP-S 2019 第二轮">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-S 2019-2】括号树">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T02:52:27.000Z">2019-11-20</time></div>
-                    <a href="/CSP-J-S/2019/11/【云-玩-家】CSP-S-2019-第二轮/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【云 玩 家】CSP-S 2019 第二轮</a>
+                    <a href="/CSP-J-S/2019/11/【CSP-S-2019-2】括号树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-S 2019-2】括号树</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/CSP-J-S/">CSP-J/S</a>
                     </p>
@@ -584,25 +606,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/日本語/2019/11/【日中翻訳練習】Sky-Journey-東山奈央/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】Sky Journey - 東山奈央">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-15T06:11:43.000Z">2019-11-15</time></div>
-                    <a href="/日本語/2019/11/【日中翻訳練習】Sky-Journey-東山奈央/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】Sky Journey - 東山奈央</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -614,6 +617,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
@@ -664,6 +678,44 @@
         
         <article class="media">
             
+            <a href="/CSP/2019/12/【CSP-201903】损坏的RAID-5/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201903】损坏的RAID-5">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T06:52:03.000Z">2019-12-02</time></div>
+                    <a href="/CSP/2019/12/【CSP-201903】损坏的RAID-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】损坏的RAID-5</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/uncategorized/2019/11/Codeforces-Round-602-Div-2-based-on-Technocup-2020-Elimination-Round-3/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Codeforces Round #602 (Div. 2, based on Technocup 2020 Elimination Round 3)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-27T01:53:11.000Z">2019-11-27</time></div>
+                    <a href="/uncategorized/2019/11/Codeforces-Round-602-Div-2-based-on-Technocup-2020-Elimination-Round-3/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Codeforces Round #602 (Div. 2, based on Technocup 2020 Elimination Round 3)</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/日本語/2019/11/【日中翻訳練習】ギフト-Argonavis/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】ギフト - Argonavis">
@@ -683,35 +735,16 @@
         
         <article class="media">
             
-            <a href="/算法/2019/11/牛顿迭代法/" class="media-left">
+            <a href="/CSP-J-S/2019/11/【CSP-S-2019-2】括号树/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="牛顿迭代法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T04:56:03.000Z">2019-11-20</time></div>
-                    <a href="/算法/2019/11/牛顿迭代法/" class="title has-link-black-ter is-size-6 has-text-weight-normal">牛顿迭代法</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/算法/">算法</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/CSP-J-S/2019/11/【云-玩-家】CSP-S-2019-第二轮/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【云 玩 家】CSP-S 2019 第二轮">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-S 2019-2】括号树">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T02:52:27.000Z">2019-11-20</time></div>
-                    <a href="/CSP-J-S/2019/11/【云-玩-家】CSP-S-2019-第二轮/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【云 玩 家】CSP-S 2019 第二轮</a>
+                    <a href="/CSP-J-S/2019/11/【CSP-S-2019-2】括号树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-S 2019-2】括号树</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/CSP-J-S/">CSP-J/S</a>
                     </p>
@@ -738,25 +771,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/日本語/2019/11/【日中翻訳練習】Sky-Journey-東山奈央/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】Sky Journey - 東山奈央">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-15T06:11:43.000Z">2019-11-15</time></div>
-                    <a href="/日本語/2019/11/【日中翻訳練習】Sky-Journey-東山奈央/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】Sky Journey - 東山奈央</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -768,6 +782,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/11/">
