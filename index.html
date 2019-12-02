@@ -147,6 +147,54 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-02T09:53:53.000Z">2019-12-02</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 584 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/CSP/2019/12/【CSP-201909】推荐系统/">【CSP-201909】推荐系统</a>
+            
+        </h1>
+        <div class="content">
+            <p>数据结构题，也可以说是STL题。</p>
+<p>由操作三我们可以想到用m个set（平衡树）来分别维护不同分类的产品的优先度。查询的实现就用一个prority_queue（堆），初始时把每个非空分类下的第一个产品扔到堆里，每次取堆头加入答案并把该产品所在分类的下一个产品加入堆。用迭代器就可以实现。</p>
+<p>但是操作一和二我们用上述方法的话就无法快速增删，于是我们再用m个unordered_map（哈希表）来对每个分类所有产品位于set中的<strong>迭代器</strong>进行索引，增删的时候就直接通过迭代器操作。虽说C++不建议保存迭代器，但既然是做题就不管这么多了。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">product</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> type, id, score;</span><br><span class="line">    product(<span class="hljs-keyword">int</span> _type, <span class="hljs-keyword">int</span> _id, <span class="hljs-keyword">int</span> _score)</span><br><span class="line">    &#123;</span><br><span class="line">        type = _type;</span><br><span class="line">        id = _id;</span><br><span class="line">        score = _score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cmp</span></span></span><br><span class="line"><span class="hljs-class">    &#123;</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> product &amp;o1, <span class="hljs-keyword">const</span> product &amp;o2)</span></span></span><br><span class="line"><span class="hljs-function">        </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (o1.score != o2.score)</span><br><span class="line">                <span class="hljs-keyword">return</span> o1.score &gt; o2.score;</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (o1.type != o2.type)</span><br><span class="line">                <span class="hljs-keyword">return</span> o1.type &lt; o2.type;</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">                <span class="hljs-keyword">return</span> o1.id &lt; o2.id;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">set</span>&lt;product, product::cmp&gt;&gt; type_to_product;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">set</span>&lt;product, product::cmp&gt;::iterator&gt;&gt; type_id_to_iter;</span><br><span class="line"><span class="hljs-keyword">int</span> m, n;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add_product</span><span class="hljs-params">(<span class="hljs-keyword">int</span> type, <span class="hljs-keyword">int</span> id, <span class="hljs-keyword">int</span> score)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">auto</span> iter = type_to_product[type].emplace(type, id, score).first;</span><br><span class="line">    type_id_to_iter[type][id] = iter;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">remove_product</span><span class="hljs-params">(<span class="hljs-keyword">int</span> type, <span class="hljs-keyword">int</span> id)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    type_to_product[type].erase(type_id_to_iter[type][id]);</span><br><span class="line">    type_id_to_iter[type].erase(id);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">perform_ask</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; caps, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;product&gt;&gt; &amp;ans)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cmp</span></span></span><br><span class="line"><span class="hljs-class">    &#123;</span></span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">operator</span><span class="hljs-params">()</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">set</span>&lt;product, product::cmp&gt;::iterator &amp;o1, <span class="hljs-keyword">const</span> <span class="hljs-built_in">set</span>&lt;product, product::cmp&gt;::iterator &amp;o2)</span></span></span><br><span class="line"><span class="hljs-function">        </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> !product::cmp()(*o1, *o2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    priority_queue&lt;<span class="hljs-built_in">set</span>&lt;product, product::cmp&gt;::iterator, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">set</span>&lt;product, product::cmp&gt;::iterator&gt;, cmp&gt; pq;</span><br><span class="line"></span><br><span class="line">    ans.resize(m);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> v : ans)</span><br><span class="line">        v.clear();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i++)</span><br><span class="line">        <span class="hljs-keyword">if</span> (!type_to_product[i].empty())</span><br><span class="line">            pq.push(type_to_product[i].begin());</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (k &amp;&amp; !pq.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">auto</span> iter = pq.top();</span><br><span class="line">        pq.pop();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (caps[iter-&gt;type])</span><br><span class="line">        &#123;</span><br><span class="line">            ans[iter-&gt;type].push_back(*iter);</span><br><span class="line">            caps[iter-&gt;type]--;</span><br><span class="line">            k--;</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">if</span> (++iter != type_to_product[iter-&gt;type].end())</span><br><span class="line">                pq.push(iter);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="hljs-literal">false</span>);</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; m &gt;&gt; n;</span><br><span class="line">    type_to_product.resize(m);</span><br><span class="line">    type_id_to_iter.resize(m);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> id, score;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; id &gt;&gt; score;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i++)</span><br><span class="line">            add_product(i, id, score);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> t;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="hljs-keyword">while</span> (t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> opt;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; opt;</span><br><span class="line">        <span class="hljs-keyword">if</span> (opt == <span class="hljs-number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> type, id, score;</span><br><span class="line">            <span class="hljs-built_in">cin</span> &gt;&gt; type &gt;&gt; id &gt;&gt; score;</span><br><span class="line">            add_product(type, id, score);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (opt == <span class="hljs-number">2</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> type, id;</span><br><span class="line">            <span class="hljs-built_in">cin</span> &gt;&gt; type &gt;&gt; id;</span><br><span class="line">            remove_product(type, id);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (opt == <span class="hljs-number">3</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> k;</span><br><span class="line">            <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; caps(m);</span><br><span class="line">            <span class="hljs-built_in">cin</span> &gt;&gt; k;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i++)</span><br><span class="line">                <span class="hljs-built_in">cin</span> &gt;&gt; caps[i];</span><br><span class="line"></span><br><span class="line">            <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;product&gt;&gt; ans;</span><br><span class="line">            perform_ask(k, caps, ans);</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> v : ans)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (v.size() &gt; <span class="hljs-number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> p : v)</span><br><span class="line">                        <span class="hljs-built_in">cout</span> &lt;&lt; p.id &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">                    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">else</span></span><br><span class="line">                    <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-12-02T08:07:13.000Z">2019-12-02</time>
                 
                 <div class="level-item">
@@ -220,7 +268,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/CSP/2019/12/【CSP-201903】损坏的RAID-5/">【CSP-201903】损坏的RAID-5</a>
+                <a class="has-link-black-ter" href="/CSP/2019/12/【CSP-201903】壊れたRAID-5/">【CSP-201903】损坏的RAID-5</a>
             
         </h1>
         <div class="content">
@@ -810,64 +858,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-04T03:02:11.000Z">2019-11-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/练手/">练手</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 minutes read (About 614 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/练手/2019/11/【Kotlin】支持变量的表达式计算器/">【Kotlin】支持变量的表达式计算器</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="com.ssttkkl.calc">com.ssttkkl.calc</h1>
-<h2 id="com.ssttkkl.calc.expression">com.ssttkkl.calc.expression</h2>
-<h3 id="expression.kt">Expression.kt</h3>
-<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.calc.expression</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Expression</span> </span>&#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">calc</span><span class="hljs-params">()</span></span>: <span class="hljs-built_in">Double</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Number</span></span>(<span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> value: <span class="hljs-built_in">Double</span>) : Expression &#123;</span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">calc</span><span class="hljs-params">()</span></span>: <span class="hljs-built_in">Double</span> = value</span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>: String &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> value.toString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Variable</span></span>(</span><br><span class="line">    <span class="hljs-keyword">val</span> name: String,</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> value: <span class="hljs-built_in">Double</span></span><br><span class="line">) : Expression &#123;</span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">calc</span><span class="hljs-params">()</span></span>: <span class="hljs-built_in">Double</span> = value</span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>: String &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">assign</span><span class="hljs-params">(newValue: <span class="hljs-type">Double</span>)</span></span> &#123;</span><br><span class="line">        value = newValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="operator.kt">Operator.kt</h3>
-<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.calc.expression</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">enum</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Operator</span> </span>&#123;</span><br><span class="line">    Plus, Minus, Times, Div;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">invoke</span><span class="hljs-params">(left: <span class="hljs-type">Expression</span>, right: <span class="hljs-type">Expression</span>)</span></span>: <span class="hljs-built_in">Double</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">when</span> (<span class="hljs-keyword">this</span>) &#123;</span><br><span class="line">            Plus -&gt; left.calc() + right.calc()</span><br><span class="line">            Minus -&gt; left.calc() - right.calc()</span><br><span class="line">            Times -&gt; left.calc() * right.calc()</span><br><span class="line">            Div -&gt; left.calc() / right.calc()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">companion</span> <span class="hljs-keyword">object</span> &#123;</span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">fromChar</span><span class="hljs-params">(c: <span class="hljs-type">Char</span>)</span></span>: Operator &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-keyword">when</span> (c) &#123;</span><br><span class="line">                <span class="hljs-string">'+'</span> -&gt; Plus</span><br><span class="line">                <span class="hljs-string">'-'</span> -&gt; Minus</span><br><span class="line">                <span class="hljs-string">'*'</span> -&gt; Times</span><br><span class="line">                <span class="hljs-string">'\\'</span> -&gt; Div</span><br><span class="line">                <span class="hljs-keyword">else</span> -&gt; error(<span class="hljs-string">"<span class="hljs-variable">$c</span> isn't a operator"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="expressiontree.kt">ExpressionTree.kt</h3>
-<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.calc.expression</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ExpressionTree</span></span>(</span><br><span class="line">    <span class="hljs-keyword">val</span> leftChild: Expression,</span><br><span class="line">    <span class="hljs-keyword">val</span> rightChild: Expression,</span><br><span class="line">    <span class="hljs-keyword">val</span> <span class="hljs-keyword">operator</span>: Operator</span><br><span class="line">) : Expression &#123;</span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">calc</span><span class="hljs-params">()</span></span>: <span class="hljs-built_in">Double</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">operator</span>.invoke(leftChild, rightChild)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>: String &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> sb = StringBuilder()</span><br><span class="line">        sb.append(<span class="hljs-string">'('</span>)</span><br><span class="line">        sb.append(leftChild.toString())</span><br><span class="line">        sb.append(<span class="hljs-string">')'</span>)</span><br><span class="line">        sb.append(</span><br><span class="line">            <span class="hljs-keyword">when</span> (<span class="hljs-keyword">operator</span>) &#123;</span><br><span class="line">                Operator.Plus -&gt; <span class="hljs-string">'+'</span></span><br><span class="line">                Operator.Minus -&gt; <span class="hljs-string">'-'</span></span><br><span class="line">                Operator.Times -&gt; <span class="hljs-string">'*'</span></span><br><span class="line">                Operator.Div -&gt; <span class="hljs-string">'/'</span></span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">        sb.append(<span class="hljs-string">'('</span>)</span><br><span class="line">        sb.append(rightChild.toString())</span><br><span class="line">        sb.append(<span class="hljs-string">')'</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> sb.toString()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="expressionparser.kt">ExpressionParser.kt</h3>
-<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.calc.expression</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> java.util.*</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">object</span> ExpressionParser &#123;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">parse</span><span class="hljs-params">(str: <span class="hljs-type">String</span>, getValue: (<span class="hljs-type">String</span>) -&gt; <span class="hljs-type">Expression</span>)</span></span>: Expression &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> numSta = Stack&lt;Expression&gt;()</span><br><span class="line">        <span class="hljs-keyword">val</span> optSta = Stack&lt;<span class="hljs-built_in">Char</span>&gt;()</span><br><span class="line">        <span class="hljs-keyword">val</span> sb = StringBuilder()</span><br><span class="line"></span><br><span class="line">        str.forEach &#123; c -&gt;</span><br><span class="line">            <span class="hljs-keyword">when</span> (c) &#123;</span><br><span class="line">                <span class="hljs-string">'+'</span>, <span class="hljs-string">'-'</span>, <span class="hljs-string">'*'</span>, <span class="hljs-string">'\\'</span> -&gt; &#123;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (sb.isNotEmpty())</span><br><span class="line">                        numSta.push(getValue(sb.toString()))</span><br><span class="line">                    sb.clear()</span><br><span class="line"></span><br><span class="line">                    <span class="hljs-keyword">while</span> (optSta.isNotEmpty() &amp;&amp; !(c prior optSta.peek())) &#123;</span><br><span class="line">                        <span class="hljs-keyword">val</span> opt = optSta.pop()</span><br><span class="line">                        <span class="hljs-keyword">val</span> a = numSta.pop()</span><br><span class="line">                        <span class="hljs-keyword">val</span> b = numSta.pop()</span><br><span class="line">                        numSta.push(ExpressionTree(b, a, Operator.fromChar(opt)))</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    optSta.push(c)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-string">'('</span> -&gt; &#123;</span><br><span class="line">                    optSta.push(<span class="hljs-string">'('</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-string">')'</span> -&gt; &#123;</span><br><span class="line">                    <span class="hljs-keyword">if</span> (sb.isNotEmpty())</span><br><span class="line">                        numSta.push(getValue(sb.toString()))</span><br><span class="line">                    sb.clear()</span><br><span class="line"></span><br><span class="line">                    <span class="hljs-keyword">while</span> (optSta.peek() != <span class="hljs-string">'('</span>) &#123;</span><br><span class="line">                        <span class="hljs-keyword">val</span> opt = optSta.pop()</span><br><span class="line">                        <span class="hljs-keyword">val</span> a = numSta.pop()</span><br><span class="line">                        <span class="hljs-keyword">val</span> b = numSta.pop()</span><br><span class="line">                        numSta.push(ExpressionTree(b, a, Operator.fromChar(opt)))</span><br><span class="line">                    &#125;</span><br><span class="line">                    optSta.pop()</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">else</span> -&gt; sb.append(c)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (sb.isNotEmpty())</span><br><span class="line">            numSta.push(getValue(sb.toString()))</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">while</span> (optSta.isNotEmpty()) &#123;</span><br><span class="line">            <span class="hljs-keyword">val</span> opt = optSta.pop()</span><br><span class="line">            <span class="hljs-keyword">val</span> a = numSta.pop()</span><br><span class="line">            <span class="hljs-keyword">val</span> b = numSta.pop()</span><br><span class="line">            numSta.push(ExpressionTree(b, a, Operator.fromChar(opt)))</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (numSta.size == <span class="hljs-number">1</span>)</span><br><span class="line">            <span class="hljs-keyword">return</span> numSta.peek()</span><br><span class="line">        <span class="hljs-keyword">else</span> error(<span class="hljs-string">""</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> priority = mapOf(<span class="hljs-string">'+'</span> to <span class="hljs-number">1</span>, <span class="hljs-string">'-'</span> to <span class="hljs-number">1</span>, <span class="hljs-string">'*'</span> to <span class="hljs-number">2</span>, <span class="hljs-string">'\\'</span> to <span class="hljs-number">2</span>, <span class="hljs-string">'('</span> to <span class="hljs-number">0</span>, <span class="hljs-string">')'</span> to <span class="hljs-number">0</span>)</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">infix</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-built_in">Char</span>.<span class="hljs-title">prior</span><span class="hljs-params">(c: <span class="hljs-type">Char</span>)</span></span>: <span class="hljs-built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> priority.getValue(<span class="hljs-keyword">this</span>) &gt; priority.getValue(c)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="calc.kt">Calc.kt</h2>
-<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.calc</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> com.ssttkkl.calc.expression.Expression</span><br><span class="line"><span class="hljs-keyword">import</span> com.ssttkkl.calc.expression.ExpressionParser</span><br><span class="line"><span class="hljs-keyword">import</span> com.ssttkkl.calc.expression.Number</span><br><span class="line"><span class="hljs-keyword">import</span> com.ssttkkl.calc.expression.Variable</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Calc</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> variable = HashMap&lt;String, Variable&gt;()</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getValue</span><span class="hljs-params">(s: <span class="hljs-type">String</span>)</span></span>: Expression = <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">        Number(s.toDouble())</span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span> (_: Throwable) &#123;</span><br><span class="line">        variable[s] ?: error(<span class="hljs-string">"<span class="hljs-variable">$s</span> not found"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">assign</span><span class="hljs-params">(name: <span class="hljs-type">String</span>, value: <span class="hljs-type">String</span>)</span></span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (name.isEmpty())</span><br><span class="line">            error(<span class="hljs-string">"nameless???"</span>)</span><br><span class="line">        <span class="hljs-keyword">if</span> (name.first().isDigit())</span><br><span class="line">            error(<span class="hljs-string">"the first character of variable name cannot be a digit."</span>)</span><br><span class="line">        <span class="hljs-keyword">if</span> (!name.all &#123; it.isLetterOrDigit() || it == <span class="hljs-string">'_'</span> &#125;)</span><br><span class="line">            error(<span class="hljs-string">"Only letters, digits and underline are acceptable as variable name."</span>)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (variable.containsKey(name))</span><br><span class="line">            variable[name]?.assign(calc(value))</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            variable[name] = Variable(name, calc(value))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">calc</span><span class="hljs-params">(str: <span class="hljs-type">String</span>)</span></span>: <span class="hljs-built_in">Double</span> = <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">        ExpressionParser.parse(str) &#123; getValue(it) &#125;.calc()</span><br><span class="line">    &#125; <span class="hljs-keyword">catch</span> (_: Throwable) &#123;</span><br><span class="line">        error(<span class="hljs-string">"illegal expression"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">compare</span><span class="hljs-params">(s1: <span class="hljs-type">String</span>, s2: <span class="hljs-type">String</span>)</span></span>: <span class="hljs-built_in">Int</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> calc(s1).compareTo(calc(s2))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="main.kt">main.kt</h2>
-<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.calc</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> kotlin.system.exitProcess</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;</span><br><span class="line">    <span class="hljs-keyword">val</span> calc = Calc()</span><br><span class="line">    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">        print(<span class="hljs-string">"&gt;&gt;&gt; "</span>)</span><br><span class="line">        <span class="hljs-keyword">val</span> opt = readLine()?.filterNot &#123; it.isWhitespace() &#125; ?: <span class="hljs-string">""</span></span><br><span class="line">        <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">when</span> &#123;</span><br><span class="line">                opt == <span class="hljs-string">"exit"</span> -&gt; exitProcess(<span class="hljs-number">0</span>)</span><br><span class="line">                opt.contains(<span class="hljs-string">"=="</span>) -&gt; &#123;</span><br><span class="line">                    <span class="hljs-keyword">val</span> (s1, s2) = opt.split(<span class="hljs-string">"=="</span>)</span><br><span class="line">                    println(calc.compare(s1, s2) == <span class="hljs-number">0</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                opt.contains(<span class="hljs-string">"&lt;"</span>) -&gt; &#123;</span><br><span class="line">                    <span class="hljs-keyword">val</span> (s1, s2) = opt.split(<span class="hljs-string">"&lt;"</span>)</span><br><span class="line">                    println(calc.compare(s1, s2) &lt; <span class="hljs-number">0</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                opt.contains(<span class="hljs-string">"&gt;"</span>) -&gt; &#123;</span><br><span class="line">                    <span class="hljs-keyword">val</span> (s1, s2) = opt.split(<span class="hljs-string">"&gt;"</span>)</span><br><span class="line">                    println(calc.compare(s1, s2) &gt; <span class="hljs-number">0</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                opt.contains(<span class="hljs-string">'='</span>) -&gt; &#123;</span><br><span class="line">                    <span class="hljs-keyword">val</span> (name, value) = opt.split(<span class="hljs-string">'='</span>)</span><br><span class="line">                    calc.assign(name, value)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">else</span> -&gt; &#123;</span><br><span class="line">                    println(calc.calc(opt))</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">catch</span> (exc: Throwable) &#123;</span><br><span class="line">            println(<span class="hljs-string">"error: <span class="hljs-subst">$&#123;exc.message&#125;</span>"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -931,7 +921,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        13
+                        14
                     </p>
                 </div>
             </div>
@@ -987,7 +977,7 @@
                 <span class="level-item">CSP</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/CSP-J-S/">
@@ -1049,7 +1039,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/CSP/" style="font-size: 15px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 20px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 15px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 10px;">模拟</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a>
+        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 20px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 15px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 10px;">模拟</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a>
     </div>
 </div>
 
@@ -1079,7 +1069,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/CSP/">
                         <span class="tag">CSP</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1200,6 +1190,25 @@
         
         <article class="media">
             
+            <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201909】推荐系统">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T09:53:53.000Z">2019-12-02</time></div>
+                    <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201909】推荐系统</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/CSP/2019/12/【CSP-201909】字符画/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201909】字符画">
@@ -1219,7 +1228,7 @@
         
         <article class="media">
             
-            <a href="/CSP/2019/12/【CSP-201903】损坏的RAID-5/" class="media-left">
+            <a href="/CSP/2019/12/【CSP-201903】壊れたRAID-5/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201903】损坏的RAID-5">
                 </p>
@@ -1228,7 +1237,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T06:52:03.000Z">2019-12-02</time></div>
-                    <a href="/CSP/2019/12/【CSP-201903】损坏的RAID-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】损坏的RAID-5</a>
+                    <a href="/CSP/2019/12/【CSP-201903】壊れたRAID-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】损坏的RAID-5</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
                     </p>
@@ -1274,25 +1283,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/CSP-J-S/2019/11/【CSP-S-2019-2】括号树/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-S 2019-2】括号树">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T02:52:27.000Z">2019-11-20</time></div>
-                    <a href="/CSP-J-S/2019/11/【CSP-S-2019-2】括号树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-S 2019-2】括号树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/CSP-J-S/">CSP-J/S</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1311,7 +1301,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1365,6 +1355,25 @@
         
         <article class="media">
             
+            <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201909】推荐系统">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T09:53:53.000Z">2019-12-02</time></div>
+                    <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201909】推荐系统</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/CSP/2019/12/【CSP-201909】字符画/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201909】字符画">
@@ -1384,7 +1393,7 @@
         
         <article class="media">
             
-            <a href="/CSP/2019/12/【CSP-201903】损坏的RAID-5/" class="media-left">
+            <a href="/CSP/2019/12/【CSP-201903】壊れたRAID-5/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201903】损坏的RAID-5">
                 </p>
@@ -1393,7 +1402,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T06:52:03.000Z">2019-12-02</time></div>
-                    <a href="/CSP/2019/12/【CSP-201903】损坏的RAID-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】损坏的RAID-5</a>
+                    <a href="/CSP/2019/12/【CSP-201903】壊れたRAID-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】损坏的RAID-5</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
                     </p>
@@ -1439,25 +1448,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/CSP-J-S/2019/11/【CSP-S-2019-2】括号树/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-S 2019-2】括号树">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-20T02:52:27.000Z">2019-11-20</time></div>
-                    <a href="/CSP-J-S/2019/11/【CSP-S-2019-2】括号树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-S 2019-2】括号树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/CSP-J-S/">CSP-J/S</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1476,7 +1466,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
