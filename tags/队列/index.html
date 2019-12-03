@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Archives: 2019/10 - ssttkkl&#39;s Blog</title>
+<title>Tag: 队列 - ssttkkl&#39;s Blog</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="ssttkkl&#39;s Blog">
-<meta property="og:url" content="https://ssttkkl.github.io/archives/2019/10/index.html">
+<meta property="og:url" content="https://ssttkkl.github.io/tags/队列/index.html">
 <meta property="og:site_name" content="ssttkkl&#39;s Blog">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ssttkkl.github.io/images/og_image.png">
@@ -140,75 +140,64 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        October 2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-17T04:21:57.000Z">2019-10-17</time>
-                        <a href="/模板/2019/10/数据结构模板-in-Kotlin/" class="title has-link-black-ter is-size-6 has-text-weight-normal">数据结构模板 in Kotlin</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/模板/">模板</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-17T02:48:01.000Z">2019-10-17</time>
-                        <a href="/Codeforces/2019/10/Codeforces-Global-Round-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Codeforces Global Round 5</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-10-16T06:13:55.000Z">2019-10-16</time>
-                        <a href="/Codeforces/2019/10/Codeforces-Round-592-Div-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Codeforces Round #592 (Div. 2)</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-        </div>
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">队列</a></li>
+        </ul>
+        </nav>
     </div>
 </div>
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-03T12:19:47.000Z">2019-12-03</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 438 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/CSP/2019/12/【CSP-201903】消息传递接口/">【CSP-201903】消息传递接口</a>
+            
+        </h1>
+        <div class="content">
+            <p>明明是一道暴力就能过的水题的，却因为优化思路错了导致一直RE。</p>
+<p>只要模拟一下协程的工作原理就好，每次只处理一条线程的一条指令，然后换到下一条线程。</p>
+<p>具体实现：开n条队列，读入时把相应的指令全部压到队列中。然后不断地扫这n条队列处理队列头部的指令。如果该指令的目标的队列头部的指令恰好能够和该条指令匹配，则将这两个指令出队。一直这样做下去直到经过一轮都没有任何指令得到处理时跳出。</p>
+<p>由于每次至少处理两条指令，所以时间复杂度是<span class="math inline">\(O(T \cdot n)\)</span>的。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">command</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">enum</span> command_type</span><br><span class="line">    &#123;</span><br><span class="line">        send = <span class="hljs-number">0</span>,</span><br><span class="line">        receive = <span class="hljs-number">1</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    command_type type;</span><br><span class="line">    <span class="hljs-keyword">int</span> sender, target;</span><br><span class="line"></span><br><span class="line">    command(command_type _type, <span class="hljs-keyword">int</span> _sender, <span class="hljs-keyword">int</span> _target)</span><br><span class="line">    &#123;</span><br><span class="line">        sender = _sender;</span><br><span class="line">        type = _type;</span><br><span class="line">        target = _target;</span><br><span class="line">    &#125;</span><br><span class="line">    command(<span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;str, <span class="hljs-keyword">int</span> _sender)</span><br><span class="line">    &#123;</span><br><span class="line">        sender = _sender;</span><br><span class="line">        <span class="hljs-keyword">if</span> (str[<span class="hljs-number">0</span>] == <span class="hljs-string">'R'</span>)</span><br><span class="line">            type = command_type::receive;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (str[<span class="hljs-number">0</span>] == <span class="hljs-string">'S'</span>)</span><br><span class="line">            type = command_type::send;</span><br><span class="line">        target = stoi(str.substr(<span class="hljs-number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span>==(<span class="hljs-keyword">const</span> command &amp;o)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> type == o.type &amp;&amp; sender == o.sender &amp;&amp; target == o.target;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">queue</span>&lt;command&gt;&gt; coms;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">int</span> _n)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    n = _n;</span><br><span class="line">    coms.clear();</span><br><span class="line">    coms.resize(n);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push_command</span><span class="hljs-params">(<span class="hljs-keyword">int</span> sender, <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;com)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    coms[sender].emplace(com, sender);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">work</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">bool</span> all_empty = <span class="hljs-literal">true</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">            all_empty &amp;= coms[i].empty();</span><br><span class="line">        <span class="hljs-keyword">if</span> (all_empty)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">int</span> solved = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!coms[i].empty())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="hljs-keyword">auto</span> com = coms[i].front();</span><br><span class="line">                <span class="hljs-keyword">int</span> j = coms[i].front().target;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!coms[j].empty())</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="hljs-keyword">auto</span> next_com = coms[j].front();</span><br><span class="line">                    <span class="hljs-keyword">if</span> (next_com.target == i &amp;&amp; (com.type ^ next_com.type))</span><br><span class="line">                    &#123;</span><br><span class="line">                        coms[i].pop();</span><br><span class="line">                        coms[j].pop();</span><br><span class="line">                        solved++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (!solved)</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> t, n;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; t &gt;&gt; n;</span><br><span class="line">    <span class="hljs-built_in">cin</span>.ignore();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">while</span> (t--)</span><br><span class="line">    &#123;</span><br><span class="line">        init(n);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">string</span> s;</span><br><span class="line">            getline(<span class="hljs-built_in">cin</span>, s);</span><br><span class="line"></span><br><span class="line">            <span class="hljs-built_in">stringstream</span> ss;</span><br><span class="line">            ss &lt;&lt; s;</span><br><span class="line">            <span class="hljs-keyword">while</span> (!ss.eof())</span><br><span class="line">            &#123;</span><br><span class="line">                ss &gt;&gt; s;</span><br><span class="line">                push_command(i, s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; (work() ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
 
 
 </div>

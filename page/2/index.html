@@ -147,6 +147,75 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-08T04:12:29.000Z">2019-11-08</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Android/">Android</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 minutes read (About 953 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/Android/2019/11/【安卓开发】CameraX实现简单的扫二维码应用/">【Android开发】CameraX实现简单的扫二维码应用</a>
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>参阅资料：</p>
+<p>https://www.jianshu.com/p/3ce81b55468d</p>
+<p>https://developer.android.google.cn/training/camerax</p>
+</blockquote>
+<p>CameraX主要是将Camera2 API进行包装，以实现和Jetpack组件的联动，并且比Camera2更加易用。可以实现预览、实时分析与拍摄功能。只需将相应的组件与Lifecycle绑定到CameraX，就可以让CameraX自动管理相机的生命周期。</p>
+<h1 id="依赖项">依赖项</h1>
+<figure class="highlight groovy hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">implementation fileTree(<span class="hljs-string">dir:</span> <span class="hljs-string">'libs'</span>, <span class="hljs-string">include:</span> [<span class="hljs-string">'*.jar'</span>])</span><br><span class="line">implementation <span class="hljs-string">"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// CameraX</span></span><br><span class="line">implementation <span class="hljs-string">"androidx.camera:camera-core:1.0.0-alpha05"</span></span><br><span class="line">implementation <span class="hljs-string">"androidx.camera:camera-camera2:1.0.0-alpha05"</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 二维码识别</span></span><br><span class="line">implementation <span class="hljs-string">'com.google.zxing:core:3.3.2'</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Others</span></span><br><span class="line">implementation <span class="hljs-string">'androidx.constraintlayout:constraintlayout:1.1.3'</span></span><br><span class="line">implementation <span class="hljs-string">'androidx.legacy:legacy-support-v4:1.0.0'</span></span><br><span class="line">implementation <span class="hljs-string">'androidx.appcompat:appcompat:1.1.0'</span></span><br><span class="line">implementation <span class="hljs-string">'androidx.core:core-ktx:1.1.0'</span></span><br><span class="line">implementation <span class="hljs-string">'androidx.lifecycle:lifecycle-extensions:2.1.0'</span></span><br><span class="line">implementation <span class="hljs-string">'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'</span></span><br><span class="line">implementation <span class="hljs-string">"com.google.android.material:material:1.2.0-alpha01"</span></span><br></pre></td></tr></table></figure>
+<h1 id="核心代码">核心代码</h1>
+<h2 id="mainactivity.kt">MainActivity.kt</h2>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.qrscanner</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> android.Manifest</span><br><span class="line"><span class="hljs-keyword">import</span> android.content.pm.PackageManager</span><br><span class="line"><span class="hljs-keyword">import</span> android.os.Bundle</span><br><span class="line"><span class="hljs-keyword">import</span> android.widget.Toast</span><br><span class="line"><span class="hljs-keyword">import</span> androidx.appcompat.app.AppCompatActivity</span><br><span class="line"><span class="hljs-keyword">import</span> androidx.core.app.ActivityCompat</span><br><span class="line"><span class="hljs-keyword">import</span> androidx.core.content.ContextCompat</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> : <span class="hljs-type">AppCompatActivity</span></span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line">        <span class="hljs-comment">// 先申请权限，申请成功后再显示CameraFragment</span></span><br><span class="line">        checkPermissions(<span class="hljs-literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 检查是否已经获得所有权限，若未获得则可以选择向用户申请</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">checkPermissions</span><span class="hljs-params">(requestOnDenied: <span class="hljs-type">Boolean</span>)</span></span> &#123;</span><br><span class="line">        <span class="hljs-keyword">when</span> &#123;</span><br><span class="line">            isAllPermissionsGranted() -&gt; onPermissionGranted()</span><br><span class="line">            requestOnDenied -&gt; ActivityCompat.requestPermissions(</span><br><span class="line">                <span class="hljs-keyword">this</span>,</span><br><span class="line">                REQUIRED_PERMISSIONS,</span><br><span class="line">                REQUEST_CODE_PERMISSIONS</span><br><span class="line">            )</span><br><span class="line">            <span class="hljs-keyword">else</span> -&gt; onPermissionDenied()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 逐一检查是否已经获得所有权限</span></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">isAllPermissionsGranted</span><span class="hljs-params">()</span></span> = REQUIRED_PERMISSIONS.all &#123;</span><br><span class="line">        ContextCompat.checkSelfPermission(</span><br><span class="line">            <span class="hljs-keyword">this</span><span class="hljs-symbol">@MainActivity</span>,</span><br><span class="line">            it</span><br><span class="line">        ) == PackageManager.PERMISSION_GRANTED</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onRequestPermissionsResult</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">        requestCode: <span class="hljs-type">Int</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">        permissions: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">        grantResults: <span class="hljs-type">IntArray</span></span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    )</span></span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (requestCode == REQUEST_CODE_PERMISSIONS)</span><br><span class="line">            checkPermissions(<span class="hljs-literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onPermissionGranted</span><span class="hljs-params">()</span></span> &#123;</span><br><span class="line">        <span class="hljs-comment">// 显示CameraFragment</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (supportFragmentManager.findFragmentByTag(CameraFragment.TAG) == <span class="hljs-literal">null</span>) &#123;</span><br><span class="line">            supportFragmentManager.beginTransaction()</span><br><span class="line">                .replace(R.id.frame_layout, CameraFragment.newInstance(), CameraFragment.TAG)</span><br><span class="line">                .commit()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onPermissionDenied</span><span class="hljs-params">()</span></span> &#123;</span><br><span class="line">        <span class="hljs-comment">// 向用户提示后退出</span></span><br><span class="line">        Toast.makeText(<span class="hljs-keyword">this</span>, R.string.permissions_denied_message, Toast.LENGTH_SHORT)</span><br><span class="line">            .show()</span><br><span class="line">        finish()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">companion</span> <span class="hljs-keyword">object</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">private</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">val</span> REQUEST_CODE_PERMISSIONS = <span class="hljs-number">10</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 需要申请的所有权限</span></span><br><span class="line">        <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="cameraviewmodel.kt">CameraViewModel.kt</h2>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.qrscanner</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> androidx.lifecycle.MutableLiveData</span><br><span class="line"><span class="hljs-keyword">import</span> androidx.lifecycle.ViewModel</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CameraViewModel</span> : <span class="hljs-type">ViewModel</span></span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">val</span> result = MutableLiveData&lt;String&gt;() <span class="hljs-comment">// 保存当前识别结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="camerafragment.kt">CameraFragment.kt</h2>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.qrscanner</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> android.content.ClipData</span><br><span class="line"><span class="hljs-keyword">import</span> android.content.ClipboardManager</span><br><span class="line"><span class="hljs-keyword">import</span> android.content.Context.CLIPBOARD_SERVICE</span><br><span class="line"><span class="hljs-keyword">import</span> android.os.Bundle</span><br><span class="line"><span class="hljs-keyword">import</span> android.os.Handler</span><br><span class="line"><span class="hljs-keyword">import</span> android.os.HandlerThread</span><br><span class="line"><span class="hljs-keyword">import</span> android.util.Rational</span><br><span class="line"><span class="hljs-keyword">import</span> android.util.Size</span><br><span class="line"><span class="hljs-keyword">import</span> android.view.LayoutInflater</span><br><span class="line"><span class="hljs-keyword">import</span> android.view.View</span><br><span class="line"><span class="hljs-keyword">import</span> android.view.ViewGroup</span><br><span class="line"><span class="hljs-keyword">import</span> androidx.camera.core.*</span><br><span class="line"><span class="hljs-keyword">import</span> androidx.fragment.app.Fragment</span><br><span class="line"><span class="hljs-keyword">import</span> androidx.lifecycle.Observer</span><br><span class="line"><span class="hljs-keyword">import</span> androidx.lifecycle.ViewModelProviders</span><br><span class="line"><span class="hljs-keyword">import</span> com.ssttkkl.qrscanner.databinding.CameraFragmentBinding</span><br><span class="line"><span class="hljs-keyword">import</span> com.google.android.material.snackbar.BaseTransientBottomBar</span><br><span class="line"><span class="hljs-keyword">import</span> com.google.android.material.snackbar.Snackbar</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CameraFragment</span> : <span class="hljs-type">Fragment</span></span>() &#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">lateinit</span> <span class="hljs-keyword">var</span> binding: CameraFragmentBinding</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onCreateView</span><span class="hljs-params">(</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">        inflater: <span class="hljs-type">LayoutInflater</span>,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">        container: <span class="hljs-type">ViewGroup</span>?,</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">        savedInstanceState: <span class="hljs-type">Bundle</span>?</span></span></span><br><span class="line"><span class="hljs-function"><span class="hljs-params">    )</span></span>: View &#123;</span><br><span class="line">        binding = CameraFragmentBinding.inflate(inflater, container, <span class="hljs-literal">false</span>)</span><br><span class="line">        binding.viewModel = ViewModelProviders.of(<span class="hljs-keyword">this</span>).<span class="hljs-keyword">get</span>(CameraViewModel::<span class="hljs-class"><span class="hljs-keyword">class</span>.<span class="hljs-title">java</span>).<span class="hljs-title">apply</span> </span>&#123;</span><br><span class="line">            result.observe(<span class="hljs-keyword">this</span><span class="hljs-symbol">@CameraFragment</span>, Observer &#123; onResultChanged(it) &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> binding.root</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onViewCreated</span><span class="hljs-params">(view: <span class="hljs-type">View</span>, savedInstanceState: <span class="hljs-type">Bundle</span>?)</span></span> &#123;</span><br><span class="line">        binding.viewFinder.post &#123; startCamera() &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> analyzerThread = HandlerThread(<span class="hljs-string">"BarcodeAnalyzer"</span>).apply &#123; start() &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">startCamera</span><span class="hljs-params">()</span></span> &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> previewConfig = PreviewConfig.Builder()</span><br><span class="line">            .setTargetAspectRatio(Rational(binding.viewFinder.width, binding.viewFinder.height))</span><br><span class="line">            .setTargetResolution(Size(binding.viewFinder.width, binding.viewFinder.height))</span><br><span class="line">            .build()</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">val</span> preview = Preview(previewConfig).apply &#123;</span><br><span class="line">            setOnPreviewOutputUpdateListener &#123;</span><br><span class="line">                binding.viewFinder.surfaceTexture = it.surfaceTexture</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">val</span> analysisConfig = ImageAnalysisConfig.Builder()</span><br><span class="line">            .setImageReaderMode(ImageAnalysis.ImageReaderMode.ACQUIRE_LATEST_IMAGE)</span><br><span class="line">            .setTargetAspectRatio(Rational(binding.viewFinder.width, binding.viewFinder.height))</span><br><span class="line">            .setTargetResolution(Size(binding.viewFinder.width, binding.viewFinder.height))</span><br><span class="line">            .setCallbackHandler(Handler(analyzerThread.looper))</span><br><span class="line">            .build()</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">val</span> analysis = ImageAnalysis(analysisConfig).apply &#123;</span><br><span class="line">            analyzer = QRCodeAnalyzer &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (binding.viewModel?.result?.value != it.text)</span><br><span class="line">                    binding.viewModel?.result?.postValue(it.text)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        CameraX.bindToLifecycle(<span class="hljs-keyword">this</span>, preview, analysis)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onResultChanged</span><span class="hljs-params">(result: <span class="hljs-type">String</span>?)</span></span> &#123;</span><br><span class="line">        <span class="hljs-comment">// 若成功识别，则显示一个Snackbar</span></span><br><span class="line">        <span class="hljs-keyword">if</span> (!result.isNullOrEmpty()) &#123;</span><br><span class="line">            view?.post &#123;</span><br><span class="line">                Snackbar.make(view ?: <span class="hljs-keyword">return</span><span class="hljs-symbol">@post</span>, result, Snackbar.LENGTH_INDEFINITE)</span><br><span class="line">                    .setAction(R.string.copy) &#123; onClickCopy() &#125;</span><br><span class="line">                    .addCallback(<span class="hljs-keyword">object</span> : BaseTransientBottomBar.BaseCallback&lt;Snackbar&gt;() &#123;</span><br><span class="line">                        <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onDismissed</span><span class="hljs-params">(transientBottomBar: <span class="hljs-type">Snackbar</span>?, event: <span class="hljs-type">Int</span>)</span></span> &#123;</span><br><span class="line">                            <span class="hljs-comment">// 使下一次识别出结果后能够及时通知</span></span><br><span class="line">                            binding.viewModel?.result?.value = <span class="hljs-literal">null</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    .show()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">onClickCopy</span><span class="hljs-params">()</span></span> &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> text = binding.viewModel?.result?.value ?: <span class="hljs-keyword">return</span></span><br><span class="line">        <span class="hljs-keyword">val</span> clipboard = context?.getSystemService(CLIPBOARD_SERVICE) <span class="hljs-keyword">as</span>? ClipboardManager ?: <span class="hljs-keyword">return</span></span><br><span class="line">        clipboard.setPrimaryClip(ClipData.newPlainText(<span class="hljs-string">"QRCode"</span>, text))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">companion</span> <span class="hljs-keyword">object</span> &#123;</span><br><span class="line">        <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">newInstance</span><span class="hljs-params">()</span></span> = CameraFragment()</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">const</span> <span class="hljs-keyword">val</span> TAG = <span class="hljs-string">"CameraFragment"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="qrcodeanalyzer.kt">QRCodeAnalyzer.kt</h2>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 来自https://www.jianshu.com/p/3ce81b55468d</span></span><br><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.qrscanner</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> android.graphics.ImageFormat</span><br><span class="line"><span class="hljs-keyword">import</span> androidx.camera.core.ImageAnalysis</span><br><span class="line"><span class="hljs-keyword">import</span> androidx.camera.core.ImageProxy</span><br><span class="line"><span class="hljs-keyword">import</span> com.google.zxing.*</span><br><span class="line"><span class="hljs-keyword">import</span> com.google.zxing.common.HybridBinarizer</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">QRCodeAnalyzer</span></span>(<span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> onResult: (Result) -&gt; <span class="hljs-built_in">Unit</span>) : ImageAnalysis.Analyzer &#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> reader: MultiFormatReader = MultiFormatReader().apply &#123;</span><br><span class="line">        setHints(mapOf(DecodeHintType.POSSIBLE_FORMATS to listOf(BarcodeFormat.QR_CODE)))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">analyze</span><span class="hljs-params">(image: <span class="hljs-type">ImageProxy</span>, rotationDegrees: <span class="hljs-type">Int</span>)</span></span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (image.format != ImageFormat.YUV_420_888)</span><br><span class="line">            <span class="hljs-keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">val</span> <span class="hljs-keyword">data</span> = ByteArray(image.planes[<span class="hljs-number">0</span>].buffer.remaining())</span><br><span class="line">            image.planes[<span class="hljs-number">0</span>].buffer.<span class="hljs-keyword">get</span>(<span class="hljs-keyword">data</span>)</span><br><span class="line"></span><br><span class="line">            <span class="hljs-keyword">val</span> source = PlanarYUVLuminanceSource(<span class="hljs-keyword">data</span>, image.width,</span><br><span class="line">                image.height, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, image.width,</span><br><span class="line">                image.height, <span class="hljs-literal">false</span>)</span><br><span class="line">            <span class="hljs-keyword">val</span> bitmap = BinaryBitmap(HybridBinarizer(source))</span><br><span class="line">            onResult(reader.decode(bitmap))</span><br><span class="line">        &#125; <span class="hljs-keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="布局文件">布局文件</h1>
+<h2 id="activity_main.xml">activity_main.xml</h2>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">FrameLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/frame_layout"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="camera_fragment.xml">camera_fragment.xml</h2>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">layout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="hljs-tag">    <span class="hljs-attr">xmlns:tools</span>=<span class="hljs-string">"http://schemas.android.com/tools"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">data</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">variable</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">name</span>=<span class="hljs-string">"viewModel"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">type</span>=<span class="hljs-string">"com.ssttkkl.qrscanner.CameraViewModel"</span> /&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">data</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">androidx.coordinatorlayout.widget.CoordinatorLayout</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/root"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">        <span class="hljs-attr">tools:context</span>=<span class="hljs-string">".MainActivity"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">TextureView</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/view_finder"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span></span></span><br><span class="line"><span class="hljs-tag">            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">androidx.coordinatorlayout.widget.CoordinatorLayout</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="资源文件">资源文件</h1>
+<h2 id="string.xml">string.xml</h2>
+<figure class="highlight xml hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">resources</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">string</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"app_name"</span>&gt;</span>オヨーーオヨ<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">string</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"permissions_denied_message"</span>&gt;</span>Permissions not granted by the user. Exiting…<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">string</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"copy"</span>&gt;</span>Copy<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-11-04T03:02:11.000Z">2019-11-04</time>
                 
                 <div class="level-item">
@@ -438,7 +507,7 @@ y_i - i, &amp; x_i&gt;y_i
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        14
+                        15
                     </p>
                 </div>
             </div>
@@ -458,7 +527,7 @@ y_i - i, &amp; x_i&gt;y_i
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        18
                     </p>
                 </div>
             </div>
@@ -494,7 +563,7 @@ y_i - i, &amp; x_i&gt;y_i
                 <span class="level-item">CSP</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/CSP-J-S/">
@@ -556,7 +625,7 @@ y_i - i, &amp; x_i&gt;y_i
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 20px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 15px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 10px;">模拟</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a>
+        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 13.33px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -586,7 +655,7 @@ y_i - i, &amp; x_i&gt;y_i
                 <div class="control">
                     <a class="tags has-addons" href="/tags/CSP/">
                         <span class="tag">CSP</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -670,7 +739,7 @@ y_i - i, &amp; x_i&gt;y_i
                 <div class="control">
                     <a class="tags has-addons" href="/tags/模拟/">
                         <span class="tag">模拟</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -684,6 +753,13 @@ y_i - i, &amp; x_i&gt;y_i
                 <div class="control">
                     <a class="tags has-addons" href="/tags/递推/">
                         <span class="tag">递推</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/队列/">
+                        <span class="tag">队列</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -704,6 +780,25 @@ y_i - i, &amp; x_i&gt;y_i
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/CSP/2019/12/【CSP-201903】消息传递接口/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201903】消息传递接口">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T12:19:47.000Z">2019-12-03</time></div>
+                    <a href="/CSP/2019/12/【CSP-201903】消息传递接口/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】消息传递接口</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -781,25 +876,6 @@ y_i - i, &amp; x_i&gt;y_i
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/日本語/2019/11/【日中翻訳練習】ギフト-Argonavis/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】ギフト - Argonavis">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-22T06:43:59.000Z">2019-11-22</time></div>
-                    <a href="/日本語/2019/11/【日中翻訳練習】ギフト-Argonavis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】ギフト - Argonavis</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -818,7 +894,7 @@ y_i - i, &amp; x_i&gt;y_i
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -872,6 +948,25 @@ y_i - i, &amp; x_i&gt;y_i
         
         <article class="media">
             
+            <a href="/CSP/2019/12/【CSP-201903】消息传递接口/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201903】消息传递接口">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T12:19:47.000Z">2019-12-03</time></div>
+                    <a href="/CSP/2019/12/【CSP-201903】消息传递接口/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】消息传递接口</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201909】推荐系统">
@@ -946,25 +1041,6 @@ y_i - i, &amp; x_i&gt;y_i
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/日本語/2019/11/【日中翻訳練習】ギフト-Argonavis/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】ギフト - Argonavis">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-22T06:43:59.000Z">2019-11-22</time></div>
-                    <a href="/日本語/2019/11/【日中翻訳練習】ギフト-Argonavis/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】ギフト - Argonavis</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -983,7 +1059,7 @@ y_i - i, &amp; x_i&gt;y_i
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
