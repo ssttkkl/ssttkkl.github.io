@@ -147,6 +147,66 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-12-11T12:53:14.000Z">2019-12-11</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 minutes read (About 1531 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/数据结构/2019/12/关于线段树的一些笔记/">关于线段树的一些笔记</a>
+            
+        </h1>
+        <div class="content">
+            <p>下述的各种名词都是我自己编的，因为实在没找到资料。</p>
+<h1 id="持久化标记型可叠加标记">持久化标记型（可叠加标记）</h1>
+<p>持久化标记型的线段树，标记永远不会下推，而是在查询时把标记应用到计算结果上。这就要求满足在任意节点查询、修改任意区间<span class="math inline">\([l,r]\)</span>时，均可以实时把标记应用到所查询、维护的内容上。</p>
+<p>典例：</p>
+<p><strong>区间加、区间求和型线段树。</strong>每个节点记录着内容“区间和”，标记“增量”。“区间和”即节点区间的所有元素的总和。“增量”即之前对该节点区间进行过区间加操作，这个节点的“区间和”是最新的，但是这个节点的子节点不是。</p>
+<p>当对这个节点实施一次区间求和操作（求区间<span class="math inline">\([l,r]\)</span>的每个元素的总和）时，如果查询区间和节点区间匹配，则直接返回节点记录的“区间和”。否则先在子节点上查询，然后将查询得到的值加上<span class="math inline">\(r-l+1\)</span>倍“增量”，就是我们要查询的最终结果。</p>
+<p>当对这个节点实施一次区间加操作（给区间<span class="math inline">\([l,r]\)</span>的每个元素加上<span class="math inline">\(c\)</span>）时，只要将“区间和”加上<span class="math inline">\(r-l+1\)</span>倍<span class="math inline">\(c\)</span>，就完成了对“区间和”的维护。接下来再判断操作区间与节点区间是否匹配，若匹配则把标记“增量”加上<span class="math inline">\(c\)</span>实现更新标记，若不匹配则继续对子节点进行区间加操作。</p>
+<p>换个角度思考一下：我们把操作区间分解成若干个小区间，使得存在相应的节点对应于这些小区间，然后分别对每个小区间进行操作。对于区间求和操作，每个节点上的“区间和”值相对于这棵子树来说是最新的，也就是不考虑它的所有祖先节点的情况下，这个区间的和确实等于这个“区间和”值。那么我们只要把这个“区间和”值再加上它的所有祖先节点上的“增量”标记值之和乘以区间长度，就是这个小区间的区间和。而对于区间加操作，我们分别更新这些节点的“增量”标记，并更新它和它的所有祖先记录的的“区间和”。注意，我们通过递归隐式地实现了区间的分解与操作，而不需要真正的考虑如何将区间分解然后分别操作。</p>
+<p>更一般地说：我们把操作区间分解成若干个小区间，使得存在相应的节点对应于这些小区间，然后分别对每个小区间进行操作。对于查询操作，我们对每个小区间求值，结果就等于它所对应节点维护的值应用了它和它的所有祖先的标记以后的最终结果。对于修改操作，我们对每个小区间分别修改，即在它所对应节点打上标记，并更新它和它的所有祖先所维护的内容。</p>
+<h1 id="下推标记型可叠加标记">下推标记型（可叠加标记）</h1>
+<p>下推标记型的线段树，适用于在任意节点操作任意区间<span class="math inline">\([l,r]\)</span>时，无法实时把标记更新到所维护的内容上的情况。这里的标记是可叠加的，也就是说当有先后两个修改操作同时涉及区间<span class="math inline">\([a,b]\)</span>时，两次操作都会影响对<span class="math inline">\([a,b]\)</span>查询的结果。</p>
+<p>典例：</p>
+<p><strong>区间乘，区间求和型线段树。</strong>每个节点记录着内容“区间和”，标记“倍率”。“区间和”即节点区间的所有元素的总和。“倍率”即之前对该节点区间进行过区间乘操作，这个节点的“区间和”是最新的，但是这个节点的子节点不是。</p>
+<p>如果我们仍按照上面的思路会发现，在区间乘操作中，无法通过操作的参数来实时更新节点的“区间和”。试想我需要在一个节点区间为<span class="math inline">\([a,b]\)</span>的节点上，进行对<span class="math inline">\([l,r]\)</span>区间乘以<span class="math inline">\(c\)</span>的这样一个区间乘操作。“区间和”的增量就是<span class="math inline">\(c-1\)</span>倍的<span class="math inline">\([a,b]\)</span>区间和，然而<span class="math inline">\([a,b]\)</span>区间和无法求出来，这就导致上述的无法实时把标记更新到所维护的内容上的情况。</p>
+<p>不能直接更新？我们可以间接通过子节点来更新啊。具体地来说，我们把标记自顶向下传递，直到这个标记可以直接更新到所维护的内容上（也就是操作区间恰好匹配节点区间时），然后再自底向上更新所维护的内容。</p>
+<p>仍然换个角度思考：我们把操作区间分解成若干个小区间，使得存在相应的节点对应于这些小区间，然后分别对每个小区间进行操作。操作过程中我们把根到该节点的路径上所有的标记自顶向下全部推到了该节点上，然后再自底向上维护路径上所有节点的内容。路径上的多个标记在下推时会被叠加成为一个标记。当下一次经过这个节点的时候，标记又会再被推到它的子节点。</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-12-11T11:52:11.000Z">2019-12-11</time>
                 
                 
@@ -729,111 +789,6 @@
 
 
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-15T06:11:43.000Z">2019-11-15</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 460 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/日本語/2019/11/【日中翻訳練習】Sky-Journey-東山奈央/">【日中翻訳練習】Sky Journey - 東山奈央</a>
-            
-        </h1>
-        <div class="content">
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&amp;id=1363291242&amp;auto=0&amp;height=66">
-</iframe>
-<p>そこに星はなく遠く彼方見つめ</p>
-<p>眺望着那没有星辰的遥远彼方</p>
-<p>空は新しい旅の始まりを謳う</p>
-<p>天空在讴歌着崭新旅途的开端</p>
-<p>見知らぬ広い空に孤独を抱いて</p>
-<p>在陌生的广阔天空之中拥抱着孤独</p>
-<p>巡り始めた運命の扉開いた</p>
-<p>开始轮回的命运之门悄然打开</p>
-<p><br></p>
-<p>今は遠い場所で声も届かない空で</p>
-<p>如今身处于这遥远之地　身处于这片声音也无法传递的天空</p>
-<p>それでも手と手伸ばしてる</p>
-<p>即使如此仍在伸出双手</p>
-<p>君と絆繋ぐ</p>
-<p>与你羁绊相连的</p>
-<p>蒼き空</p>
-<p>湛蓝天空中</p>
-<p>希望を探して</p>
-<p>寻求着希望</p>
-<p><br></p>
-<p>出会いと別れ巡る</p>
-<p>相遇与离别循环往复</p>
-<p>運命すれ違う</p>
-<p>与命运擦肩而过</p>
-<p>いつかは繋る</p>
-<p>总有一天能够彼此相连的</p>
-<p>遠い空</p>
-<p>遥远天空</p>
-<p>未来を信じてる</p>
-<p>一直</p>
-<p>ずっと</p>
-<p>相信着未来</p>
-<p><br></p>
-<p>断ち切れない記憶を</p>
-<p>将无法斩断的记忆</p>
-<p>過去の罪も</p>
-<p>与过去的罪名</p>
-<p>胸に抱いたままで</p>
-<p>就这样怀在内心</p>
-<p>歩きつづけてゆく</p>
-<p>继续着前行的步伐</p>
-<p>果てのない旅路の果てまで</p>
-<p>直到无尽旅途的尽头</p>
-<p><br></p>
-<p>恐れ抱いて</p>
-<p>胸怀着恐惧</p>
-<p>挑むことに背を向ける日が来ても</p>
-<p>即使因纷乱而分道扬镳的那天来临</p>
-<p>絆はそこにある</p>
-<p>我们的羁绊仍存在于此</p>
-<p>いつかは君と繋がる</p>
-<p>总有一天能够与你相连的</p>
-<p>蒼き空</p>
-<p>湛蓝天空</p>
-<p><br></p>
-<p>風を超え</p>
-<p>越过风儿</p>
-<p>翼を空を駆ける</p>
-<p>挥动羽翼在空中翱翔</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 
     
 <div class="card card-transparent">
@@ -897,7 +852,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        16
+                        17
                     </p>
                 </div>
             </div>
@@ -907,7 +862,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        9
                     </p>
                 </div>
             </div>
@@ -917,7 +872,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        19
                     </p>
                 </div>
             </div>
@@ -980,6 +935,14 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/数据结构/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/日本語/">
             <span class="level-start">
                 <span class="level-item">日本語</span>
@@ -1015,7 +978,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 13.33px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 13.33px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -1141,6 +1104,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/线段树/">
+                        <span class="tag">线段树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/递推/">
                         <span class="tag">递推</span>
                         <span class="tag is-grey">1</span>
@@ -1170,6 +1140,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于线段树的一些笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T12:53:14.000Z">2019-12-11</time></div>
+                    <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于线段树的一些笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1247,25 +1236,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/CSP/2019/12/【CSP-201903】壊れたRAID-5/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201903】损坏的RAID-5">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T06:52:03.000Z">2019-12-02</time></div>
-                    <a href="/CSP/2019/12/【CSP-201903】壊れたRAID-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】损坏的RAID-5</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1284,7 +1254,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -1338,6 +1308,25 @@
         
         <article class="media">
             
+            <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于线段树的一些笔记">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T12:53:14.000Z">2019-12-11</time></div>
+                    <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于线段树的一些笔记</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/uncategorized/2019/12/竞赛用数据结构和算法模板-in-C/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="竞赛用数据结构和算法模板 in C++">
@@ -1412,25 +1401,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/CSP/2019/12/【CSP-201903】壊れたRAID-5/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201903】损坏的RAID-5">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T06:52:03.000Z">2019-12-02</time></div>
-                    <a href="/CSP/2019/12/【CSP-201903】壊れたRAID-5/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】损坏的RAID-5</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1449,7 +1419,7 @@
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>

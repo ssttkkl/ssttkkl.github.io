@@ -7,22 +7,17 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Codeforces Round #592 (Div. 2) - ssttkkl&#39;s Blog</title>
+<title>Tag: 线段树 - ssttkkl&#39;s Blog</title>
 
 
-    <meta name="description" content="A - Pens and Pencils 没啥好说，直接做。 12345678910111213141516171819#include &amp;lt;iostream&amp;gt;using namespace std;int main()&amp;#123;    int t;    cin &amp;gt;&amp;gt; t;    while (t--)    &amp;#123;        int a, b, c, d,">
-<meta name="keywords" content="Codeforces,Contest">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Round #592 (Div. 2)">
-<meta property="og:url" content="https://ssttkkl.github.io/Codeforces/2019/10/Codeforces-Round-592-Div-2/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="ssttkkl&#39;s Blog">
+<meta property="og:url" content="https://ssttkkl.github.io/tags/线段树/index.html">
 <meta property="og:site_name" content="ssttkkl&#39;s Blog">
-<meta property="og:description" content="A - Pens and Pencils 没啥好说，直接做。 12345678910111213141516171819#include &amp;lt;iostream&amp;gt;using namespace std;int main()&amp;#123;    int t;    cin &amp;gt;&amp;gt; t;    while (t--)    &amp;#123;        int a, b, c, d,">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ssttkkl.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-10-16T06:41:50.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Codeforces Round #592 (Div. 2)">
-<meta name="twitter:description" content="A - Pens and Pencils 没啥好说，直接做。 12345678910111213141516171819#include &amp;lt;iostream&amp;gt;using namespace std;int main()&amp;#123;    int t;    cin &amp;gt;&amp;gt; t;    while (t--)    &amp;#123;        int a, b, c, d,">
+<meta name="twitter:title" content="ssttkkl&#39;s Blog">
 <meta name="twitter:image" content="https://ssttkkl.github.io/images/og_image.png">
 
 
@@ -95,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Codeforces Round #592 (Div. 2)" height="28">
+                <img src="/images/logo.svg" alt="ssttkkl&#39;s Blog" height="28">
             
             </a>
         </div>
@@ -132,10 +127,6 @@
                     
                 
                 
-                <a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
                 
                 <a class="navbar-item search" title="Search" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -150,69 +141,65 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">Tags</a></li>
+            <li class="is-active"><a href="#" aria-current="page">线段树</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-10-16T06:13:55.000Z">2019-10-16</time>
+                <time class="level-item has-text-grey" datetime="2019-12-11T12:53:14.000Z">2019-12-11</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a>
+                <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 650 words)
+                    10 minutes read (About 1531 words)
                 </span>
                 
-                
-                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
-                    <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span> visits
-                </span>
                 
             </div>
         </div>
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Codeforces Round #592 (Div. 2)
+                <a class="has-link-black-ter" href="/数据结构/2019/12/关于线段树的一些笔记/">关于线段树的一些笔记</a>
             
         </h1>
         <div class="content">
-            <h1 id="a---pens-and-pencils">A - <a href="https://codeforces.com/contest/1244/problem/A" target="_blank" rel="noopener">Pens and Pencils</a></h1>
-<p>没啥好说，直接做。</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> t;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="hljs-keyword">while</span> (t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> a, b, c, d, k;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d &gt;&gt; k;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = (a % c) ? a / c + <span class="hljs-number">1</span> : a / c;</span><br><span class="line">        <span class="hljs-keyword">int</span> y = (b % d) ? b / d + <span class="hljs-number">1</span> : b / d;</span><br><span class="line">        <span class="hljs-keyword">if</span> (x + y &gt; k)</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="hljs-string">' '</span> &lt;&lt; y &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="b---rooms-and-staircases">B - <a href="https://codeforces.com/contest/1244/problem/B" target="_blank" rel="noopener">Rooms and Staircases</a></h1>
-<p>可以发现上下楼梯唯一的作用就是回头，因为如果下楼梯仍继续向前走的话和不下楼梯没有区别。然后还可以发现整个过程只能够回头一次，否则就撞车了。</p>
-<p>如果没有楼梯，显然只能从一层的一端走到另一端。</p>
-<p>如果只有一条楼梯，那么从一层的一端走到楼梯时，可以选择继续走到尽头，也可以选择下楼梯并回头走到尽头。</p>
-<p>如果有两条以上的楼梯，要么从一层的一段走到另一端，要么从一层的一端走到最后一个楼梯并下楼然后回头走到尽头。实际上是上一种情况的推广。</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> n;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; s;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> t;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="hljs-keyword">while</span> (t--)</span><br><span class="line">    &#123;</span><br><span class="line">        s.clear();</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> c = getchar();</span><br><span class="line">            <span class="hljs-keyword">while</span> (c != <span class="hljs-string">'0'</span> &amp;&amp; c != <span class="hljs-string">'1'</span>)</span><br><span class="line">                c = getchar();</span><br><span class="line">            <span class="hljs-keyword">if</span> (c == <span class="hljs-string">'1'</span>)</span><br><span class="line">                s.push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (s.size() == <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; max(s[s.size() - <span class="hljs-number">1</span>] * <span class="hljs-number">2</span>, max((n - s[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>) * <span class="hljs-number">2</span>, n)) &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="d---paint-the-tree">D - <a href="https://codeforces.com/contest/1244/problem/D" target="_blank" rel="noopener">Paint the Tree</a></h1>
-<p>显然只有树是一条链时才存在染色方案。那么只要枚举一下头部两个节点的颜色，后面的都可以推出来。</p>
-<p>（讲个笑话，<code>long long best = 0x7fffffff;</code>）</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100005</span>;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; edges[MAXN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add_edge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    edges[u].push_back(v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">int</span> n, cnt[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> ans[<span class="hljs-number">2</span>][MAXN];</span><br><span class="line"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c[<span class="hljs-number">3</span>][MAXN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-keyword">int</span> node, <span class="hljs-keyword">int</span> pa)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> v : edges[node])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v != pa)</span><br><span class="line">        &#123;</span><br><span class="line">            cnt[node]++;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!check(v, node))</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (pa != <span class="hljs-number">-1</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> cnt[node] &lt;= <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        <span class="hljs-keyword">return</span> cnt[node] &lt;= <span class="hljs-number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> node, <span class="hljs-keyword">int</span> color, <span class="hljs-keyword">int</span> pa, <span class="hljs-keyword">int</span> pa_color, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;cost)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ans[<span class="hljs-number">0</span>][node] = color;</span><br><span class="line">    cost += c[color][node];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> v : edges[node])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v != pa)</span><br><span class="line">            dfs(v, <span class="hljs-number">3</span> - color - pa_color, node, color, cost);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; c[<span class="hljs-number">0</span>][i];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; c[<span class="hljs-number">1</span>][i];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; c[<span class="hljs-number">2</span>][i];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> u, v;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        add_edge(u, v);</span><br><span class="line">        add_edge(v, u);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (check(<span class="hljs-number">1</span>, <span class="hljs-number">-1</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> head = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (cnt[i] == <span class="hljs-number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                head = i;</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (head == <span class="hljs-number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> best = <span class="hljs-number">0x7fffffffffffffff</span>, a = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">2</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">2</span>; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (i == j)</span><br><span class="line">                    <span class="hljs-keyword">continue</span>;</span><br><span class="line">                a = <span class="hljs-number">0</span>;</span><br><span class="line">                dfs(head, i, <span class="hljs-number">-1</span>, j, a);</span><br><span class="line">                <span class="hljs-keyword">if</span> (a &lt; best)</span><br><span class="line">                &#123;</span><br><span class="line">                    best = a;</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">                        ans[<span class="hljs-number">1</span>][i] = ans[<span class="hljs-number">0</span>][i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; best &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; ans[<span class="hljs-number">1</span>][i] + <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>下述的各种名词都是我自己编的，因为实在没找到资料。</p>
+<h1 id="持久化标记型可叠加标记">持久化标记型（可叠加标记）</h1>
+<p>持久化标记型的线段树，标记永远不会下推，而是在查询时把标记应用到计算结果上。这就要求满足在任意节点查询、修改任意区间<span class="math inline">\([l,r]\)</span>时，均可以实时把标记应用到所查询、维护的内容上。</p>
+<p>典例：</p>
+<p><strong>区间加、区间求和型线段树。</strong>每个节点记录着内容“区间和”，标记“增量”。“区间和”即节点区间的所有元素的总和。“增量”即之前对该节点区间进行过区间加操作，这个节点的“区间和”是最新的，但是这个节点的子节点不是。</p>
+<p>当对这个节点实施一次区间求和操作（求区间<span class="math inline">\([l,r]\)</span>的每个元素的总和）时，如果查询区间和节点区间匹配，则直接返回节点记录的“区间和”。否则先在子节点上查询，然后将查询得到的值加上<span class="math inline">\(r-l+1\)</span>倍“增量”，就是我们要查询的最终结果。</p>
+<p>当对这个节点实施一次区间加操作（给区间<span class="math inline">\([l,r]\)</span>的每个元素加上<span class="math inline">\(c\)</span>）时，只要将“区间和”加上<span class="math inline">\(r-l+1\)</span>倍<span class="math inline">\(c\)</span>，就完成了对“区间和”的维护。接下来再判断操作区间与节点区间是否匹配，若匹配则把标记“增量”加上<span class="math inline">\(c\)</span>实现更新标记，若不匹配则继续对子节点进行区间加操作。</p>
+<p>换个角度思考一下：我们把操作区间分解成若干个小区间，使得存在相应的节点对应于这些小区间，然后分别对每个小区间进行操作。对于区间求和操作，每个节点上的“区间和”值相对于这棵子树来说是最新的，也就是不考虑它的所有祖先节点的情况下，这个区间的和确实等于这个“区间和”值。那么我们只要把这个“区间和”值再加上它的所有祖先节点上的“增量”标记值之和乘以区间长度，就是这个小区间的区间和。而对于区间加操作，我们分别更新这些节点的“增量”标记，并更新它和它的所有祖先记录的的“区间和”。注意，我们通过递归隐式地实现了区间的分解与操作，而不需要真正的考虑如何将区间分解然后分别操作。</p>
+<p>更一般地说：我们把操作区间分解成若干个小区间，使得存在相应的节点对应于这些小区间，然后分别对每个小区间进行操作。对于查询操作，我们对每个小区间求值，结果就等于它所对应节点维护的值应用了它和它的所有祖先的标记以后的最终结果。对于修改操作，我们对每个小区间分别修改，即在它所对应节点打上标记，并更新它和它的所有祖先所维护的内容。</p>
+<h1 id="下推标记型可叠加标记">下推标记型（可叠加标记）</h1>
+<p>下推标记型的线段树，适用于在任意节点操作任意区间<span class="math inline">\([l,r]\)</span>时，无法实时把标记更新到所维护的内容上的情况。这里的标记是可叠加的，也就是说当有先后两个修改操作同时涉及区间<span class="math inline">\([a,b]\)</span>时，两次操作都会影响对<span class="math inline">\([a,b]\)</span>查询的结果。</p>
+<p>典例：</p>
+<p><strong>区间乘，区间求和型线段树。</strong>每个节点记录着内容“区间和”，标记“倍率”。“区间和”即节点区间的所有元素的总和。“倍率”即之前对该节点区间进行过区间乘操作，这个节点的“区间和”是最新的，但是这个节点的子节点不是。</p>
+<p>如果我们仍按照上面的思路会发现，在区间乘操作中，无法通过操作的参数来实时更新节点的“区间和”。试想我需要在一个节点区间为<span class="math inline">\([a,b]\)</span>的节点上，进行对<span class="math inline">\([l,r]\)</span>区间乘以<span class="math inline">\(c\)</span>的这样一个区间乘操作。“区间和”的增量就是<span class="math inline">\(c-1\)</span>倍的<span class="math inline">\([a,b]\)</span>区间和，然而<span class="math inline">\([a,b]\)</span>区间和无法求出来，这就导致上述的无法实时把标记更新到所维护的内容上的情况。</p>
+<p>不能直接更新？我们可以间接通过子节点来更新啊。具体地来说，我们把标记自顶向下传递，直到这个标记可以直接更新到所维护的内容上（也就是操作区间恰好匹配节点区间时），然后再自底向上更新所维护的内容。</p>
+<p>仍然换个角度思考：我们把操作区间分解成若干个小区间，使得存在相应的节点对应于这些小区间，然后分别对每个小区间进行操作。操作过程中我们把根到该节点的路径上所有的标记自顶向下全部推到了该节点上，然后再自底向上维护路径上所有节点的内容。路径上的多个标记在下推时会被叠加成为一个标记。当下一次经过这个节点的时候，标记又会再被推到它的子节点。</p>
 
         </div>
         
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Codeforces/">Codeforces</a>, <a class="has-link-grey -link" href="/tags/Contest/">Contest</a>
-                </div>
-            </div>
-        </div>
         
-        
-        
-        <div class="social-share"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
-<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
         
     </div>
 </div>
@@ -221,19 +208,7 @@
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/Codeforces/2019/10/Codeforces-Global-Round-5/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Codeforces Global Round 5</span>
-            </a>
-        </div>
-        
-        
-    </div>
-</div>
+
 
 
 </div>
@@ -561,29 +536,6 @@
         <div class="column-right-shadow is-hidden-widescreen ">
         
             
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Catalogue
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#a---pens-and-pencils">
-        <span class="has-mr-6">1</span>
-        <span>A - Pens and Pencils</span>
-        </a></li><li>
-        <a class="is-flex" href="#b---rooms-and-staircases">
-        <span class="has-mr-6">2</span>
-        <span>B - Rooms and Staircases</span>
-        </a></li><li>
-        <a class="is-flex" href="#d---paint-the-tree">
-        <span class="has-mr-6">3</span>
-        <span>D - Paint the Tree</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
-
         
             
 <div class="card widget">
@@ -749,29 +701,6 @@
 <div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
     
         
-<div class="card widget" id="toc">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Catalogue
-            </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#a---pens-and-pencils">
-        <span class="has-mr-6">1</span>
-        <span>A - Pens and Pencils</span>
-        </a></li><li>
-        <a class="is-flex" href="#b---rooms-and-staircases">
-        <span class="has-mr-6">2</span>
-        <span>B - Rooms and Staircases</span>
-        </a></li><li>
-        <a class="is-flex" href="#d---paint-the-tree">
-        <span class="has-mr-6">3</span>
-        <span>D - Paint the Tree</span>
-        </a></li></ul>
-        </div>
-    </div>
-</div>
-
     
         
 <div class="card widget">
@@ -937,7 +866,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Codeforces Round #592 (Div. 2)" height="28">
+                    <img src="/images/logo.svg" alt="ssttkkl&#39;s Blog" height="28">
                 
                 </a>
                 <p class="is-size-7">
