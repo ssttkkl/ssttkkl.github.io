@@ -181,17 +181,18 @@
             
         </h1>
         <div class="content">
-            <p><span class="math inline">\(O(n^2)\)</span>暴力：</p>
+            <p>$O(n^2)$暴力：</p>
 <p>DFS一遍，在每个节点暴力求出以它结尾的合法括号子串数目。</p>
 <hr>
-<p><span class="math inline">\(O(n)\)</span>正解：</p>
+<p>$O(n)$正解：</p>
 <p>DFS一遍，在每个节点通过递推求出以它结尾的合法括号子串数目。</p>
-<p>首先定义<span class="math inline">\(\textrm{match}_v\)</span>为节点v的祖先中使得路径上的括号串为合法括号串的深度最浅的节点，换句话说就是从v往上爬最多能爬到哪个节点使得路径为合法括号串；定义<span class="math inline">\(\textrm{ansr}_v\)</span>为节点v的祖先中使得路径上的括号串为合法括号串的个数，换句话说就是答案所求的合法括号串中以v结尾的个数。</p>
+<p>首先定义$\textrm{match}_v$为节点v的祖先中使得路径上的括号串为合法括号串的深度最浅的节点，换句话说就是从v往上爬最多能爬到哪个节点使得路径为合法括号串；定义$\textrm{ansr}_v$为节点v的祖先中使得路径上的括号串为合法括号串的个数，换句话说就是答案所求的合法括号串中以v结尾的个数。</p>
 <p>遍历到节点v时：如果v是左括号直接忽略。如果是右括号则看下它的父亲是不是左括号，如果是则直接和它的父亲匹配，否则和<strong>它的父亲上朔的左括号节点的父亲</strong>（如果是左括号，否则匹配失败）匹配。</p>
 <p>然后根据所匹配到的左括号的父亲判断，如果父亲也存在匹配，则可以继续上朔，即v的match节点为所匹配到的左括号的父亲的match节点。否则v的match节点就是所匹配到的左括号。</p>
 <p>v的ansr值就是所匹配到的左括号节点的父亲的ansr值（若存在）加1。</p>
 <p>v的最终答案就是它的ansr值加上父亲的ansr值。</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 500005</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> to, next;</span><br><span class="line">&#125; edges[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> head[MAXN], cnt = <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add_edge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> from, <span class="hljs-keyword">int</span> to)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    edges[cnt].to = to;</span><br><span class="line">    edges[cnt].next = head[from];</span><br><span class="line">    head[from] = cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// 记match[v]为节点v的祖先中使得路径上的括号串为合法括号串的深度最浅的节点</span></span><br><span class="line"><span class="hljs-comment">// 记ans[v]为根到节点v的路径上的括号串的合法子括号串</span></span><br><span class="line"><span class="hljs-comment">// 记ansr[v]为根到节点v的路径上的括号串中以v结束的合法子括号串</span></span><br><span class="line"><span class="hljs-keyword">int</span> n, pa[MAXN], match[MAXN];</span><br><span class="line"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ansr[MAXN], ans[MAXN];</span><br><span class="line"><span class="hljs-keyword">char</span> s[MAXN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (s[v] == <span class="hljs-string">')'</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (s[pa[v]] == <span class="hljs-string">'('</span>) <span class="hljs-comment">// 直接和上一个字符匹配</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (match[pa[pa[v]]]) <span class="hljs-comment">// 若该字符匹配的左括号的上一个字符仍存在匹配，则继续往上爬</span></span><br><span class="line">            &#123;</span><br><span class="line">                match[v] = match[pa[pa[v]]];</span><br><span class="line">                ansr[v] = ansr[pa[pa[v]]] + <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                match[v] = pa[v];</span><br><span class="line">                ansr[v] = <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (s[pa[v]] == <span class="hljs-string">')'</span> &amp;&amp; s[pa[match[pa[v]]]] == <span class="hljs-string">'('</span>) <span class="hljs-comment">// 和上一个字符配对的左括号的上一个字符匹配</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (match[pa[pa[match[pa[v]]]]]) <span class="hljs-comment">// 若该字符匹配的左括号的上一个字符仍存在匹配，则继续往上爬</span></span><br><span class="line">            &#123;</span><br><span class="line">                match[v] = match[pa[pa[match[pa[v]]]]];</span><br><span class="line">                ansr[v] = ansr[pa[pa[match[pa[v]]]]] + <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                match[v] = pa[match[pa[v]]];</span><br><span class="line">                ansr[v] = <span class="hljs-number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ans[v] = ansr[v] + ans[pa[v]];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = head[v]; i != <span class="hljs-number">-1</span>; i = edges[i].next)</span><br><span class="line">        dfs(edges[i].to);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(head, <span class="hljs-number">0xff</span>, <span class="hljs-keyword">sizeof</span>(head));</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; n &gt;&gt; (s + <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; pa[i];</span><br><span class="line">        add_edge(pa[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="hljs-number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> xorsum = ans[<span class="hljs-number">1</span>];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++)</span><br><span class="line">        xorsum ^= i * ans[i];</span><br><span class="line">    <span class="hljs-built_in">cout</span> &lt;&lt; xorsum &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -261,7 +262,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        8
                     </p>
                 </div>
             </div>
@@ -271,7 +272,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -326,14 +327,6 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/学习/">
-            <span class="level-start">
-                <span class="level-item">学习</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/数据结构/">
             <span class="level-start">
                 <span class="level-item">数据结构</span>
@@ -347,7 +340,7 @@
                 <span class="level-item">日本語</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/模板/">
@@ -377,7 +370,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/BanG-Dream/" style="font-size: 10px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 16.67px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/BanG-Dream/" style="font-size: 10px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -447,6 +440,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/DECO-27/">
+                        <span class="tag">DECO-27</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Jetpack/">
                         <span class="tag">Jetpack</span>
                         <span class="tag is-grey">1</span>
@@ -491,7 +491,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/日本語/">
                         <span class="tag">日本語</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/术力口/">
+                        <span class="tag">术力口</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -506,13 +513,6 @@
                     <a class="tags has-addons" href="/tags/模拟/">
                         <span class="tag">模拟</span>
                         <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/线性代数/">
-                        <span class="tag">线性代数</span>
-                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -556,6 +556,25 @@
         
         <article class="media">
             
+            <a href="/日本語/2020/01/【日中翻訳練習】ネガティブ進化論-DECO-27/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】ネガティブ進化論 - DECO*27 feat. 初音ミク">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T01:04:28.000Z">2020-01-12</time></div>
+                    <a href="/日本語/2020/01/【日中翻訳練習】ネガティブ進化論-DECO-27/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】ネガティブ進化論 - DECO*27 feat. 初音ミク</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/日本語/2019/12/【日中翻訳練習】White-Afternoon-Poppin-Party/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】White Afternoon - Poppin&#39;Party">
@@ -630,25 +649,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201909】推荐系统">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T09:53:53.000Z">2019-12-02</time></div>
-                    <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201909】推荐系统</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -660,6 +660,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/12/">
@@ -678,7 +689,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -721,6 +732,25 @@
         
         <article class="media">
             
+            <a href="/日本語/2020/01/【日中翻訳練習】ネガティブ進化論-DECO-27/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】ネガティブ進化論 - DECO*27 feat. 初音ミク">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T01:04:28.000Z">2020-01-12</time></div>
+                    <a href="/日本語/2020/01/【日中翻訳練習】ネガティブ進化論-DECO-27/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】ネガティブ進化論 - DECO*27 feat. 初音ミク</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/日本語/2019/12/【日中翻訳練習】White-Afternoon-Poppin-Party/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】White Afternoon - Poppin&#39;Party">
@@ -795,25 +825,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201909】推荐系统">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T09:53:53.000Z">2019-12-02</time></div>
-                    <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201909】推荐系统</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -825,6 +836,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/12/">
@@ -843,7 +865,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -880,7 +902,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 ssttkkl&nbsp;
+                &copy; 2020 ssttkkl&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
