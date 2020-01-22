@@ -10,18 +10,18 @@
 <title>Codeforces Round #602 (Div. 2, based on Technocup 2020 Elimination Round 3) - ssttkkl&#39;s Blog</title>
 
 
-    <meta name="description" content="B - Box显然如果$q_{i-1} &amp;lt; q_{i}$（或$i=0$），则$p_{i}=q_{i}$，否则就将1~n里从小到大选择第一个没用过的数字当成$p_{i}$. 每次检查一下最大值是否真正等于$q_{i}$.  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474">
+    <meta name="description" content="B - Box 显然如果\(q_{i-1} &amp;lt; q_{i}\)（或\(i=0\)），则\(p_{i}=q_{i}\)，否则就将1~n里从小到大选择第一个没用过的数字当成\(p_{i}\). 每次检查一下最大值是否真正等于\(q_{i}\). 12345678910111213141516171819202122232425262728293031323334353637383940414">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces Round #602 (Div. 2, based on Technocup 2020 Elimination Round 3)">
 <meta property="og:url" content="https://ssttkkl.github.io/uncategorized/2019/11/Codeforces-Round-602-Div-2-based-on-Technocup-2020-Elimination-Round-3/index.html">
 <meta property="og:site_name" content="ssttkkl&#39;s Blog">
-<meta property="og:description" content="B - Box显然如果$q_{i-1} &amp;lt; q_{i}$（或$i=0$），则$p_{i}=q_{i}$，否则就将1~n里从小到大选择第一个没用过的数字当成$p_{i}$. 每次检查一下最大值是否真正等于$q_{i}$.  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474">
+<meta property="og:description" content="B - Box 显然如果\(q_{i-1} &amp;lt; q_{i}\)（或\(i=0\)），则\(p_{i}=q_{i}\)，否则就将1~n里从小到大选择第一个没用过的数字当成\(p_{i}\). 每次检查一下最大值是否真正等于\(q_{i}\). 12345678910111213141516171819202122232425262728293031323334353637383940414">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ssttkkl.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2019-11-27T02:09:52.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Codeforces Round #602 (Div. 2, based on Technocup 2020 Elimination Round 3)">
-<meta name="twitter:description" content="B - Box显然如果$q_{i-1} &amp;lt; q_{i}$（或$i=0$），则$p_{i}=q_{i}$，否则就将1~n里从小到大选择第一个没用过的数字当成$p_{i}$. 每次检查一下最大值是否真正等于$q_{i}$.  12345678910111213141516171819202122232425262728293031323334353637383940414243444546474">
+<meta name="twitter:description" content="B - Box 显然如果\(q_{i-1} &amp;lt; q_{i}\)（或\(i=0\)），则\(p_{i}=q_{i}\)，否则就将1~n里从小到大选择第一个没用过的数字当成\(p_{i}\). 每次检查一下最大值是否真正等于\(q_{i}\). 12345678910111213141516171819202122232425262728293031323334353637383940414">
 <meta name="twitter:image" content="https://ssttkkl.github.io/images/og_image.png">
 
 
@@ -178,13 +178,13 @@
             
         </h1>
         <div class="content">
-            <h1 id="B-Box"><a href="#B-Box" class="headerlink" title="B - Box"></a>B - <a href="https://codeforces.com/contest/1262/problem/B" target="_blank" rel="noopener">Box</a></h1><p>显然如果$q_{i-1} &lt; q_{i}$（或$i=0$），则$p_{i}=q_{i}$，否则就将1~n里从小到大选择第一个没用过的数字当成$p_{i}$. 每次检查一下最大值是否真正等于$q_{i}$. </p>
+            <h1 id="b---box">B - <a href="https://codeforces.com/contest/1262/problem/B" target="_blank" rel="noopener">Box</a></h1>
+<p>显然如果<span class="math inline">\(q_{i-1} &lt; q_{i}\)</span>（或<span class="math inline">\(i=0\)</span>），则<span class="math inline">\(p_{i}=q_{i}\)</span>，否则就将1~n里从小到大选择第一个没用过的数字当成<span class="math inline">\(p_{i}\)</span>. 每次检查一下最大值是否真正等于<span class="math inline">\(q_{i}\)</span>.</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> t;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="hljs-keyword">while</span> (t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> n;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; n;</span><br><span class="line"> </span><br><span class="line">        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; p, q;</span><br><span class="line">        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; used;</span><br><span class="line">        p.resize(n);</span><br><span class="line">        q.resize(n);</span><br><span class="line">        used.resize(n + <span class="hljs-number">1</span>);</span><br><span class="line"> </span><br><span class="line">        <span class="hljs-keyword">bool</span> ok = <span class="hljs-literal">true</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">cin</span> &gt;&gt; q[i];</span><br><span class="line">            ok &amp;= q[i] &gt; i;</span><br><span class="line">            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span> || q[i] &gt; q[i - <span class="hljs-number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                p[i] = q[i];</span><br><span class="line">                used[p[i]] = <span class="hljs-literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ok &amp;= q[n - <span class="hljs-number">1</span>] == n;</span><br><span class="line"> </span><br><span class="line">        <span class="hljs-keyword">int</span> unused = <span class="hljs-number">1</span>, maxi = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n &amp;&amp; ok; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!p[i])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="hljs-keyword">while</span> (used[unused])</span><br><span class="line">                    unused++;</span><br><span class="line">                p[i] = unused;</span><br><span class="line">                used[unused] = <span class="hljs-literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            maxi = max(maxi, p[i]);</span><br><span class="line">            <span class="hljs-keyword">if</span> (maxi != q[i])</span><br><span class="line">                ok = <span class="hljs-literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="hljs-keyword">if</span> (ok)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">                <span class="hljs-built_in">cout</span> &lt;&lt; p[i] &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="D-Optimal-Subsequences-Hard-Version"><a href="#D-Optimal-Subsequences-Hard-Version" class="headerlink" title="D -  Optimal Subsequences (Hard Version)"></a>D -  <a href="https://codeforces.com/contest/1262/problem/D2" target="_blank" rel="noopener">Optimal Subsequences (Hard Version)</a></h1><p>将输入数据降序排序，如果值相等则位置靠前的优先，并记录每个数的原位置。之后将查询离线。建立一棵BST（按照每个数的原位置排序），将排序好的数据依次插入BST中。且每插入一个数就处理k为当前BST中元素数目的查询。对于查询(k,pos)，答案就是当前BST中第pos大的数。</p>
+<h1 id="d---optimal-subsequences-hard-version">D - <a href="https://codeforces.com/contest/1262/problem/D2" target="_blank" rel="noopener">Optimal Subsequences (Hard Version)</a></h1>
+<p>将输入数据降序排序，如果值相等则位置靠前的优先，并记录每个数的原位置。之后将查询离线。建立一棵BST（按照每个数的原位置排序），将排序好的数据依次插入BST中。且每插入一个数就处理k为当前BST中元素数目的查询。对于查询(k,pos)，答案就是当前BST中第pos大的数。</p>
 <p>由于STL里的set并没有查询第k大的功能，所以就需要用到pb_ds. （然而尝试用kotlin超时了）</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ext/pb_ds/assoc_container.hpp&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ext/pb_ds/tree_policy.hpp&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">200000</span>;</span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> n, m, ans[MAXN + <span class="hljs-number">5</span>];</span><br><span class="line">pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; a[MAXN + <span class="hljs-number">5</span>], b[MAXN + <span class="hljs-number">5</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp1</span><span class="hljs-params">(<span class="hljs-keyword">const</span> pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; a, <span class="hljs-keyword">const</span> pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; b)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (a.first == b.first)</span><br><span class="line">        <span class="hljs-keyword">return</span> a.second &lt; b.second;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        <span class="hljs-keyword">return</span> a.first &gt; b.first;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; a[i].first;</span><br><span class="line">        a[i].second = i;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a + <span class="hljs-number">1</span>, a + <span class="hljs-number">1</span> + n, cmp1);</span><br><span class="line"> </span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; m;</span><br><span class="line">    <span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&gt; query;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> k, pos;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; k &gt;&gt; pos;</span><br><span class="line">        query[k][pos].push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    __gnu_pbds::tree&lt;pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;, __gnu_pbds::null_type, less&lt;pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;&gt;, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update&gt; tr;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        tr.insert(make_pair(a[i].second, a[i].first));</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> p : query[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> res = tr.find_by_order(p.first - <span class="hljs-number">1</span>)-&gt;second;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> q : query[i][p.first])</span><br><span class="line">                ans[q] = res;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)</span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; ans[i] &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -267,7 +267,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        21
                     </p>
                 </div>
             </div>
@@ -287,7 +287,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        26
                     </p>
                 </div>
             </div>
@@ -355,7 +355,7 @@
                 <span class="level-item">日本語</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/模板/">
@@ -385,7 +385,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 12.5px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Argonavis/" style="font-size: 10px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 12.5px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 17.5px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 15px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/GYROAXIA/" style="font-size: 10px;">GYROAXIA</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/Roselia/" style="font-size: 10px;">Roselia</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12.5px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 12.5px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Argonavis/" style="font-size: 10px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 15px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 17.5px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 15px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/GYROAXIA/" style="font-size: 10px;">GYROAXIA</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/RAISE-A-SUILEN/" style="font-size: 10px;">RAISE A SUILEN</a> <a href="/tags/Roselia/" style="font-size: 10px;">Roselia</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12.5px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -422,7 +422,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/BanG-Dream/">
                         <span class="tag">BanG Dream</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -497,6 +497,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/RAISE-A-SUILEN/">
+                        <span class="tag">RAISE A SUILEN</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Roselia/">
                         <span class="tag">Roselia</span>
                         <span class="tag is-grey">1</span>
@@ -527,7 +534,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/日本語/">
                         <span class="tag">日本語</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -589,13 +596,13 @@
                 Catalogue
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#B-Box">
+        <a class="is-flex" href="#b---box">
         <span class="has-mr-6">1</span>
         <span>B - Box</span>
         </a></li><li>
-        <a class="is-flex" href="#D-Optimal-Subsequences-Hard-Version">
+        <a class="is-flex" href="#d---optimal-subsequences-hard-version">
         <span class="has-mr-6">2</span>
-        <span>D -  Optimal Subsequences (Hard Version)</span>
+        <span>D - Optimal Subsequences (Hard Version)</span>
         </a></li></ul>
         </div>
     </div>
@@ -608,6 +615,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/日本語/2020/01/【日中翻訳練習】HELL-or-HELL-RAISE-A-SUILEN/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】HELL? or HELL! - RAISE A SUILEN">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T15:17:20.000Z">2020-01-22</time></div>
+                    <a href="/日本語/2020/01/【日中翻訳練習】HELL-or-HELL-RAISE-A-SUILEN/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】HELL? or HELL! - RAISE A SUILEN</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -685,25 +711,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于线段树的一些笔记">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T12:53:14.000Z">2019-12-11</time></div>
-                    <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于线段树的一些笔记</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -722,7 +729,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -784,13 +791,13 @@
                 Catalogue
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#B-Box">
+        <a class="is-flex" href="#b---box">
         <span class="has-mr-6">1</span>
         <span>B - Box</span>
         </a></li><li>
-        <a class="is-flex" href="#D-Optimal-Subsequences-Hard-Version">
+        <a class="is-flex" href="#d---optimal-subsequences-hard-version">
         <span class="has-mr-6">2</span>
-        <span>D -  Optimal Subsequences (Hard Version)</span>
+        <span>D - Optimal Subsequences (Hard Version)</span>
         </a></li></ul>
         </div>
     </div>
@@ -803,6 +810,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/日本語/2020/01/【日中翻訳練習】HELL-or-HELL-RAISE-A-SUILEN/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】HELL? or HELL! - RAISE A SUILEN">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T15:17:20.000Z">2020-01-22</time></div>
+                    <a href="/日本語/2020/01/【日中翻訳練習】HELL-or-HELL-RAISE-A-SUILEN/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】HELL? or HELL! - RAISE A SUILEN</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -880,25 +906,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于线段树的一些笔记">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T12:53:14.000Z">2019-12-11</time></div>
-                    <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于线段树的一些笔记</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -917,7 +924,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>

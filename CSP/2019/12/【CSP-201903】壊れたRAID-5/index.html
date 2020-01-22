@@ -10,19 +10,19 @@
 <title>【CSP-201903】损坏的RAID-5 - ssttkkl&#39;s Blog</title>
 
 
-    <meta name="description" content="给一个RAID5的模型，直接模拟就好。如果要读取的数据所在硬盘没坏就直接读；如果坏了并且只有这一块硬盘是坏的，那就可以通过异或计算出数据；否则就没法读了。 难点大概就是专业词汇太多，读起来太吃力了。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545">
+    <meta name="description" content="给一个RAID5的模型，直接模拟就好。如果要读取的数据所在硬盘没坏就直接读；如果坏了并且只有这一块硬盘是坏的，那就可以通过异或计算出数据；否则就没法读了。 难点大概就是专业词汇太多，读起来太吃力了。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
 <meta name="keywords" content="CSP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【CSP-201903】损坏的RAID-5">
 <meta property="og:url" content="https://ssttkkl.github.io/CSP/2019/12/【CSP-201903】壊れたRAID-5/index.html">
 <meta property="og:site_name" content="ssttkkl&#39;s Blog">
-<meta property="og:description" content="给一个RAID5的模型，直接模拟就好。如果要读取的数据所在硬盘没坏就直接读；如果坏了并且只有这一块硬盘是坏的，那就可以通过异或计算出数据；否则就没法读了。 难点大概就是专业词汇太多，读起来太吃力了。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545">
+<meta property="og:description" content="给一个RAID5的模型，直接模拟就好。如果要读取的数据所在硬盘没坏就直接读；如果坏了并且只有这一块硬盘是坏的，那就可以通过异或计算出数据；否则就没法读了。 难点大概就是专业词汇太多，读起来太吃力了。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ssttkkl.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2019-12-02T07:02:10.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【CSP-201903】损坏的RAID-5">
-<meta name="twitter:description" content="给一个RAID5的模型，直接模拟就好。如果要读取的数据所在硬盘没坏就直接读；如果坏了并且只有这一块硬盘是坏的，那就可以通过异或计算出数据；否则就没法读了。 难点大概就是专业词汇太多，读起来太吃力了。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545">
+<meta name="twitter:description" content="给一个RAID5的模型，直接模拟就好。如果要读取的数据所在硬盘没坏就直接读；如果坏了并且只有这一块硬盘是坏的，那就可以通过异或计算出数据；否则就没法读了。 难点大概就是专业词汇太多，读起来太吃力了。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535">
 <meta name="twitter:image" content="https://ssttkkl.github.io/images/og_image.png">
 
 
@@ -187,7 +187,6 @@
 <p>难点大概就是专业词汇太多，读起来太吃力了。</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> n, s, l, broken;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; dt;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; working;</span><br><span class="line"><span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">get_block</span><span class="hljs-params">(<span class="hljs-keyword">int</span> disk, <span class="hljs-keyword">int</span> band, <span class="hljs-keyword">int</span> block)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> dt[disk].substr((band * s + block) * <span class="hljs-number">8</span>, <span class="hljs-number">8</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">xtoi</span><span class="hljs-params">(<span class="hljs-keyword">char</span> c)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">'0'</span> &amp;&amp; c &lt;= <span class="hljs-string">'9'</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> c - <span class="hljs-string">'0'</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        <span class="hljs-keyword">return</span> c - <span class="hljs-string">'A'</span> + <span class="hljs-number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">char</span> <span class="hljs-title">itox</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">10</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> x + <span class="hljs-string">'0'</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        <span class="hljs-keyword">return</span> x - <span class="hljs-number">10</span> + <span class="hljs-string">'A'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">xor_string</span><span class="hljs-params">(<span class="hljs-built_in">string</span> &amp;a, <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> &amp;b)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; a.size(); i++)</span><br><span class="line">        a[i] = itox(xtoi(a[i]) ^ xtoi(b[i]));</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="hljs-literal">false</span>);</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; n &gt;&gt; s &gt;&gt; l;</span><br><span class="line">    dt.resize(n);</span><br><span class="line">    working.resize(n);</span><br><span class="line">    broken = n - l;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; l; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> a;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; a;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; dt[a];</span><br><span class="line">        working[a] = <span class="hljs-literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">int</span> m;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; m;</span><br><span class="line">    <span class="hljs-keyword">while</span> (m--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> vblock; <span class="hljs-comment">// 虚拟块编号</span></span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; vblock;</span><br><span class="line">        <span class="hljs-keyword">int</span> pos = vblock % s;         <span class="hljs-comment">// 该块在所属条带的位置</span></span><br><span class="line">        <span class="hljs-keyword">int</span> vband = vblock / s;       <span class="hljs-comment">// 虚拟条带编号</span></span><br><span class="line">        <span class="hljs-keyword">int</span> band = vband / (n - <span class="hljs-number">1</span>);   <span class="hljs-comment">// 真实条带编号</span></span><br><span class="line">        <span class="hljs-keyword">int</span> d = vblock % (n * s) / s; <span class="hljs-comment">// 数据块所在磁盘编号</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (working[d]) <span class="hljs-comment">// 数据所在硬盘没坏</span></span><br><span class="line">                <span class="hljs-built_in">cout</span> &lt;&lt; get_block(d, band, pos) &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (broken &gt; <span class="hljs-number">1</span>) <span class="hljs-comment">// 有超过一块的硬盘坏掉了，没救了</span></span><br><span class="line">                <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">'-'</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="hljs-built_in">string</span> str = <span class="hljs-string">"00000000"</span>;</span><br><span class="line">                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)</span><br><span class="line">                    <span class="hljs-keyword">if</span> (working[i])</span><br><span class="line">                        xor_string(str, get_block(i, band, pos));</span><br><span class="line">                <span class="hljs-built_in">cout</span> &lt;&lt; str &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">catch</span> (exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">'-'</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -278,7 +277,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        21
                     </p>
                 </div>
             </div>
@@ -298,7 +297,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        26
                     </p>
                 </div>
             </div>
@@ -366,7 +365,7 @@
                 <span class="level-item">日本語</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">6</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/模板/">
@@ -396,7 +395,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 12.5px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Argonavis/" style="font-size: 10px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 12.5px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 17.5px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 15px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/GYROAXIA/" style="font-size: 10px;">GYROAXIA</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/Roselia/" style="font-size: 10px;">Roselia</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12.5px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 12.5px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Argonavis/" style="font-size: 10px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 15px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 17.5px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 15px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/GYROAXIA/" style="font-size: 10px;">GYROAXIA</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/RAISE-A-SUILEN/" style="font-size: 10px;">RAISE A SUILEN</a> <a href="/tags/Roselia/" style="font-size: 10px;">Roselia</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12.5px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -433,7 +432,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/BanG-Dream/">
                         <span class="tag">BanG Dream</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -508,6 +507,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/RAISE-A-SUILEN/">
+                        <span class="tag">RAISE A SUILEN</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Roselia/">
                         <span class="tag">Roselia</span>
                         <span class="tag is-grey">1</span>
@@ -538,7 +544,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/日本語/">
                         <span class="tag">日本語</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -614,6 +620,25 @@
         
         <article class="media">
             
+            <a href="/日本語/2020/01/【日中翻訳練習】HELL-or-HELL-RAISE-A-SUILEN/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】HELL? or HELL! - RAISE A SUILEN">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T15:17:20.000Z">2020-01-22</time></div>
+                    <a href="/日本語/2020/01/【日中翻訳練習】HELL-or-HELL-RAISE-A-SUILEN/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】HELL? or HELL! - RAISE A SUILEN</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/日本語/2020/01/【日中翻訳練習】UNIONS-Road-Roselia/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】&#34;UNIONS&#34; Road - Roselia">
@@ -688,25 +713,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于线段树的一些笔记">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T12:53:14.000Z">2019-12-11</time></div>
-                    <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于线段树的一些笔记</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -725,7 +731,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -801,6 +807,25 @@
         
         <article class="media">
             
+            <a href="/日本語/2020/01/【日中翻訳練習】HELL-or-HELL-RAISE-A-SUILEN/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】HELL? or HELL! - RAISE A SUILEN">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-22T15:17:20.000Z">2020-01-22</time></div>
+                    <a href="/日本語/2020/01/【日中翻訳練習】HELL-or-HELL-RAISE-A-SUILEN/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】HELL? or HELL! - RAISE A SUILEN</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/日本語/2020/01/【日中翻訳練習】UNIONS-Road-Roselia/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】&#34;UNIONS&#34; Road - Roselia">
@@ -875,25 +900,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于线段树的一些笔记">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T12:53:14.000Z">2019-12-11</time></div>
-                    <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于线段树的一些笔记</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -912,7 +918,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
