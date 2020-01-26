@@ -182,19 +182,22 @@
         </h1>
         <div class="content">
             <p>下述的各种名词都是我自己编的，因为实在没找到资料。</p>
-<h1 id="无标记型"><a href="#无标记型" class="headerlink" title="无标记型"></a>无标记型</h1><p>通常只有只有单点修改操作，无区间修改操作时才用无标记型线段树。</p>
-<p>相比于树状数组来说，线段树更加灵活。因为树状数组需要同时满足区间信息加和信息减，而线段树只需要满足区间信息加。举个例子，区间求和是满足的，因为知道区间$[a,b]$和$[a,c]$的区间和就可以求出$[b,c]$的区间和。但是区间求最值是不满足的，因为知道区间$[a,b]$和$[a,c]$的区间最值无法求出$[b,c]$的区间最值。</p>
-<h1 id="持久化标记型（可叠加标记）"><a href="#持久化标记型（可叠加标记）" class="headerlink" title="持久化标记型（可叠加标记）"></a>持久化标记型（可叠加标记）</h1><p>持久化标记型的线段树，标记永远不会下推，而是在查询时把标记应用到计算结果上。这就需要满足在任意节点查询、修改任意区间$[l,r]$时，均可以实时把标记应用到所查询、维护的内容上。</p>
+<h1 id="无标记型">无标记型</h1>
+<p>通常只有只有单点修改操作，无区间修改操作时才用无标记型线段树。</p>
+<p>相比于树状数组来说，线段树更加灵活。因为树状数组需要同时满足区间信息加和信息减，而线段树只需要满足区间信息加。举个例子，区间求和是满足的，因为知道区间<span class="math inline">\([a,b]\)</span>和<span class="math inline">\([a,c]\)</span>的区间和就可以求出<span class="math inline">\([b,c]\)</span>的区间和。但是区间求最值是不满足的，因为知道区间<span class="math inline">\([a,b]\)</span>和<span class="math inline">\([a,c]\)</span>的区间最值无法求出<span class="math inline">\([b,c]\)</span>的区间最值。</p>
+<h1 id="持久化标记型可叠加标记">持久化标记型（可叠加标记）</h1>
+<p>持久化标记型的线段树，标记永远不会下推，而是在查询时把标记应用到计算结果上。这就需要满足在任意节点查询、修改任意区间<span class="math inline">\([l,r]\)</span>时，均可以实时把标记应用到所查询、维护的内容上。</p>
 <p>典例：</p>
 <p><strong>区间加、区间求和型线段树。</strong>每个节点记录着内容“区间和”，标记“增量”。“区间和”即节点区间的所有元素的总和。“增量”即之前对该节点区间进行过区间加操作，这个节点的“区间和”是最新的，但是这个节点的子节点不是。</p>
-<p>当对这个节点实施一次区间求和操作（求区间$[l,r]$的每个元素的总和）时，如果查询区间和节点区间匹配，则直接返回节点记录的“区间和”。否则先在子节点上查询，然后将查询得到的值加上$r-l+1$倍“增量”，就是我们要查询的最终结果。</p>
-<p>当对这个节点实施一次区间加操作（给区间$[l,r]$的每个元素加上$c$）时，只要将“区间和”加上$r-l+1$倍$c$，就完成了对“区间和”的维护。接下来再判断操作区间与节点区间是否匹配，若匹配则把标记“增量”加上$c$实现更新标记，若不匹配则继续对子节点进行区间加操作。</p>
+<p>当对这个节点实施一次区间求和操作（求区间<span class="math inline">\([l,r]\)</span>的每个元素的总和）时，如果查询区间和节点区间匹配，则直接返回节点记录的“区间和”。否则先在子节点上查询，然后将查询得到的值加上<span class="math inline">\(r-l+1\)</span>倍“增量”，就是我们要查询的最终结果。</p>
+<p>当对这个节点实施一次区间加操作（给区间<span class="math inline">\([l,r]\)</span>的每个元素加上<span class="math inline">\(c\)</span>）时，只要将“区间和”加上<span class="math inline">\(r-l+1\)</span>倍<span class="math inline">\(c\)</span>，就完成了对“区间和”的维护。接下来再判断操作区间与节点区间是否匹配，若匹配则把标记“增量”加上<span class="math inline">\(c\)</span>实现更新标记，若不匹配则继续对子节点进行区间加操作。</p>
 <p>换个角度思考一下：我们把操作区间分解成若干个小区间，使得存在相应的节点对应于这些小区间，然后分别对每个小区间进行操作。对于区间求和操作，每个节点上的“区间和”值相对于这棵子树来说是最新的，也就是不考虑它的所有祖先节点的情况下，这个区间的和确实等于这个“区间和”值。那么我们只要把这个“区间和”值再加上它的所有祖先节点上的“增量”标记值之和乘以区间长度，就是这个小区间的区间和。而对于区间加操作，我们分别更新这些节点的“增量”标记，并更新它和它的所有祖先记录的的“区间和”。注意，我们通过递归隐式地实现了区间的分解与操作，而不需要真正的考虑如何将区间分解然后分别操作。</p>
 <p>更一般地说：我们把操作区间分解成若干个小区间，使得存在相应的节点对应于这些小区间，然后分别对每个小区间进行操作。对于查询操作，我们对每个小区间求值，结果就等于它所对应节点维护的值应用了它和它的所有祖先的标记以后的最终结果。对于修改操作，我们对每个小区间分别修改，即在它所对应节点打上标记，并更新它和它的所有祖先所维护的内容。</p>
-<h1 id="下推标记型（可叠加标记）"><a href="#下推标记型（可叠加标记）" class="headerlink" title="下推标记型（可叠加标记）"></a>下推标记型（可叠加标记）</h1><p>下推标记型的线段树，适用于在任意节点操作任意区间$[l,r]$时，无法实时把标记更新到所维护的内容上的情况。这里的标记是可叠加的，也就是说当有先后两个修改操作同时涉及区间$[a,b]$时，两次操作都会影响对$[a,b]$查询的结果。</p>
+<h1 id="下推标记型可叠加标记">下推标记型（可叠加标记）</h1>
+<p>下推标记型的线段树，适用于在任意节点操作任意区间<span class="math inline">\([l,r]\)</span>时，无法实时把标记更新到所维护的内容上的情况。这里的标记是可叠加的，也就是说当有先后两个修改操作同时涉及区间<span class="math inline">\([a,b]\)</span>时，两次操作都会影响对<span class="math inline">\([a,b]\)</span>查询的结果。</p>
 <p>典例：</p>
 <p><strong>区间乘，区间求和型线段树。</strong>每个节点记录着内容“区间和”，标记“倍率”。“区间和”即节点区间的所有元素的总和。“倍率”即之前对该节点区间进行过区间乘操作，这个节点的“区间和”是最新的，但是这个节点的子节点不是。</p>
-<p>如果我们仍按照上面的思路会发现，在区间乘操作中，无法通过操作的参数来实时更新节点的“区间和”。试想我需要在一个节点区间为$[a,b]$的节点上，进行对$[l,r]$区间乘以$c$的这样一个区间乘操作。“区间和”的增量就是$c-1$倍的$[a,b]$区间和，然而$[a,b]$区间和无法求出来，这就导致上述的无法实时把标记更新到所维护的内容上的情况。</p>
+<p>如果我们仍按照上面的思路会发现，在区间乘操作中，无法通过操作的参数来实时更新节点的“区间和”。试想我需要在一个节点区间为<span class="math inline">\([a,b]\)</span>的节点上，进行对<span class="math inline">\([l,r]\)</span>区间乘以<span class="math inline">\(c\)</span>的这样一个区间乘操作。“区间和”的增量就是<span class="math inline">\(c-1\)</span>倍的<span class="math inline">\([a,b]\)</span>区间和，然而<span class="math inline">\([a,b]\)</span>区间和无法求出来，这就导致上述的无法实时把标记更新到所维护的内容上的情况。</p>
 <p>不能直接更新？我们可以间接通过子节点来更新啊。具体地来说，我们把标记自顶向下传递，直到这个标记可以直接更新到所维护的内容上（也就是操作区间恰好匹配节点区间时），然后再自底向上更新所维护的内容。</p>
 <p>仍然换个角度思考：我们把操作区间分解成若干个小区间，使得存在相应的节点对应于这些小区间，然后分别对每个小区间进行操作。操作过程中我们把根到该节点的路径上所有的标记自顶向下全部推到了该节点上，然后再自底向上维护路径上所有节点的内容。路径上的多个标记在下推时会被叠加成为一个标记。当下一次经过这个节点的时候，标记又会再被推到它的子节点。</p>
 
@@ -256,7 +259,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        23
                     </p>
                 </div>
             </div>
@@ -344,7 +347,7 @@
                 <span class="level-item">日本語</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">8</span>
+                <span class="level-item tag">9</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/模板/">
@@ -374,7 +377,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 12.5px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Argonavis/" style="font-size: 10px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 17.5px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 17.5px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 15px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/GYROAXIA/" style="font-size: 10px;">GYROAXIA</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/RAISE-A-SUILEN/" style="font-size: 12.5px;">RAISE A SUILEN</a> <a href="/tags/Roselia/" style="font-size: 10px;">Roselia</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12.5px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 12px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Argonavis/" style="font-size: 10px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 18px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 16px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 14px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/GYROAXIA/" style="font-size: 10px;">GYROAXIA</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/RAISE-A-SUILEN/" style="font-size: 12px;">RAISE A SUILEN</a> <a href="/tags/Roselia/" style="font-size: 12px;">Roselia</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -411,7 +414,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/BanG-Dream/">
                         <span class="tag">BanG Dream</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">5</span>
                     </a>
                 </div>
                 
@@ -495,7 +498,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Roselia/">
                         <span class="tag">Roselia</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -523,7 +526,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/日本語/">
                         <span class="tag">日本語</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -588,6 +591,25 @@
         
         <article class="media">
             
+            <a href="/日本語/2020/01/【日中翻訳練習】約束-Roselia/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】約束 - Roselia">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-26T13:15:21.000Z">2020-01-26</time></div>
+                    <a href="/日本語/2020/01/【日中翻訳練習】約束-Roselia/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】約束 - Roselia</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/日本語/2020/01/【日中翻訳練習】DRIVE-US-CRAZY-RAISE-A-SUILEN/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】DRIVE US CRAZY - RAISE A SUILEN">
@@ -662,25 +684,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/日本語/2020/01/【日中翻訳練習】ネガティブ進化論-DECO-27/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】ネガティブ進化論 - DECO*27 feat. 初音ミク">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T01:04:28.000Z">2020-01-12</time></div>
-                    <a href="/日本語/2020/01/【日中翻訳練習】ネガティブ進化論-DECO-27/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】ネガティブ進化論 - DECO*27 feat. 初音ミク</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -699,7 +702,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -764,6 +767,25 @@
         
         <article class="media">
             
+            <a href="/日本語/2020/01/【日中翻訳練習】約束-Roselia/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】約束 - Roselia">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-26T13:15:21.000Z">2020-01-26</time></div>
+                    <a href="/日本語/2020/01/【日中翻訳練習】約束-Roselia/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】約束 - Roselia</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/日本語/2020/01/【日中翻訳練習】DRIVE-US-CRAZY-RAISE-A-SUILEN/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】DRIVE US CRAZY - RAISE A SUILEN">
@@ -838,25 +860,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/日本語/2020/01/【日中翻訳練習】ネガティブ進化論-DECO-27/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】ネガティブ進化論 - DECO*27 feat. 初音ミク">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-12T01:04:28.000Z">2020-01-12</time></div>
-                    <a href="/日本語/2020/01/【日中翻訳練習】ネガティブ進化論-DECO-27/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】ネガティブ進化論 - DECO*27 feat. 初音ミク</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -875,7 +878,7 @@
                     <span class="level-item">January 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">5</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
