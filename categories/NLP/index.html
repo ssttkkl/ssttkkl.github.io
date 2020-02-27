@@ -220,7 +220,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 minutes read (About 386 words)
+                    3 minutes read (About 488 words)
                 </span>
                 
                 
@@ -233,35 +233,23 @@
             
         </h1>
         <div class="content">
-            <ul>
-<li><p>全切分：根据词典，找出文章中出现的所有单词</p>
-<ul>
-<li>数据结构：Trie树（双数组Trie树）、AC自动机</li>
-</ul></li>
-<li><p>中文分词：将句子按照以单词为单位进行切分</p>
-<ul>
-<li><p>最长匹配</p></li>
-<li><p>二元语法</p>
-<ul>
-<li>思想：一个单词出现的概率仅由前一个单词决定</li>
-<li>模型：二阶马尔可夫模型</li>
-<li>算法：构建词网（边权取二元语法出现概率的负对数），对其应用最短路径算法（Viterbi算法或Dijkstra算法），即可计算出现概率最大的分词方式</li>
-<li>优化：针对数据稀疏问题，采取线性插值、拉普拉斯平滑的手段优化</li>
-<li>优缺点：精确率、召回率及IV召回率对比最长匹配全面胜出，但OOV召回率仍然偏低</li>
-</ul></li>
-<li><p>序列标注</p>
-<ul>
-<li><p>思想：若每个字符都拥有标注{B,M,E,S}，分别代表词首、词尾、词中、单字成词。分词问题就转换为对字符序列进行标注的序列标注问题。</p></li>
-<li><p>模型：隐马尔可夫模型（隐状态空间为标注{B,M,E,S}，显状态空间为整个字符集）</p></li>
-<li><p>算法：</p>
-<ul>
-<li>训练：统计频次并归一化</li>
-<li>预测：Viterbi算法</li>
-</ul></li>
-<li><p>优缺点：OOV召回率有所提升，但精确率、召回率及IV召回率对比最长匹配反而下降了不少</p></li>
-</ul></li>
-</ul></li>
-</ul>
+            <h1 id="中文分词">中文分词</h1>
+<h2 id="全切分">全切分</h2>
+<p>根据词典，找出文章中出现的所有单词。</p>
+<h2 id="最长匹配">最长匹配</h2>
+<p>对每个字符，贪心地向后匹配字典中存在的最长单词。然后对后一个字符重复流程。</p>
+<h2 id="二元语法">二元语法</h2>
+<p>思想：一个单词出现的概率仅由前一个单词决定（马尔可夫模型）</p>
+<p>需要统计所有单词（一元语法）、所有单词对（二元语法）的出现频率，使用极大似然估计出现概率。针对数据稀疏问题，采取线性插值、拉普拉斯平滑的手段优化。</p>
+<p>预测时，构建词网，对概率取负对数后应用最短路径算法，计算出现概率最大的分词方式。</p>
+<h2 id="序列标注">序列标注</h2>
+<p>思想：对每个字符标注{B,M,E,S}，分别代表词首、词尾、词中、单字成词。分词问题就转换为对字符序列进行标注的序列标注问题。</p>
+<h3 id="隐马尔可夫模型">隐马尔可夫模型</h3>
+<p>思想：字符序列为显序列<span class="math inline">\(X\)</span>，标注序列为隐序列<span class="math inline">\(Y\)</span>。<span class="math inline">\(Y_i\)</span>只由<span class="math inline">\(Y_{i-1}\)</span>决定（马尔可夫链），且<span class="math inline">\(X_i\)</span>只由<span class="math inline">\(Y_i\)</span>决定。</p>
+<p>给定<span class="math inline">\(X,Y\)</span>，<span class="math inline">\(P(X,Y)=\prod_{i=0}^T P(X_i|Yi) \cdot P(Y_0)\prod_{i=1}^TP(Y_i|Y_{i-1})\)</span>。其中<span class="math inline">\(P(Y_0)\)</span>称为初始概率，<span class="math inline">\(P(Y_i|Y_{i-1})\)</span>称为转移概率，<span class="math inline">\(P(X_i|Y_i)\)</span>称为发射概率。</p>
+<p>监督学习时，从样本使用极大似然估计初始概率、转移概率和发射概率。</p>
+<p>预测时使用Viterbi算法。即给定观测序列<span class="math inline">\(X\)</span>，通过DP求出使得<span class="math inline">\(P(X,Y)\)</span>最大的状态序列<span class="math inline">\(Y\)</span>。由于<span class="math inline">\(P(X,Y)\)</span>中含有乘法，故可取对数转换为加法。</p>
+<h3 id="结构化感知机">结构化感知机</h3>
 
         </div>
         
@@ -321,7 +309,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        26
                     </p>
                 </div>
             </div>
@@ -409,7 +397,7 @@
                 <span class="level-item">日本語</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">9</span>
+                <span class="level-item tag">10</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/模板/">
@@ -439,7 +427,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 12px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Argonavis/" style="font-size: 10px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 18px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 16px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 14px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/GYROAXIA/" style="font-size: 10px;">GYROAXIA</a> <a href="/tags/NLP/" style="font-size: 12px;">NLP</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/RAISE-A-SUILEN/" style="font-size: 12px;">RAISE A SUILEN</a> <a href="/tags/Roselia/" style="font-size: 12px;">Roselia</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/数据结构/" style="font-size: 12px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 12px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Argonavis/" style="font-size: 10px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 18px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 16px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 14px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/GYROAXIA/" style="font-size: 10px;">GYROAXIA</a> <a href="/tags/NLP/" style="font-size: 12px;">NLP</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/RAISE-A-SUILEN/" style="font-size: 12px;">RAISE A SUILEN</a> <a href="/tags/Roselia/" style="font-size: 12px;">Roselia</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 12px;">グラブル</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/数据结构/" style="font-size: 12px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -560,7 +548,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/グラブル/">
                         <span class="tag">グラブル</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -581,7 +569,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/日本語/">
                         <span class="tag">日本語</span>
-                        <span class="tag is-grey">9</span>
+                        <span class="tag is-grey">10</span>
                     </a>
                 </div>
                 
@@ -643,6 +631,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/日本語/2020/02/【歌詞翻訳】ムゲン（「こくう、しんしん」BGM）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【歌詞翻訳】ムゲン（「こくう、しんしん」BGM）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-27T04:28:36.000Z">2020-02-27</time></div>
+                    <a href="/日本語/2020/02/【歌詞翻訳】ムゲン（「こくう、しんしん」BGM）/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【歌詞翻訳】ムゲン（「こくう、しんしん」BGM）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -720,25 +727,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/日本語/2020/01/【日中翻訳練習】DRIVE-US-CRAZY-RAISE-A-SUILEN/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】DRIVE US CRAZY - RAISE A SUILEN">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-26T11:55:20.000Z">2020-01-26</time></div>
-                    <a href="/日本語/2020/01/【日中翻訳練習】DRIVE-US-CRAZY-RAISE-A-SUILEN/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】DRIVE US CRAZY - RAISE A SUILEN</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -757,7 +745,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -833,6 +821,25 @@
         
         <article class="media">
             
+            <a href="/日本語/2020/02/【歌詞翻訳】ムゲン（「こくう、しんしん」BGM）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【歌詞翻訳】ムゲン（「こくう、しんしん」BGM）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-27T04:28:36.000Z">2020-02-27</time></div>
+                    <a href="/日本語/2020/02/【歌詞翻訳】ムゲン（「こくう、しんしん」BGM）/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【歌詞翻訳】ムゲン（「こくう、しんしん」BGM）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
@@ -907,25 +914,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/日本語/2020/01/【日中翻訳練習】DRIVE-US-CRAZY-RAISE-A-SUILEN/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】DRIVE US CRAZY - RAISE A SUILEN">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-26T11:55:20.000Z">2020-01-26</time></div>
-                    <a href="/日本語/2020/01/【日中翻訳練習】DRIVE-US-CRAZY-RAISE-A-SUILEN/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】DRIVE US CRAZY - RAISE A SUILEN</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -944,7 +932,7 @@
                     <span class="level-item">February 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
