@@ -183,13 +183,12 @@
         <div class="content">
             <p>全切分：指的是找出一段文本中的所有单词。</p>
 <p>最长匹配：说白了就是对每个字符贪心地选择能在词典里匹配到的最长的一段，然后跳到后面的字符，继续贪心。自然地，有正向最长匹配和逆向最长匹配两种实现方法。根据统计规律得到的启发，可以将两种方法得到的结果进行比较，返回可能更优的结果，称作双向最长匹配。规则如下：</p>
-<ol>
+<ol type="1">
 <li>同时执行正向和逆向最长匹配，若两者的词数不同，则返回词数更少的那一个。</li>
 <li>否则，返回两者中单字更少的那一个。当单字数也相同时，优先返回逆向最长匹配的结果。</li>
 </ol>
 <p>实现代码：</p>
 <figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.nlpexercise</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> com.hankcs.hanlp.corpus.io.IOUtil</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.*</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NaiveDictionaryBasedSegmentation</span></span>(dictPath: String) &#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> dict = IOUtil.loadDictionary(dictPath)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">segmentFully</span><span class="hljs-params">(text: <span class="hljs-type">String</span>)</span></span>: List&lt;String&gt; &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> wordList = LinkedList&lt;String&gt;()</span><br><span class="line">        <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> text.indices) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> i until text.length) &#123;</span><br><span class="line">                <span class="hljs-keyword">val</span> word = text.slice(i..j)</span><br><span class="line">                <span class="hljs-keyword">if</span> (word <span class="hljs-keyword">in</span> dict) &#123;</span><br><span class="line">                    wordList.addLast(word)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> wordList</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">segmentForwardLongest</span><span class="hljs-params">(text: <span class="hljs-type">String</span>)</span></span>: List&lt;String&gt; &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> wordList = LinkedList&lt;String&gt;()</span><br><span class="line">        <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (i &lt; text.length) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> text.length - <span class="hljs-number">1</span> downTo i) &#123;</span><br><span class="line">                <span class="hljs-keyword">val</span> word = text.slice(i..j)</span><br><span class="line">                <span class="hljs-keyword">if</span> (word <span class="hljs-keyword">in</span> dict) &#123;</span><br><span class="line">                    wordList.addLast(word)</span><br><span class="line">                    i = j + <span class="hljs-number">1</span></span><br><span class="line">                    <span class="hljs-keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> wordList</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">segmentBackwardLongest</span><span class="hljs-params">(text: <span class="hljs-type">String</span>)</span></span>: List&lt;String&gt; &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> wordList = LinkedList&lt;String&gt;()</span><br><span class="line">        <span class="hljs-keyword">var</span> j = text.length - <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..j) &#123;</span><br><span class="line">                <span class="hljs-keyword">val</span> word = text.slice(i..j)</span><br><span class="line">                <span class="hljs-keyword">if</span> (word <span class="hljs-keyword">in</span> dict) &#123;</span><br><span class="line">                    wordList.addFirst(word)</span><br><span class="line">                    j = i - <span class="hljs-number">1</span></span><br><span class="line">                    <span class="hljs-keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> wordList</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">segmentBidirectional</span><span class="hljs-params">(text: <span class="hljs-type">String</span>)</span></span>: List&lt;String&gt; &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> forward = segmentForwardLongest(text)</span><br><span class="line">        <span class="hljs-keyword">val</span> backward = segmentBackwardLongest(text)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> (forward.size != backward.size) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (forward.size &lt; backward.size)</span><br><span class="line">                forward</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">                backward</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">val</span> singleCharForward = forward.count &#123; it.length == <span class="hljs-number">1</span> &#125;</span><br><span class="line">            <span class="hljs-keyword">val</span> singleCharBackward = backward.count &#123; it.length == <span class="hljs-number">1</span> &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span> (singleCharForward &lt; singleCharBackward)</span><br><span class="line">                forward</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">                backward</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -234,17 +233,24 @@
             
         </h1>
         <div class="content">
-            <h1 id="中文分词"><a href="#中文分词" class="headerlink" title="中文分词"></a>中文分词</h1><h2 id="全切分"><a href="#全切分" class="headerlink" title="全切分"></a>全切分</h2><p>根据词典，找出文章中出现的所有单词。</p>
-<h2 id="最长匹配"><a href="#最长匹配" class="headerlink" title="最长匹配"></a>最长匹配</h2><p>对每个字符，贪心地向后匹配字典中存在的最长单词。然后对后一个字符重复流程。</p>
-<h2 id="二元语法"><a href="#二元语法" class="headerlink" title="二元语法"></a>二元语法</h2><p>思想：一个单词出现的概率仅由前一个单词决定（马尔可夫模型）</p>
+            <h1 id="中文分词">中文分词</h1>
+<h2 id="全切分">全切分</h2>
+<p>根据词典，找出文章中出现的所有单词。</p>
+<h2 id="最长匹配">最长匹配</h2>
+<p>对每个字符，贪心地向后匹配字典中存在的最长单词。然后对后一个字符重复流程。</p>
+<h2 id="二元语法">二元语法</h2>
+<p>思想：一个单词出现的概率仅由前一个单词决定（马尔可夫模型）</p>
 <p>需要统计所有单词（一元语法）、所有单词对（二元语法）的出现频率，使用极大似然估计出现概率。针对数据稀疏问题，采取线性插值、拉普拉斯平滑的手段优化。</p>
 <p>预测时，构建词网，对概率取负对数后应用最短路径算法，计算出现概率最大的分词方式。</p>
-<h2 id="序列标注"><a href="#序列标注" class="headerlink" title="序列标注"></a>序列标注</h2><p>思想：对每个字符标注{B,M,E,S}，分别代表词首、词尾、词中、单字成词。分词问题就转换为对字符序列进行标注的序列标注问题。</p>
-<h3 id="隐马尔可夫模型"><a href="#隐马尔可夫模型" class="headerlink" title="隐马尔可夫模型"></a>隐马尔可夫模型</h3><p>思想：字符序列为显序列$X$，标注序列为隐序列$Y$。$Y_i$只由$Y_{i-1}$决定（马尔可夫链），且$X_i$只由$Y_i$决定。</p>
-<p>给定$X,Y$，$P(X,Y)=\prod_{i=0}^T P(X_i|Yi) \cdot P(Y_0)\prod_{i=1}^TP(Y_i|Y_{i-1})$。其中$P(Y_0)$称为初始概率，$P(Y_i|Y_{i-1})$称为转移概率，$P(X_i|Y_i)$称为发射概率。</p>
+<h2 id="序列标注">序列标注</h2>
+<p>思想：对每个字符标注{B,M,E,S}，分别代表词首、词尾、词中、单字成词。分词问题就转换为对字符序列进行标注的序列标注问题。</p>
+<h3 id="隐马尔可夫模型">隐马尔可夫模型</h3>
+<p>思想：字符序列为显序列<span class="math inline">\(X\)</span>，标注序列为隐序列<span class="math inline">\(Y\)</span>。<span class="math inline">\(Y_i\)</span>只由<span class="math inline">\(Y_{i-1}\)</span>决定（马尔可夫链），且<span class="math inline">\(X_i\)</span>只由<span class="math inline">\(Y_i\)</span>决定。</p>
+<p>给定<span class="math inline">\(X,Y\)</span>，<span class="math inline">\(P(X,Y)=\prod_{i=0}^T P(X_i|Yi) \cdot P(Y_0)\prod_{i=1}^TP(Y_i|Y_{i-1})\)</span>。其中<span class="math inline">\(P(Y_0)\)</span>称为初始概率，<span class="math inline">\(P(Y_i|Y_{i-1})\)</span>称为转移概率，<span class="math inline">\(P(X_i|Y_i)\)</span>称为发射概率。</p>
 <p>监督学习时，从样本使用极大似然估计初始概率、转移概率和发射概率。</p>
-<p>预测时使用Viterbi算法。即给定观测序列$X$，通过DP求出使得$P(X,Y)$最大的状态序列$Y$。由于$P(X,Y)$中含有乘法，故可取对数转换为加法。</p>
-<h3 id="结构化感知机"><a href="#结构化感知机" class="headerlink" title="结构化感知机"></a>结构化感知机</h3>
+<p>预测时使用Viterbi算法。即给定观测序列<span class="math inline">\(X\)</span>，通过DP求出使得<span class="math inline">\(P(X,Y)\)</span>最大的状态序列<span class="math inline">\(Y\)</span>。由于<span class="math inline">\(P(X,Y)\)</span>中含有乘法，故可取对数转换为加法。</p>
+<h3 id="结构化感知机">结构化感知机</h3>
+
         </div>
         
         
@@ -303,7 +309,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        29
+                        30
                     </p>
                 </div>
             </div>
@@ -391,7 +397,7 @@
                 <span class="level-item">日本語</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/模板/">
@@ -421,7 +427,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 14px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Amier/" style="font-size: 10px;">Amier</a> <a href="/tags/Argonavis/" style="font-size: 12px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 18px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 16px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 14px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/Fate/" style="font-size: 10px;">Fate</a> <a href="/tags/GYROAXIA/" style="font-size: 10px;">GYROAXIA</a> <a href="/tags/NLP/" style="font-size: 12px;">NLP</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/RAISE-A-SUILEN/" style="font-size: 12px;">RAISE A SUILEN</a> <a href="/tags/Roselia/" style="font-size: 12px;">Roselia</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 12px;">グラブル</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/数据结构/" style="font-size: 12px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 16px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Amier/" style="font-size: 10px;">Amier</a> <a href="/tags/Argonavis/" style="font-size: 12px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 18px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 16px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 14px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/Fate/" style="font-size: 10px;">Fate</a> <a href="/tags/GYROAXIA/" style="font-size: 12px;">GYROAXIA</a> <a href="/tags/NLP/" style="font-size: 12px;">NLP</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/RAISE-A-SUILEN/" style="font-size: 12px;">RAISE A SUILEN</a> <a href="/tags/Roselia/" style="font-size: 12px;">Roselia</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 12px;">グラブル</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/数据结构/" style="font-size: 12px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -437,7 +443,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ARGONAVIS-from-BanG-Dream/">
                         <span class="tag">ARGONAVIS from BanG Dream!</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -507,7 +513,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/GYROAXIA/">
                         <span class="tag">GYROAXIA</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -577,7 +583,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/日本語/">
                         <span class="tag">日本語</span>
-                        <span class="tag is-grey">13</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
@@ -639,6 +645,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/日本語/2020/04/【听译练习大失败】REVOLUTION-GYROAXIA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【听译练习大失败】REVOLUTION - GYROAXIA">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-30T12:23:38.000Z">2020-04-30</time></div>
+                    <a href="/日本語/2020/04/【听译练习大失败】REVOLUTION-GYROAXIA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【听译练习大失败】REVOLUTION - GYROAXIA</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -716,25 +741,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T10:46:32.000Z">2020-02-08</time></div>
-                    <a href="/数据结构/2020/02/【数据结构】Trie树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【数据结构】Trie树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -753,7 +759,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -851,6 +857,25 @@
         
         <article class="media">
             
+            <a href="/日本語/2020/04/【听译练习大失败】REVOLUTION-GYROAXIA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【听译练习大失败】REVOLUTION - GYROAXIA">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-30T12:23:38.000Z">2020-04-30</time></div>
+                    <a href="/日本語/2020/04/【听译练习大失败】REVOLUTION-GYROAXIA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【听译练习大失败】REVOLUTION - GYROAXIA</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/日本語/2020/04/【听译歌词】雨上がりの坂道-Argonavis/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【听译歌词】雨上がりの坂道 - Argonavis">
@@ -925,25 +950,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T10:46:32.000Z">2020-02-08</time></div>
-                    <a href="/数据结构/2020/02/【数据结构】Trie树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【数据结构】Trie树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -962,7 +968,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

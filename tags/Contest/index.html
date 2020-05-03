@@ -180,19 +180,19 @@
             
         </h1>
         <div class="content">
-            <h1 id="A-Pens-and-Pencils"><a href="#A-Pens-and-Pencils" class="headerlink" title="A - Pens and Pencils"></a>A - <a href="https://codeforces.com/contest/1244/problem/A" target="_blank" rel="noopener">Pens and Pencils</a></h1><p>没啥好说，直接做。</p>
+            <h1 id="a---pens-and-pencils">A - <a href="https://codeforces.com/contest/1244/problem/A" target="_blank" rel="noopener">Pens and Pencils</a></h1>
+<p>没啥好说，直接做。</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> t;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="hljs-keyword">while</span> (t--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> a, b, c, d, k;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d &gt;&gt; k;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = (a % c) ? a / c + <span class="hljs-number">1</span> : a / c;</span><br><span class="line">        <span class="hljs-keyword">int</span> y = (b % d) ? b / d + <span class="hljs-number">1</span> : b / d;</span><br><span class="line">        <span class="hljs-keyword">if</span> (x + y &gt; k)</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="hljs-string">' '</span> &lt;&lt; y &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="B-Rooms-and-Staircases"><a href="#B-Rooms-and-Staircases" class="headerlink" title="B -  Rooms and Staircases"></a>B -  <a href="https://codeforces.com/contest/1244/problem/B" target="_blank" rel="noopener">Rooms and Staircases</a></h1><p>可以发现上下楼梯唯一的作用就是回头，因为如果下楼梯仍继续向前走的话和不下楼梯没有区别。然后还可以发现整个过程只能够回头一次，否则就撞车了。</p>
+<h1 id="b---rooms-and-staircases">B - <a href="https://codeforces.com/contest/1244/problem/B" target="_blank" rel="noopener">Rooms and Staircases</a></h1>
+<p>可以发现上下楼梯唯一的作用就是回头，因为如果下楼梯仍继续向前走的话和不下楼梯没有区别。然后还可以发现整个过程只能够回头一次，否则就撞车了。</p>
 <p>如果没有楼梯，显然只能从一层的一端走到另一端。</p>
 <p>如果只有一条楼梯，那么从一层的一端走到楼梯时，可以选择继续走到尽头，也可以选择下楼梯并回头走到尽头。</p>
 <p>如果有两条以上的楼梯，要么从一层的一段走到另一端，要么从一层的一端走到最后一个楼梯并下楼然后回头走到尽头。实际上是上一种情况的推广。</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">int</span> n;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; s;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> t;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="hljs-keyword">while</span> (t--)</span><br><span class="line">    &#123;</span><br><span class="line">        s.clear();</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">char</span> c = getchar();</span><br><span class="line">            <span class="hljs-keyword">while</span> (c != <span class="hljs-string">'0'</span> &amp;&amp; c != <span class="hljs-string">'1'</span>)</span><br><span class="line">                c = getchar();</span><br><span class="line">            <span class="hljs-keyword">if</span> (c == <span class="hljs-string">'1'</span>)</span><br><span class="line">                s.push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">if</span> (s.size() == <span class="hljs-number">0</span>)</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; max(s[s.size() - <span class="hljs-number">1</span>] * <span class="hljs-number">2</span>, max((n - s[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>) * <span class="hljs-number">2</span>, n)) &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="D-Paint-the-Tree"><a href="#D-Paint-the-Tree" class="headerlink" title="D -  Paint the Tree"></a>D -  <a href="https://codeforces.com/contest/1244/problem/D" target="_blank" rel="noopener">Paint the Tree</a></h1><p>显然只有树是一条链时才存在染色方案。那么只要枚举一下头部两个节点的颜色，后面的都可以推出来。</p>
+<h1 id="d---paint-the-tree">D - <a href="https://codeforces.com/contest/1244/problem/D" target="_blank" rel="noopener">Paint the Tree</a></h1>
+<p>显然只有树是一条链时才存在染色方案。那么只要枚举一下头部两个节点的颜色，后面的都可以推出来。</p>
 <p>（讲个笑话，<code>long long best = 0x7fffffff;</code>）</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100005</span>;</span><br><span class="line"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; edges[MAXN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add_edge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    edges[u].push_back(v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">int</span> n, cnt[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> ans[<span class="hljs-number">2</span>][MAXN];</span><br><span class="line"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c[<span class="hljs-number">3</span>][MAXN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-keyword">int</span> node, <span class="hljs-keyword">int</span> pa)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> v : edges[node])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v != pa)</span><br><span class="line">        &#123;</span><br><span class="line">            cnt[node]++;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!check(v, node))</span><br><span class="line">                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (pa != <span class="hljs-number">-1</span>)</span><br><span class="line">        <span class="hljs-keyword">return</span> cnt[node] &lt;= <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        <span class="hljs-keyword">return</span> cnt[node] &lt;= <span class="hljs-number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> node, <span class="hljs-keyword">int</span> color, <span class="hljs-keyword">int</span> pa, <span class="hljs-keyword">int</span> pa_color, <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> &amp;cost)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    ans[<span class="hljs-number">0</span>][node] = color;</span><br><span class="line">    cost += c[color][node];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> v : edges[node])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (v != pa)</span><br><span class="line">            dfs(v, <span class="hljs-number">3</span> - color - pa_color, node, color, cost);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">    <span class="hljs-built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; c[<span class="hljs-number">0</span>][i];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; c[<span class="hljs-number">1</span>][i];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; c[<span class="hljs-number">2</span>][i];</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> u, v;</span><br><span class="line">        <span class="hljs-built_in">cin</span> &gt;&gt; u &gt;&gt; v;</span><br><span class="line">        add_edge(u, v);</span><br><span class="line">        add_edge(v, u);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (check(<span class="hljs-number">1</span>, <span class="hljs-number">-1</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> head = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (cnt[i] == <span class="hljs-number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                head = i;</span><br><span class="line">                <span class="hljs-keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (head == <span class="hljs-number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> best = <span class="hljs-number">0x7fffffffffffffff</span>, a = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">2</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">2</span>; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span> (i == j)</span><br><span class="line">                    <span class="hljs-keyword">continue</span>;</span><br><span class="line">                a = <span class="hljs-number">0</span>;</span><br><span class="line">                dfs(head, i, <span class="hljs-number">-1</span>, j, a);</span><br><span class="line">                <span class="hljs-keyword">if</span> (a &lt; best)</span><br><span class="line">                &#123;</span><br><span class="line">                    best = a;</span><br><span class="line">                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">                        ans[<span class="hljs-number">1</span>][i] = ans[<span class="hljs-number">0</span>][i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; best &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="hljs-built_in">cout</span> &lt;&lt; ans[<span class="hljs-number">1</span>][i] + <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-number">-1</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
         </div>
         
@@ -252,7 +252,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        29
+                        30
                     </p>
                 </div>
             </div>
@@ -340,7 +340,7 @@
                 <span class="level-item">日本語</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">13</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/模板/">
@@ -370,7 +370,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 14px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Amier/" style="font-size: 10px;">Amier</a> <a href="/tags/Argonavis/" style="font-size: 12px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 18px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 16px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 14px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/Fate/" style="font-size: 10px;">Fate</a> <a href="/tags/GYROAXIA/" style="font-size: 10px;">GYROAXIA</a> <a href="/tags/NLP/" style="font-size: 12px;">NLP</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/RAISE-A-SUILEN/" style="font-size: 12px;">RAISE A SUILEN</a> <a href="/tags/Roselia/" style="font-size: 12px;">Roselia</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 12px;">グラブル</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/数据结构/" style="font-size: 12px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/ARGONAVIS-from-BanG-Dream/" style="font-size: 16px;">ARGONAVIS from BanG Dream!</a> <a href="/tags/Amier/" style="font-size: 10px;">Amier</a> <a href="/tags/Argonavis/" style="font-size: 12px;">Argonavis</a> <a href="/tags/BanG-Dream/" style="font-size: 18px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 16px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 14px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/DECO-27/" style="font-size: 10px;">DECO-27</a> <a href="/tags/Fate/" style="font-size: 10px;">Fate</a> <a href="/tags/GYROAXIA/" style="font-size: 12px;">GYROAXIA</a> <a href="/tags/NLP/" style="font-size: 12px;">NLP</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/RAISE-A-SUILEN/" style="font-size: 12px;">RAISE A SUILEN</a> <a href="/tags/Roselia/" style="font-size: 12px;">Roselia</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 12px;">グラブル</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/数据结构/" style="font-size: 12px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 20px;">日本語</a> <a href="/tags/术力口/" style="font-size: 10px;">术力口</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 12px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -386,7 +386,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ARGONAVIS-from-BanG-Dream/">
                         <span class="tag">ARGONAVIS from BanG Dream!</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -456,7 +456,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/GYROAXIA/">
                         <span class="tag">GYROAXIA</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -526,7 +526,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/日本語/">
                         <span class="tag">日本語</span>
-                        <span class="tag is-grey">13</span>
+                        <span class="tag is-grey">14</span>
                     </a>
                 </div>
                 
@@ -588,6 +588,25 @@
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/日本語/2020/04/【听译练习大失败】REVOLUTION-GYROAXIA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【听译练习大失败】REVOLUTION - GYROAXIA">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-30T12:23:38.000Z">2020-04-30</time></div>
+                    <a href="/日本語/2020/04/【听译练习大失败】REVOLUTION-GYROAXIA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【听译练习大失败】REVOLUTION - GYROAXIA</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -665,25 +684,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T10:46:32.000Z">2020-02-08</time></div>
-                    <a href="/数据结构/2020/02/【数据结构】Trie树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【数据结构】Trie树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -702,7 +702,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -800,6 +800,25 @@
         
         <article class="media">
             
+            <a href="/日本語/2020/04/【听译练习大失败】REVOLUTION-GYROAXIA/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【听译练习大失败】REVOLUTION - GYROAXIA">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-04-30T12:23:38.000Z">2020-04-30</time></div>
+                    <a href="/日本語/2020/04/【听译练习大失败】REVOLUTION-GYROAXIA/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【听译练习大失败】REVOLUTION - GYROAXIA</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/日本語/2020/04/【听译歌词】雨上がりの坂道-Argonavis/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【听译歌词】雨上がりの坂道 - Argonavis">
@@ -874,25 +893,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T10:46:32.000Z">2020-02-08</time></div>
-                    <a href="/数据结构/2020/02/【数据结构】Trie树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【数据结构】Trie树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -911,7 +911,7 @@
                     <span class="level-item">April 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
