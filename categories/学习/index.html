@@ -158,7 +158,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-08T05:00:41.000Z">2019-11-08</time>
+                <time class="level-item has-text-grey" datetime="2020-06-11T08:11:22.000Z">2020-06-11</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/学习/">学习</a>
@@ -168,7 +168,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    a few seconds read (About 23 words)
+                    7 minutes read (About 1097 words)
                 </span>
                 
                 
@@ -177,22 +177,98 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/学习/2019/11/【线性代数】各章节思维导图/">【线性代数】各章节思维导图</a>
+                <a class="has-link-black-ter" href="/学习/2020/06/微分方程/">微分方程</a>
             
         </h1>
         <div class="content">
-            <h1 id="第一章---n阶行列式">第一章 - n阶行列式</h1>
-<figure>
-<img src="1.svg" alt><figcaption>1</figcaption>
-</figure>
-<h1 id="第二章---矩阵">第二章 - 矩阵</h1>
-<figure>
-<img src="2.svg" alt><figcaption>2</figcaption>
-</figure>
-<h1 id="第三章---几何向量">第三章 - 几何向量</h1>
-<figure>
-<img src="3.svg" alt><figcaption>3</figcaption>
-</figure>
+            <h1 id="微分方程">微分方程</h1>
+<ul>
+<li><p>概念</p></li>
+<li><p>一阶微分方程</p>
+<ul>
+<li>可分离变量的方程<span class="math inline">\(P(x)\mathrm{d}x=Q(y)\mathrm{d}y\)</span>
+<ul>
+<li>求解步骤：两边分别积分</li>
+</ul></li>
+<li>一阶线性方程<span class="math inline">\(\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)\)</span>
+<ul>
+<li>通解公式：<span class="math inline">\(y=e^{-\int P(x) \mathrm{d}x}(C+\int Q(x)e^{\int P(x) \mathrm{d}x}\mathrm{d}x)\)</span></li>
+</ul></li>
+<li>齐次方程<span class="math inline">\(\frac {\mathrm{d}y} {\mathrm{d}x}=g(\frac y x)\)</span>
+<ul>
+<li>求解步骤：令<span class="math inline">\(u=y/x\)</span>，方程化为<span class="math inline">\(u+x\frac{\mathrm{d}u} {\mathrm{d}x}=g(u)\)</span>，利用线性方程求解步骤求解</li>
+</ul></li>
+<li>伯努利方程<span class="math inline">\(\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)y^n\quad(n\neq0,1)\)</span>
+<ul>
+<li>求解步骤：将方程乘以<span class="math inline">\((1-n)y^{-n}\)</span>，化为关于<span class="math inline">\(y^{1-n}\)</span>的线性方程<span class="math inline">\(\frac {\mathrm{d}y^{1-n}} {\mathrm{d}x}+(1-n)P(x)y^{1-n}=(1-n)Q(x)\)</span>，利用线性方程求解步骤求解</li>
+</ul></li>
+</ul></li>
+<li><p>可降阶的高阶微分方程</p>
+<ul>
+<li><span class="math inline">\(y^{(n)}=f(x)\)</span>
+<ul>
+<li>求解步骤：两边同时对x积分n遍</li>
+</ul></li>
+<li><span class="math inline">\(y&#39;&#39;=f(x,y&#39;)\)</span>
+<ul>
+<li>求解步骤：令<span class="math inline">\(z=\frac{\mathrm{d}y}{\mathrm{d}x}\)</span>，方程化为<span class="math inline">\(\frac{\mathrm{d}z}{\mathrm{d}x} = f(x,z)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(y&#39;&#39;=f(y,y&#39;)\)</span>
+<ul>
+<li>求解步骤：令<span class="math inline">\(z=\frac{\mathrm{d}y}{\mathrm{d}x}\)</span>，则<span class="math inline">\(y&#39;&#39;=\frac{\mathrm{d}z} {\mathrm{d}x}=\frac{\mathrm{d}z} {\mathrm{d}y}\frac{\mathrm{d}y} {\mathrm{d}x}=z\frac{\mathrm{d}z} {\mathrm{d}y}\)</span>，方程化为<span class="math inline">\(\frac{\mathrm{d}z} {\mathrm{d}y}=f(y,z)/z\)</span></li>
+</ul></li>
+</ul></li>
+<li><p>线性微分方程</p>
+<ul>
+<li><p>概念：<span class="math inline">\(\sum_{i=0}^n a_i(x)y^{(n-i)}=f(x)\)</span></p></li>
+<li><p>解的叠加原理</p>
+<ul>
+<li>齐次方程的解的线性组合还是该方程的解</li>
+<li>若<span class="math inline">\(y_1^*(x),y_2^*(x)\)</span>分别为方程<span class="math inline">\(\sum_{i=0}^n a_i(x)y^{(n-i)}=f(x)\)</span>与<span class="math inline">\(\sum_{i=0}^n a_i(x)y^{(n-i)}=g(x)\)</span>的解，则<span class="math inline">\(y_1^*(x)+y_2^*(x)\)</span>是方程<span class="math inline">\(\sum_{i=0}^n a_i(x)y^{(n-i)}=f(x)+g(x)\)</span>的解</li>
+</ul></li>
+<li><p>函数线性相关性</p>
+<ul>
+<li><p>朗斯基行列式 <span class="math display">\[
+\begin{vmatrix}
+y_1(x) &amp; y_2(x) &amp; \cdots &amp; y_n(x) \\
+y_1&#39;(x) &amp; y_2&#39;(x) &amp; \cdots &amp; y_n&#39;(x) \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
+\end{vmatrix}
+\]</span></p></li>
+<li><p>判定定理：函数线性相关当且仅当朗斯基行列式恒等于0</p></li>
+</ul></li>
+<li><p>通解结构定理</p>
+<ul>
+<li>齐次方程的n个线性无关的特解的线性组合是该齐次方程的通解</li>
+<li>非齐次方程的一个特解加上对应齐次方程的通解是该非齐次方程的通解</li>
+</ul></li>
+</ul></li>
+<li><p>常系数线性微分方程</p>
+<ul>
+<li>齐次方程（<span class="math inline">\(\sum_{i=0}^n a_iy^{(n-i)}=0\)</span>）求解步骤
+<ul>
+<li>写出特征方程，解出特征根</li>
+<li>通过特征根写出基本解组，通过基本解组写出齐次方程的通解</li>
+<li>k重实根<span class="math inline">\(\lambda\)</span>对应基本解组为：<span class="math inline">\(e^{\lambda x}\)</span>,<span class="math inline">\(xe^{\lambda x}\)</span>, …, <span class="math inline">\(x^{k-1}e^{\lambda x}\)</span></li>
+<li>k重共轭复根<span class="math inline">\(\lambda=\alpha \pm i\beta\)</span>对应基本解组为：<span class="math inline">\(e^{\alpha x}\cos \beta x,e^{\alpha x}\sin\beta x\)</span>,<span class="math inline">\(xe^{\alpha x}\cos \beta x,xe^{\alpha x}\sin\beta x\)</span>,…,<span class="math inline">\(x^{k-1}e^{\alpha x}\cos \beta x,x^{k-1}e^{\alpha x}\sin\beta x\)</span></li>
+</ul></li>
+<li>非齐次方程（<span class="math inline">\(\sum_{i=0}^n a_iy^{(n-i)}=f(x)\)</span>）求解步骤
+<ul>
+<li>求出对应齐次方程的通解</li>
+<li>从右端函数的形式<span class="math inline">\(f(x)=e^{\alpha x}[P(x)\cos \beta x+Q(x) \sin \beta x]\)</span>确定系数<span class="math inline">\(\alpha,\beta\)</span>和多项式<span class="math inline">\(P(x),Q(x)\)</span>，m是多项式次数的最大值（<span class="math inline">\(\alpha=\beta=0\)</span>时，<span class="math inline">\(f(x)\)</span>是多项式；<span class="math inline">\(\alpha=0\)</span>时，<span class="math inline">\(f(x)\)</span>是多项式与正弦函数、余弦函数之积；<span class="math inline">\(\beta=0\)</span>时，<span class="math inline">\(f(x)\)</span>时多项式与指数函数之积）</li>
+<li>判断<span class="math inline">\(\alpha+i\beta\)</span>是方程的k重特征根（不是特征根时认为<span class="math inline">\(k=0\)</span>）</li>
+<li>方程的特解形式为<span class="math inline">\(y_*(x)=x^ke^{\alpha x}[R(x)\cos \beta x+S(x) \sin \beta x]\)</span>，<span class="math inline">\(P(x),Q(x)\)</span>是m次待定系数的多项式</li>
+<li>将<span class="math inline">\(y_*(x)\)</span>代入原方程，比较同类项系数来确定两个多项式的系数，得到方程一个特解</li>
+<li>通过特解和对应齐次方程的通解写出方程的通解</li>
+</ul></li>
+<li>欧拉方程（<span class="math inline">\(\sum_{i=0}^n a_{n-i}x^iy^{(i)} = f(x)\)</span>）求解步骤
+<ul>
+<li>作变换<span class="math inline">\(x=e^t\)</span>代入，方程变为以t为自变量的常系数线性方程<span class="math inline">\(\sum_{i=0}^n a_{n-i}\mathrm{D}(\mathrm{D}-1)\cdots(\mathrm{D}-i+1)y=f(e^t)\)</span>，其中算子D表示关于t的导数运算<span class="math inline">\(\frac {\mathrm{d}} {\mathrm{d}t}\)</span></li>
+<li>求出通解后，将<span class="math inline">\(t=\ln x\)</span>代入，就得到欧拉方程的通解</li>
+</ul></li>
+</ul></li>
+</ul>
 
         </div>
         
@@ -252,7 +328,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        18
+                        20
                     </p>
                 </div>
             </div>
@@ -262,7 +338,7 @@
                         Categories
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        10
                     </p>
                 </div>
             </div>
@@ -272,7 +348,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        17
                     </p>
                 </div>
             </div>
@@ -295,14 +371,6 @@
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/Android/">
-            <span class="level-start">
-                <span class="level-item">Android</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/CSP/">
             <span class="level-start">
                 <span class="level-item">CSP</span>
@@ -327,6 +395,22 @@
                 <span class="level-item tag">3</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/GBF/">
+            <span class="level-start">
+                <span class="level-item">GBF</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/NLP/">
+            <span class="level-start">
+                <span class="level-item">NLP</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/学习/">
             <span class="level-start">
                 <span class="level-item">学习</span>
@@ -340,7 +424,7 @@
                 <span class="level-item">数据结构</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/日本語/">
@@ -348,7 +432,7 @@
                 <span class="level-item">日本語</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">1</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/模板/">
@@ -378,7 +462,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/ARGONAVIS/" style="font-size: 10px;">ARGONAVIS</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/BanG-Dream/" style="font-size: 10px;">BanG Dream</a> <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/CameraX/" style="font-size: 10px;">CameraX</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/Jetpack/" style="font-size: 10px;">Jetpack</a> <a href="/tags/Kotlin/" style="font-size: 10px;">Kotlin</a> <a href="/tags/Poppin-Party/" style="font-size: 10px;">Poppin'Party</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/グラブル/" style="font-size: 10px;">グラブル</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 16.67px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/GBF/" style="font-size: 10px;">GBF</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/微积分/" style="font-size: 10px;">微积分</a> <a href="/tags/数据结构/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 10px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -392,27 +476,6 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/ARGONAVIS/">
-                        <span class="tag">ARGONAVIS</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Android/">
-                        <span class="tag">Android</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/BanG-Dream/">
-                        <span class="tag">BanG Dream</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/CSP/">
                         <span class="tag">CSP</span>
                         <span class="tag is-grey">4</span>
@@ -422,13 +485,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/CSP-J-S/">
                         <span class="tag">CSP-J/S</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/CameraX/">
-                        <span class="tag">CameraX</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -448,22 +504,22 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Jetpack/">
-                        <span class="tag">Jetpack</span>
+                    <a class="tags has-addons" href="/tags/GBF/">
+                        <span class="tag">GBF</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Kotlin/">
-                        <span class="tag">Kotlin</span>
-                        <span class="tag is-grey">1</span>
+                    <a class="tags has-addons" href="/tags/NLP/">
+                        <span class="tag">NLP</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Poppin-Party/">
-                        <span class="tag">Poppin&#39;Party</span>
+                    <a class="tags has-addons" href="/tags/Trie树/">
+                        <span class="tag">Trie树</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -476,8 +532,15 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/グラブル/">
-                        <span class="tag">グラブル</span>
+                    <a class="tags has-addons" href="/tags/中文分词/">
+                        <span class="tag">中文分词</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/微积分/">
+                        <span class="tag">微积分</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -485,14 +548,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/数据结构/">
                         <span class="tag">数据结构</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/日本語/">
                         <span class="tag">日本語</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -507,13 +570,6 @@
                     <a class="tags has-addons" href="/tags/模拟/">
                         <span class="tag">模拟</span>
                         <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/线性代数/">
-                        <span class="tag">线性代数</span>
-                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -557,18 +613,18 @@
         
         <article class="media">
             
-            <a href="/日本語/2019/12/【日中翻訳練習】White-Afternoon-Poppin-Party/" class="media-left">
+            <a href="/学习/2020/06/微分方程/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】White Afternoon - Poppin&#39;Party">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="微分方程">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-16T15:21:29.000Z">2019-12-16</time></div>
-                    <a href="/日本語/2019/12/【日中翻訳練習】White-Afternoon-Poppin-Party/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】White Afternoon - Poppin&#39;Party</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-11T08:11:22.000Z">2020-06-11</time></div>
+                    <a href="/学习/2020/06/微分方程/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微分方程</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
                     </p>
                 </div>
             </div>
@@ -576,18 +632,18 @@
         
         <article class="media">
             
-            <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="media-left">
+            <a href="/GBF/2020/05/光方超法笔记/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于线段树的一些笔记">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="光方超法笔记">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T12:53:14.000Z">2019-12-11</time></div>
-                    <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于线段树的一些笔记</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-20T07:13:35.000Z">2020-05-20</time></div>
+                    <a href="/GBF/2020/05/光方超法笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">光方超法笔记</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
+                        <a class="has-link-grey -link" href="/categories/GBF/">GBF</a>
                     </p>
                 </div>
             </div>
@@ -595,16 +651,16 @@
         
         <article class="media">
             
-            <a href="/uncategorized/2019/12/竞赛用数据结构和算法模板-in-C/" class="media-left">
+            <a href="/uncategorized/2020/05/C大调顺阶和弦的吉他指法/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="竞赛用数据结构和算法模板 in C++">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C大调顺阶和弦的吉他指法">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T11:52:11.000Z">2019-12-11</time></div>
-                    <a href="/uncategorized/2019/12/竞赛用数据结构和算法模板-in-C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">竞赛用数据结构和算法模板 in C++</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-13T15:45:54.000Z">2020-05-13</time></div>
+                    <a href="/uncategorized/2020/05/C大调顺阶和弦的吉他指法/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C大调顺阶和弦的吉他指法</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -614,18 +670,18 @@
         
         <article class="media">
             
-            <a href="/CSP/2019/12/【CSP-201903】消息传递接口/" class="media-left">
+            <a href="/日本語/2020/03/日语中的6种动词活用/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201903】消息传递接口">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="日语中的6种动词活用">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T12:19:47.000Z">2019-12-03</time></div>
-                    <a href="/CSP/2019/12/【CSP-201903】消息传递接口/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】消息传递接口</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T14:12:37.000Z">2020-03-02</time></div>
+                    <a href="/日本語/2020/03/日语中的6种动词活用/" class="title has-link-black-ter is-size-6 has-text-weight-normal">日语中的6种动词活用</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
                     </p>
                 </div>
             </div>
@@ -633,18 +689,18 @@
         
         <article class="media">
             
-            <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="media-left">
+            <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201909】推荐系统">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T09:53:53.000Z">2019-12-02</time></div>
-                    <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201909】推荐系统</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T10:46:32.000Z">2020-02-08</time></div>
+                    <a href="/数据结构/2020/02/【数据结构】Trie树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【数据结构】Trie树</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
                     </p>
                 </div>
             </div>
@@ -663,12 +719,56 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/12/">
                 <span class="level-start">
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -679,7 +779,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -722,18 +822,18 @@
         
         <article class="media">
             
-            <a href="/日本語/2019/12/【日中翻訳練習】White-Afternoon-Poppin-Party/" class="media-left">
+            <a href="/学习/2020/06/微分方程/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【日中翻訳練習】White Afternoon - Poppin&#39;Party">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="微分方程">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-16T15:21:29.000Z">2019-12-16</time></div>
-                    <a href="/日本語/2019/12/【日中翻訳練習】White-Afternoon-Poppin-Party/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【日中翻訳練習】White Afternoon - Poppin&#39;Party</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-11T08:11:22.000Z">2020-06-11</time></div>
+                    <a href="/学习/2020/06/微分方程/" class="title has-link-black-ter is-size-6 has-text-weight-normal">微分方程</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
+                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
                     </p>
                 </div>
             </div>
@@ -741,18 +841,18 @@
         
         <article class="media">
             
-            <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="media-left">
+            <a href="/GBF/2020/05/光方超法笔记/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于线段树的一些笔记">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="光方超法笔记">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T12:53:14.000Z">2019-12-11</time></div>
-                    <a href="/数据结构/2019/12/关于线段树的一些笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于线段树的一些笔记</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-20T07:13:35.000Z">2020-05-20</time></div>
+                    <a href="/GBF/2020/05/光方超法笔记/" class="title has-link-black-ter is-size-6 has-text-weight-normal">光方超法笔记</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
+                        <a class="has-link-grey -link" href="/categories/GBF/">GBF</a>
                     </p>
                 </div>
             </div>
@@ -760,16 +860,16 @@
         
         <article class="media">
             
-            <a href="/uncategorized/2019/12/竞赛用数据结构和算法模板-in-C/" class="media-left">
+            <a href="/uncategorized/2020/05/C大调顺阶和弦的吉他指法/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="竞赛用数据结构和算法模板 in C++">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="C大调顺阶和弦的吉他指法">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-11T11:52:11.000Z">2019-12-11</time></div>
-                    <a href="/uncategorized/2019/12/竞赛用数据结构和算法模板-in-C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">竞赛用数据结构和算法模板 in C++</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-13T15:45:54.000Z">2020-05-13</time></div>
+                    <a href="/uncategorized/2020/05/C大调顺阶和弦的吉他指法/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C大调顺阶和弦的吉他指法</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -779,18 +879,18 @@
         
         <article class="media">
             
-            <a href="/CSP/2019/12/【CSP-201903】消息传递接口/" class="media-left">
+            <a href="/日本語/2020/03/日语中的6种动词活用/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201903】消息传递接口">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="日语中的6种动词活用">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-03T12:19:47.000Z">2019-12-03</time></div>
-                    <a href="/CSP/2019/12/【CSP-201903】消息传递接口/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201903】消息传递接口</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T14:12:37.000Z">2020-03-02</time></div>
+                    <a href="/日本語/2020/03/日语中的6种动词活用/" class="title has-link-black-ter is-size-6 has-text-weight-normal">日语中的6种动词活用</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
                     </p>
                 </div>
             </div>
@@ -798,18 +898,18 @@
         
         <article class="media">
             
-            <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="media-left">
+            <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【CSP-201909】推荐系统">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-02T09:53:53.000Z">2019-12-02</time></div>
-                    <a href="/CSP/2019/12/【CSP-201909】推荐系统/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【CSP-201909】推荐系统</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T10:46:32.000Z">2020-02-08</time></div>
+                    <a href="/数据结构/2020/02/【数据结构】Trie树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【数据结构】Trie树</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/CSP/">CSP</a>
+                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
                     </p>
                 </div>
             </div>
@@ -828,12 +928,56 @@
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2020/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2019/12/">
                 <span class="level-start">
                     <span class="level-item">December 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">7</span>
+                    <span class="level-item tag">6</span>
                 </span>
             </a>
         </li>
@@ -844,7 +988,7 @@
                     <span class="level-item">November 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -881,7 +1025,7 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2019 ssttkkl&nbsp;
+                &copy; 2020 ssttkkl&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 
