@@ -10,19 +10,19 @@
 <title>【中文分词】全切分和最长匹配法 - ssttkkl&#39;s Blog</title>
 
 
-    <meta name="description" content="全切分：指的是找出一段文本中的所有单词。 最长匹配：说白了就是对每个字符贪心地选择能在词典里匹配到的最长的一段，然后跳到后面的字符，继续贪心。自然地，有正向最长匹配和逆向最长匹配两种实现方法。根据统计规律得到的启发，可以将两种方法得到的结果进行比较，返回可能更优的结果，称作双向最长匹配。规则如下：  同时执行正向和逆向最长匹配，若两者的词数不同，则返回词数更少的那一个。 否则，返回两者中单">
+    <meta name="description" content="全切分：指的是找出一段文本中的所有单词。 最长匹配：说白了就是对每个字符贪心地选择能在词典里匹配到的最长的一段，然后跳到后面的字符，继续贪心。自然地，有正向最长匹配和逆向最长匹配两种实现方法。根据统计规律得到的启发，可以将两种方法得到的结果进行比较，返回可能更优的结果，称作双向最长匹配。规则如下：  同时执行正向和逆向最长匹配，若两者的词数不同，则返回词数更少的那一个。 否则，返回两者中单字更少的">
 <meta name="keywords" content="NLP,中文分词">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【中文分词】全切分和最长匹配法">
 <meta property="og:url" content="https://ssttkkl.github.io/NLP/2020/02/【中文分词】最长匹配法/index.html">
 <meta property="og:site_name" content="ssttkkl&#39;s Blog">
-<meta property="og:description" content="全切分：指的是找出一段文本中的所有单词。 最长匹配：说白了就是对每个字符贪心地选择能在词典里匹配到的最长的一段，然后跳到后面的字符，继续贪心。自然地，有正向最长匹配和逆向最长匹配两种实现方法。根据统计规律得到的启发，可以将两种方法得到的结果进行比较，返回可能更优的结果，称作双向最长匹配。规则如下：  同时执行正向和逆向最长匹配，若两者的词数不同，则返回词数更少的那一个。 否则，返回两者中单">
+<meta property="og:description" content="全切分：指的是找出一段文本中的所有单词。 最长匹配：说白了就是对每个字符贪心地选择能在词典里匹配到的最长的一段，然后跳到后面的字符，继续贪心。自然地，有正向最长匹配和逆向最长匹配两种实现方法。根据统计规律得到的启发，可以将两种方法得到的结果进行比较，返回可能更优的结果，称作双向最长匹配。规则如下：  同时执行正向和逆向最长匹配，若两者的词数不同，则返回词数更少的那一个。 否则，返回两者中单字更少的">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ssttkkl.github.io/images/og_image.png">
 <meta property="og:updated_time" content="2020-02-08T08:36:32.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【中文分词】全切分和最长匹配法">
-<meta name="twitter:description" content="全切分：指的是找出一段文本中的所有单词。 最长匹配：说白了就是对每个字符贪心地选择能在词典里匹配到的最长的一段，然后跳到后面的字符，继续贪心。自然地，有正向最长匹配和逆向最长匹配两种实现方法。根据统计规律得到的启发，可以将两种方法得到的结果进行比较，返回可能更优的结果，称作双向最长匹配。规则如下：  同时执行正向和逆向最长匹配，若两者的词数不同，则返回词数更少的那一个。 否则，返回两者中单">
+<meta name="twitter:description" content="全切分：指的是找出一段文本中的所有单词。 最长匹配：说白了就是对每个字符贪心地选择能在词典里匹配到的最长的一段，然后跳到后面的字符，继续贪心。自然地，有正向最长匹配和逆向最长匹配两种实现方法。根据统计规律得到的启发，可以将两种方法得到的结果进行比较，返回可能更优的结果，称作双向最长匹配。规则如下：  同时执行正向和逆向最长匹配，若两者的词数不同，则返回词数更少的那一个。 否则，返回两者中单字更少的">
 <meta name="twitter:image" content="https://ssttkkl.github.io/images/og_image.png">
 
 
@@ -185,12 +185,13 @@
         <div class="content">
             <p>全切分：指的是找出一段文本中的所有单词。</p>
 <p>最长匹配：说白了就是对每个字符贪心地选择能在词典里匹配到的最长的一段，然后跳到后面的字符，继续贪心。自然地，有正向最长匹配和逆向最长匹配两种实现方法。根据统计规律得到的启发，可以将两种方法得到的结果进行比较，返回可能更优的结果，称作双向最长匹配。规则如下：</p>
-<ol type="1">
+<ol>
 <li>同时执行正向和逆向最长匹配，若两者的词数不同，则返回词数更少的那一个。</li>
 <li>否则，返回两者中单字更少的那一个。当单字数也相同时，优先返回逆向最长匹配的结果。</li>
 </ol>
 <p>实现代码：</p>
 <figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">package</span> com.ssttkkl.nlpexercise</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> com.hankcs.hanlp.corpus.io.IOUtil</span><br><span class="line"><span class="hljs-keyword">import</span> java.util.*</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NaiveDictionaryBasedSegmentation</span></span>(dictPath: String) &#123;</span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-keyword">val</span> dict = IOUtil.loadDictionary(dictPath)</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">segmentFully</span><span class="hljs-params">(text: <span class="hljs-type">String</span>)</span></span>: List&lt;String&gt; &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> wordList = LinkedList&lt;String&gt;()</span><br><span class="line">        <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> text.indices) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> i until text.length) &#123;</span><br><span class="line">                <span class="hljs-keyword">val</span> word = text.slice(i..j)</span><br><span class="line">                <span class="hljs-keyword">if</span> (word <span class="hljs-keyword">in</span> dict) &#123;</span><br><span class="line">                    wordList.addLast(word)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> wordList</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">segmentForwardLongest</span><span class="hljs-params">(text: <span class="hljs-type">String</span>)</span></span>: List&lt;String&gt; &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> wordList = LinkedList&lt;String&gt;()</span><br><span class="line">        <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (i &lt; text.length) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (j <span class="hljs-keyword">in</span> text.length - <span class="hljs-number">1</span> downTo i) &#123;</span><br><span class="line">                <span class="hljs-keyword">val</span> word = text.slice(i..j)</span><br><span class="line">                <span class="hljs-keyword">if</span> (word <span class="hljs-keyword">in</span> dict) &#123;</span><br><span class="line">                    wordList.addLast(word)</span><br><span class="line">                    i = j + <span class="hljs-number">1</span></span><br><span class="line">                    <span class="hljs-keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> wordList</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">segmentBackwardLongest</span><span class="hljs-params">(text: <span class="hljs-type">String</span>)</span></span>: List&lt;String&gt; &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> wordList = LinkedList&lt;String&gt;()</span><br><span class="line">        <span class="hljs-keyword">var</span> j = text.length - <span class="hljs-number">1</span></span><br><span class="line">        <span class="hljs-keyword">while</span> (j &gt;= <span class="hljs-number">0</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (i <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..j) &#123;</span><br><span class="line">                <span class="hljs-keyword">val</span> word = text.slice(i..j)</span><br><span class="line">                <span class="hljs-keyword">if</span> (word <span class="hljs-keyword">in</span> dict) &#123;</span><br><span class="line">                    wordList.addFirst(word)</span><br><span class="line">                    j = i - <span class="hljs-number">1</span></span><br><span class="line">                    <span class="hljs-keyword">break</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">return</span> wordList</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">segmentBidirectional</span><span class="hljs-params">(text: <span class="hljs-type">String</span>)</span></span>: List&lt;String&gt; &#123;</span><br><span class="line">        <span class="hljs-keyword">val</span> forward = segmentForwardLongest(text)</span><br><span class="line">        <span class="hljs-keyword">val</span> backward = segmentBackwardLongest(text)</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">if</span> (forward.size != backward.size) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (forward.size &lt; backward.size)</span><br><span class="line">                forward</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">                backward</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">val</span> singleCharForward = forward.count &#123; it.length == <span class="hljs-number">1</span> &#125;</span><br><span class="line">            <span class="hljs-keyword">val</span> singleCharBackward = backward.count &#123; it.length == <span class="hljs-number">1</span> &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span> (singleCharForward &lt; singleCharBackward)</span><br><span class="line">                forward</span><br><span class="line">            <span class="hljs-keyword">else</span></span><br><span class="line">                backward</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
         
@@ -282,7 +283,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        21
                     </p>
                 </div>
             </div>
@@ -370,7 +371,7 @@
                 <span class="level-item">学习</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/数据结构/">
@@ -416,7 +417,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/GBF/" style="font-size: 10px;">GBF</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/微积分/" style="font-size: 10px;">微积分</a> <a href="/tags/数据结构/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 10px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/GBF/" style="font-size: 10px;">GBF</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/微积分/" style="font-size: 13.33px;">微积分</a> <a href="/tags/数据结构/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 10px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -495,7 +496,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/微积分/">
                         <span class="tag">微积分</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -578,6 +579,25 @@
         
         <article class="media">
             
+            <a href="/学习/2020/06/无穷级数/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="无穷级数">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-13T11:56:22.000Z">2020-06-13</time></div>
+                    <a href="/学习/2020/06/无穷级数/" class="title has-link-black-ter is-size-6 has-text-weight-normal">无穷级数</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/学习/2020/06/微分方程/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="微分方程">
@@ -652,25 +672,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T10:46:32.000Z">2020-02-08</time></div>
-                    <a href="/数据结构/2020/02/【数据结构】Trie树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【数据结构】Trie树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -689,7 +690,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -798,6 +799,25 @@
         
         <article class="media">
             
+            <a href="/学习/2020/06/无穷级数/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="无穷级数">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-13T11:56:22.000Z">2020-06-13</time></div>
+                    <a href="/学习/2020/06/无穷级数/" class="title has-link-black-ter is-size-6 has-text-weight-normal">无穷级数</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/学习/2020/06/微分方程/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="微分方程">
@@ -872,25 +892,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T10:46:32.000Z">2020-02-08</time></div>
-                    <a href="/数据结构/2020/02/【数据结构】Trie树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【数据结构】Trie树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -909,7 +910,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>

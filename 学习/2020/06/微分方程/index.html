@@ -10,19 +10,19 @@
 <title>微分方程 - ssttkkl&#39;s Blog</title>
 
 
-    <meta name="description" content="微分方程  概念 一阶微分方程  可分离变量的方程\(P(x)\mathrm{d}x=Q(y)\mathrm{d}y\)  求解步骤：两边分别积分  一阶线性方程\(\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)\)  通解公式：\(y=e^{-\int P(x) \mathrm{d}x}(C+\int Q(x)e^{\int P(x">
+    <meta name="description" content="概念  一阶微分方程  可分离变量的方程$P(x)\mathrm{d}x=Q(y)\mathrm{d}y$ 求解步骤：两边分别积分   一阶线性方程$\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)$ 通解公式：$y=e^{-\int P(x) \mathrm{d}x}(C+\int Q(x)e^{\int P(x) \mathrm{d}x}\mathrm">
 <meta name="keywords" content="微积分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微分方程">
 <meta property="og:url" content="https://ssttkkl.github.io/学习/2020/06/微分方程/index.html">
 <meta property="og:site_name" content="ssttkkl&#39;s Blog">
-<meta property="og:description" content="微分方程  概念 一阶微分方程  可分离变量的方程\(P(x)\mathrm{d}x=Q(y)\mathrm{d}y\)  求解步骤：两边分别积分  一阶线性方程\(\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)\)  通解公式：\(y=e^{-\int P(x) \mathrm{d}x}(C+\int Q(x)e^{\int P(x">
+<meta property="og:description" content="概念  一阶微分方程  可分离变量的方程$P(x)\mathrm{d}x=Q(y)\mathrm{d}y$ 求解步骤：两边分别积分   一阶线性方程$\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)$ 通解公式：$y=e^{-\int P(x) \mathrm{d}x}(C+\int Q(x)e^{\int P(x) \mathrm{d}x}\mathrm">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ssttkkl.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2020-06-11T08:11:39.608Z">
+<meta property="og:updated_time" content="2020-06-13T11:56:51.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微分方程">
-<meta name="twitter:description" content="微分方程  概念 一阶微分方程  可分离变量的方程\(P(x)\mathrm{d}x=Q(y)\mathrm{d}y\)  求解步骤：两边分别积分  一阶线性方程\(\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)\)  通解公式：\(y=e^{-\int P(x) \mathrm{d}x}(C+\int Q(x)e^{\int P(x">
+<meta name="twitter:description" content="概念  一阶微分方程  可分离变量的方程$P(x)\mathrm{d}x=Q(y)\mathrm{d}y$ 求解步骤：两边分别积分   一阶线性方程$\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)$ 通解公式：$y=e^{-\int P(x) \mathrm{d}x}(C+\int Q(x)e^{\int P(x) \mathrm{d}x}\mathrm">
 <meta name="twitter:image" content="https://ssttkkl.github.io/images/og_image.png">
 
 
@@ -165,7 +165,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1097 words)
+                    7 minutes read (About 1093 words)
                 </span>
                 
                 
@@ -183,93 +183,98 @@
             
         </h1>
         <div class="content">
-            <h1 id="微分方程">微分方程</h1>
-<ul>
-<li><p>概念</p></li>
+            <ul>
+<li><p>概念</p>
+</li>
 <li><p>一阶微分方程</p>
 <ul>
-<li>可分离变量的方程<span class="math inline">\(P(x)\mathrm{d}x=Q(y)\mathrm{d}y\)</span>
-<ul>
+<li>可分离变量的方程$P(x)\mathrm{d}x=Q(y)\mathrm{d}y$<ul>
 <li>求解步骤：两边分别积分</li>
-</ul></li>
-<li>一阶线性方程<span class="math inline">\(\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)\)</span>
-<ul>
-<li>通解公式：<span class="math inline">\(y=e^{-\int P(x) \mathrm{d}x}(C+\int Q(x)e^{\int P(x) \mathrm{d}x}\mathrm{d}x)\)</span></li>
-</ul></li>
-<li>齐次方程<span class="math inline">\(\frac {\mathrm{d}y} {\mathrm{d}x}=g(\frac y x)\)</span>
-<ul>
-<li>求解步骤：令<span class="math inline">\(u=y/x\)</span>，方程化为<span class="math inline">\(u+x\frac{\mathrm{d}u} {\mathrm{d}x}=g(u)\)</span>，利用线性方程求解步骤求解</li>
-</ul></li>
-<li>伯努利方程<span class="math inline">\(\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)y^n\quad(n\neq0,1)\)</span>
-<ul>
-<li>求解步骤：将方程乘以<span class="math inline">\((1-n)y^{-n}\)</span>，化为关于<span class="math inline">\(y^{1-n}\)</span>的线性方程<span class="math inline">\(\frac {\mathrm{d}y^{1-n}} {\mathrm{d}x}+(1-n)P(x)y^{1-n}=(1-n)Q(x)\)</span>，利用线性方程求解步骤求解</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+<li>一阶线性方程$\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)$<ul>
+<li>通解公式：$y=e^{-\int P(x) \mathrm{d}x}(C+\int Q(x)e^{\int P(x) \mathrm{d}x}\mathrm{d}x)$</li>
+</ul>
+</li>
+<li>齐次方程$\frac {\mathrm{d}y} {\mathrm{d}x}=g(\frac y x)$<ul>
+<li>求解步骤：令$u=y/x$，方程化为$u+x\frac{\mathrm{d}u} {\mathrm{d}x}=g(u)$，利用线性方程求解步骤求解</li>
+</ul>
+</li>
+<li>伯努利方程$\frac {\mathrm{d}y} {\mathrm{d}x}+P(x)y=Q(x)y^n\quad(n\neq0,1)$<ul>
+<li>求解步骤：将方程乘以$(1-n)y^{-n}$，化为关于$y^{1-n}$的线性方程$\frac {\mathrm{d}y^{1-n}} {\mathrm{d}x}+(1-n)P(x)y^{1-n}=(1-n)Q(x)$，利用线性方程求解步骤求解</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>可降阶的高阶微分方程</p>
 <ul>
-<li><span class="math inline">\(y^{(n)}=f(x)\)</span>
-<ul>
+<li>$y^{(n)}=f(x)$<ul>
 <li>求解步骤：两边同时对x积分n遍</li>
-</ul></li>
-<li><span class="math inline">\(y&#39;&#39;=f(x,y&#39;)\)</span>
-<ul>
-<li>求解步骤：令<span class="math inline">\(z=\frac{\mathrm{d}y}{\mathrm{d}x}\)</span>，方程化为<span class="math inline">\(\frac{\mathrm{d}z}{\mathrm{d}x} = f(x,z)\)</span></li>
-</ul></li>
-<li><span class="math inline">\(y&#39;&#39;=f(y,y&#39;)\)</span>
-<ul>
-<li>求解步骤：令<span class="math inline">\(z=\frac{\mathrm{d}y}{\mathrm{d}x}\)</span>，则<span class="math inline">\(y&#39;&#39;=\frac{\mathrm{d}z} {\mathrm{d}x}=\frac{\mathrm{d}z} {\mathrm{d}y}\frac{\mathrm{d}y} {\mathrm{d}x}=z\frac{\mathrm{d}z} {\mathrm{d}y}\)</span>，方程化为<span class="math inline">\(\frac{\mathrm{d}z} {\mathrm{d}y}=f(y,z)/z\)</span></li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+<li>$y’’=f(x,y’)$<ul>
+<li>求解步骤：令$z=\frac{\mathrm{d}y}{\mathrm{d}x}$，方程化为$\frac{\mathrm{d}z}{\mathrm{d}x} = f(x,z)$</li>
+</ul>
+</li>
+<li>$y’’=f(y,y’)$<ul>
+<li>求解步骤：令$z=\frac{\mathrm{d}y}{\mathrm{d}x}$，则$y’’=\frac{\mathrm{d}z} {\mathrm{d}x}=\frac{\mathrm{d}z} {\mathrm{d}y}\frac{\mathrm{d}y} {\mathrm{d}x}=z\frac{\mathrm{d}z} {\mathrm{d}y}$，方程化为$\frac{\mathrm{d}z} {\mathrm{d}y}=f(y,z)/z$</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>线性微分方程</p>
 <ul>
-<li><p>概念：<span class="math inline">\(\sum_{i=0}^n a_i(x)y^{(n-i)}=f(x)\)</span></p></li>
+<li><p>概念：$\sum_{i=0}^n a_i(x)y^{(n-i)}=f(x)$</p>
+</li>
 <li><p>解的叠加原理</p>
 <ul>
-<li>齐次方程的解的线性组合还是该方程的解</li>
-<li>若<span class="math inline">\(y_1^*(x),y_2^*(x)\)</span>分别为方程<span class="math inline">\(\sum_{i=0}^n a_i(x)y^{(n-i)}=f(x)\)</span>与<span class="math inline">\(\sum_{i=0}^n a_i(x)y^{(n-i)}=g(x)\)</span>的解，则<span class="math inline">\(y_1^*(x)+y_2^*(x)\)</span>是方程<span class="math inline">\(\sum_{i=0}^n a_i(x)y^{(n-i)}=f(x)+g(x)\)</span>的解</li>
-</ul></li>
+<li><p>齐次方程的解的线性组合还是该方程的解</p>
+</li>
+<li><p>若$y_1^<em>(x),y_2^</em>(x)$分别为方程$\sum_{i=0}^n a_i(x)y^{(n-i)}=f(x)$与$\sum_{i=0}^n a_i(x)y^{(n-i)}=g(x)$的解，则$y_1^<em>(x)+y_2^</em>(x)$是方程$\sum_{i=0}^n a_i(x)y^{(n-i)}=f(x)+g(x)$的解</p>
+</li>
 <li><p>函数线性相关性</p>
 <ul>
-<li><p>朗斯基行列式 <span class="math display">\[
-\begin{vmatrix}
-y_1(x) &amp; y_2(x) &amp; \cdots &amp; y_n(x) \\
-y_1&#39;(x) &amp; y_2&#39;(x) &amp; \cdots &amp; y_n&#39;(x) \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
-\end{vmatrix}
-\]</span></p></li>
-<li><p>判定定理：函数线性相关当且仅当朗斯基行列式恒等于0</p></li>
-</ul></li>
+<li><p>朗斯基行列式<br>$$<br>\begin{vmatrix}<br>y_1(x) &amp; y_2(x) &amp; \cdots &amp; y_n(x) \<br>y_1’(x) &amp; y_2’(x) &amp; \cdots &amp; y_n’(x) \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \<br>\end{vmatrix}<br>$$</p>
+</li>
+<li><p>判定定理：函数线性相关当且仅当朗斯基行列式恒等于0</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>通解结构定理</p>
 <ul>
 <li>齐次方程的n个线性无关的特解的线性组合是该齐次方程的通解</li>
 <li>非齐次方程的一个特解加上对应齐次方程的通解是该非齐次方程的通解</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>常系数线性微分方程</p>
 <ul>
-<li>齐次方程（<span class="math inline">\(\sum_{i=0}^n a_iy^{(n-i)}=0\)</span>）求解步骤
-<ul>
+<li>齐次方程（$\sum_{i=0}^n a_iy^{(n-i)}=0$）求解步骤<ul>
 <li>写出特征方程，解出特征根</li>
 <li>通过特征根写出基本解组，通过基本解组写出齐次方程的通解</li>
-<li>k重实根<span class="math inline">\(\lambda\)</span>对应基本解组为：<span class="math inline">\(e^{\lambda x}\)</span>,<span class="math inline">\(xe^{\lambda x}\)</span>, …, <span class="math inline">\(x^{k-1}e^{\lambda x}\)</span></li>
-<li>k重共轭复根<span class="math inline">\(\lambda=\alpha \pm i\beta\)</span>对应基本解组为：<span class="math inline">\(e^{\alpha x}\cos \beta x,e^{\alpha x}\sin\beta x\)</span>,<span class="math inline">\(xe^{\alpha x}\cos \beta x,xe^{\alpha x}\sin\beta x\)</span>,…,<span class="math inline">\(x^{k-1}e^{\alpha x}\cos \beta x,x^{k-1}e^{\alpha x}\sin\beta x\)</span></li>
-</ul></li>
-<li>非齐次方程（<span class="math inline">\(\sum_{i=0}^n a_iy^{(n-i)}=f(x)\)</span>）求解步骤
-<ul>
+<li>k重实根$\lambda$对应基本解组为：$e^{\lambda x}$,$xe^{\lambda x}$, …, $x^{k-1}e^{\lambda x}$</li>
+<li>k重共轭复根$\lambda=\alpha \pm i\beta$对应基本解组为：$e^{\alpha x}\cos \beta x,e^{\alpha x}\sin\beta x$,$xe^{\alpha x}\cos \beta x,xe^{\alpha x}\sin\beta x$,…,$x^{k-1}e^{\alpha x}\cos \beta x,x^{k-1}e^{\alpha x}\sin\beta x$</li>
+</ul>
+</li>
+<li>非齐次方程（$\sum_{i=0}^n a_iy^{(n-i)}=f(x)$）求解步骤<ul>
 <li>求出对应齐次方程的通解</li>
-<li>从右端函数的形式<span class="math inline">\(f(x)=e^{\alpha x}[P(x)\cos \beta x+Q(x) \sin \beta x]\)</span>确定系数<span class="math inline">\(\alpha,\beta\)</span>和多项式<span class="math inline">\(P(x),Q(x)\)</span>，m是多项式次数的最大值（<span class="math inline">\(\alpha=\beta=0\)</span>时，<span class="math inline">\(f(x)\)</span>是多项式；<span class="math inline">\(\alpha=0\)</span>时，<span class="math inline">\(f(x)\)</span>是多项式与正弦函数、余弦函数之积；<span class="math inline">\(\beta=0\)</span>时，<span class="math inline">\(f(x)\)</span>时多项式与指数函数之积）</li>
-<li>判断<span class="math inline">\(\alpha+i\beta\)</span>是方程的k重特征根（不是特征根时认为<span class="math inline">\(k=0\)</span>）</li>
-<li>方程的特解形式为<span class="math inline">\(y_*(x)=x^ke^{\alpha x}[R(x)\cos \beta x+S(x) \sin \beta x]\)</span>，<span class="math inline">\(P(x),Q(x)\)</span>是m次待定系数的多项式</li>
-<li>将<span class="math inline">\(y_*(x)\)</span>代入原方程，比较同类项系数来确定两个多项式的系数，得到方程一个特解</li>
+<li>从右端函数的形式$f(x)=e^{\alpha x}[P(x)\cos \beta x+Q(x) \sin \beta x]$确定系数$\alpha,\beta$和多项式$P(x),Q(x)$，m是多项式次数的最大值（$\alpha=\beta=0$时，$f(x)$是多项式；$\alpha=0$时，$f(x)$是多项式与正弦函数、余弦函数之积；$\beta=0$时，$f(x)$时多项式与指数函数之积）</li>
+<li>判断$\alpha+i\beta$是方程的k重特征根（不是特征根时认为$k=0$）</li>
+<li>方程的特解形式为$y_*(x)=x^ke^{\alpha x}[R(x)\cos \beta x+S(x) \sin \beta x]$，$P(x),Q(x)$是m次待定系数的多项式</li>
+<li>将$y_*(x)$代入原方程，比较同类项系数来确定两个多项式的系数，得到方程一个特解</li>
 <li>通过特解和对应齐次方程的通解写出方程的通解</li>
-</ul></li>
-<li>欧拉方程（<span class="math inline">\(\sum_{i=0}^n a_{n-i}x^iy^{(i)} = f(x)\)</span>）求解步骤
-<ul>
-<li>作变换<span class="math inline">\(x=e^t\)</span>代入，方程变为以t为自变量的常系数线性方程<span class="math inline">\(\sum_{i=0}^n a_{n-i}\mathrm{D}(\mathrm{D}-1)\cdots(\mathrm{D}-i+1)y=f(e^t)\)</span>，其中算子D表示关于t的导数运算<span class="math inline">\(\frac {\mathrm{d}} {\mathrm{d}t}\)</span></li>
-<li>求出通解后，将<span class="math inline">\(t=\ln x\)</span>代入，就得到欧拉方程的通解</li>
-</ul></li>
-</ul></li>
+<li>欧拉方程（$\sum_{i=0}^n a_{n-i}x^iy^{(i)} = f(x)$）求解步骤<ul>
+<li>作变换$x=e^t$代入，方程变为以t为自变量的常系数线性方程$\sum_{i=0}^n a_{n-i}\mathrm{D}(\mathrm{D}-1)\cdots(\mathrm{D}-i+1)y=f(e^t)$，其中算子D表示关于t的导数运算$\frac {\mathrm{d}} {\mathrm{d}t}$</li>
+<li>求出通解后，将$t=\ln x$代入，就得到欧拉方程的通解</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -298,6 +303,13 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/学习/2020/06/无穷级数/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">无穷级数</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -355,7 +367,7 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        21
                     </p>
                 </div>
             </div>
@@ -443,7 +455,7 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
                 <span class="level-item">学习</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/数据结构/">
@@ -489,7 +501,7 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/GBF/" style="font-size: 10px;">GBF</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/微积分/" style="font-size: 10px;">微积分</a> <a href="/tags/数据结构/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 10px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/GBF/" style="font-size: 10px;">GBF</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/微积分/" style="font-size: 13.33px;">微积分</a> <a href="/tags/数据结构/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 10px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -568,7 +580,7 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
                 <div class="control">
                     <a class="tags has-addons" href="/tags/微积分/">
                         <span class="tag">微积分</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -636,11 +648,7 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
             <h3 class="menu-label">
                 Catalogue
             </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#微分方程">
-        <span class="has-mr-6">1</span>
-        <span>微分方程</span>
-        </a></li></ul>
+            
         </div>
     </div>
 </div>
@@ -652,6 +660,25 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/学习/2020/06/无穷级数/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="无穷级数">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-13T11:56:22.000Z">2020-06-13</time></div>
+                    <a href="/学习/2020/06/无穷级数/" class="title has-link-black-ter is-size-6 has-text-weight-normal">无穷级数</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -729,25 +756,6 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T10:46:32.000Z">2020-02-08</time></div>
-                    <a href="/数据结构/2020/02/【数据结构】Trie树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【数据结构】Trie树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -766,7 +774,7 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -860,11 +868,7 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
             <h3 class="menu-label">
                 Catalogue
             </h3>
-            <ul class="menu-list"><li>
-        <a class="is-flex" href="#微分方程">
-        <span class="has-mr-6">1</span>
-        <span>微分方程</span>
-        </a></li></ul>
+            
         </div>
     </div>
 </div>
@@ -876,6 +880,25 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
         <h3 class="menu-label">
             Recent
         </h3>
+        
+        <article class="media">
+            
+            <a href="/学习/2020/06/无穷级数/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="无穷级数">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-13T11:56:22.000Z">2020-06-13</time></div>
+                    <a href="/学习/2020/06/无穷级数/" class="title has-link-black-ter is-size-6 has-text-weight-normal">无穷级数</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -953,25 +976,6 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/数据结构/2020/02/【数据结构】Trie树/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【数据结构】Trie树">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-08T10:46:32.000Z">2020-02-08</time></div>
-                    <a href="/数据结构/2020/02/【数据结构】Trie树/" class="title has-link-black-ter is-size-6 has-text-weight-normal">【数据结构】Trie树</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/数据结构/">数据结构</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -990,7 +994,7 @@ y_1^{(n)}(x) &amp; y_2^{(n)}(x) &amp; \cdots &amp; y_n^{(n)}(x) \\
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
