@@ -168,7 +168,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 minutes read (About 1895 words)
+                    16 minutes read (About 2379 words)
                 </span>
                 
                 
@@ -245,39 +245,63 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p>幂级数</p>
 <ul>
-<li>概念：收敛半径，收敛区间</li>
-<li>阿贝尔引理：如果幂级数在点$x_0$处收敛，则对$(-|x_0|,|x_0|)$内任意一点都绝对收敛；如果幂级数在点$x_0$处发散，则对$(-\infty,-|x_0|)\cup(|x_0|,+\infty)$内任意一点都发散。</li>
-<li>求收敛域：<ul>
+<li><p>概念：收敛半径，收敛区间</p>
+</li>
+<li><p>阿贝尔引理：如果幂级数在点$x_0$处收敛，则对$(-|x_0|,|x_0|)$内任意一点都绝对收敛；如果幂级数在点$x_0$处发散，则对$(-\infty,-|x_0|)\cup(|x_0|,+\infty)$内任意一点都发散。</p>
+</li>
+<li><p>求收敛域：</p>
+<ul>
 <li>对幂级数$\sum_{n=0}^\infty a_nx^n$，收敛半径$R=\lim_{n \rightarrow \infty} |{a_n}/{a_{n+1}}|$或$R=\lim_{n \rightarrow \infty} 1/\sqrt[n]{|a_n|}$。为了确定收敛域，还要讨论$x=\pm R$时的两个数项级数是否收敛。</li>
 <li>对于缺项的幂级数，可以作变换化为标准幂级数，求得新幂级数的收敛域后再通过解不等式得到原幂级数的收敛域。还可以直接通过定义，用数项级数的判别法确定收敛域。</li>
 </ul>
 </li>
-<li>幂级数的运算：<ul>
+<li><p>幂级数的运算：</p>
+<ul>
 <li>设有两个幂级数$\sum_{n=0}^\infty a_nx^n$和$\sum_{n=0}^\infty b_nx^n$，收敛半径分别为A, B。记$R=\min { A,B}$。当$A \neq B$时，运算所得级数的收敛半径就是R；当$A=B$时，收敛半径不小于R。</li>
 <li>加减法：$(\sum_{n=0}^\infty a_nx^n) \pm (\sum_{n=0}^\infty b_nx^n) = \sum_{n=0}^\infty (a_n \pm b_n)x^n$</li>
 <li>乘法：$(\sum_{n=0}^\infty a_nx^n) (\sum_{n=0}^\infty b_nx^n) = \sum_{n=0}^\infty (\sum_{i=0}^n a_ib_{n-i})x^n$</li>
 </ul>
 </li>
-<li>幂函数的分析性质：<ul>
+<li><p>幂函数的分析性质：</p>
+<ul>
 <li>幂级数在收敛区间内任一闭子区间上时一致收敛的。</li>
 <li>在收敛域上，幂级数的和函数连续。</li>
 <li>在收敛域上，幂级数可逐项积分，且收敛半径不变。</li>
 <li>在收敛域上，幂级数可逐项微分，且收敛半径不变。</li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</li>
 <li><p>函数的幂级数展开</p>
 <ul>
-<li>泰勒级数展开<ul>
-<li>泰勒级数：$\sum_{n=0}^\infty \frac {f^{(n)}(x_0)} {n!} (x-x_0)^n$</li>
-<li>麦克劳林级数：$\sum_{n=0}^\infty \frac {f^{(n)}(0)} {n!} x^n$</li>
+<li>泰勒级数：$\sum_{n=0}^\infty \frac {f^{(n)}(x_0)} {n!} (x-x_0)^n$，余项$R_n(x)=\frac {f^{(n+1)}(\xi )} {(n+1)!} (x-x_0)^{n+1},\quad\xi\textrm{介于}x_0,x\textrm{之间}$</li>
+<li>泰勒级数收敛条件：函数$f(x)\in C^{\infty}(U(x_0))$的泰勒级数在$U(x_0)$内收敛于$f(x)$的充分必要条件是$\lim_{n \rightarrow \infty} R_n(x)=0,\quad \forall x \in U(x_0)$</li>
+<li>函数幂级数展开的唯一性：函数的幂级数展开式是唯一的，就是它的泰勒级数。</li>
+<li><strong>直接展开法</strong>将函数在$x_0$附近展开为幂级数：<ul>
+<li>求$f(x)$的各阶导数$f’(x)$,$f’’(x)$,…,$f^{(n)}(x)$,…，将$x=x_0$代入计算$f’(x_0)$,$f’’(x_0)$,…,$f^{(n)}(x_0)$,…；</li>
+<li>写出泰勒级数$\sum_{n=0}^\infty \frac {f^{(n)}(x_0)} {n!} (x-x_0)^n$，并确定其收敛域；</li>
+<li>在收敛域内求出使泰勒级数收敛于$f(x)$的区间，就是函数的幂级数展开区间。</li>
 </ul>
 </li>
+<li><strong>间接展开法</strong>：利用已知幂级数展开式，通过变量代换、幂级数的运算等，得到函数的幂级数展开式。</li>
+<li>常见函数的麦克劳林级数展开：<ul>
+<li>$e^x = \sum_{n=0}^\infty \frac {x^n}{n!},\quad x\in(-\infty,+\infty)$</li>
+<li>$\sin x=\sum_{n=0}^\infty (-1)^n \frac {x^{2n+1}} {(2n+1)!},\quad x \in (-\infty, +\infty)$</li>
+<li>$(1+x)^\alpha = \sum_{n=0}^\infty \frac {\alpha (\alpha-1)\cdots(a-n+1)} {n!} x^n,\quad x\in(-1,1)$</li>
+<li>$\frac 1 {1+x} = \sum_{n=0}^\infty (-1)^n x^n,\quad x \in (-1,1)$（$(1+x)^{-1}$的展开式）</li>
+<li>$\sqrt{1+x} = \sum_{n=0}^\infty (-1)^{n-1}\frac {(2n-3)!!}{(2n)!!} x^n,\quad x \in[-1,1]$（$(1+x)^{1/2}$的展开式）</li>
+<li>$\cos x=\sum_{n=0}^\infty (-1)^n \frac {x^{2n}} {(2n)!},\quad x \in (-\infty, +\infty)$（由$\sin x$的展开式两边逐项求导得到）</li>
+<li>$\ln (1+x) = \sum_{n=1}^\infty (-1)^{n-1} \frac {x^n} n,\quad x\in(-1,1]$（由$(1+x)^{-1}$展开式两边逐项积分得到）</li>
+<li>$\arctan x = \sum_{n=1}^\infty (-1)^n \frac {x^{2n+1}} {2n+1},\quad x\in[-1,1]$（由$(1+x^2)^{-1}$展开式两边逐项积分得到）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>幂级数求和：利用等比级数求和公式以及常见函数展开式，通过变量代换、幂级数的运算等，求出某些幂级数的和函数。</p>
+</li>
+<li></li>
 </ul>
 </li>
 </ul>
@@ -477,7 +501,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -762,6 +786,25 @@
         
         <article class="media">
             
+            <a href="/uncategorized/2020/06/概率论与数理统计/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="概率论与数理统计">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-20T08:34:17.000Z">2020-06-20</time></div>
+                    <a href="/uncategorized/2020/06/概率论与数理统计/" class="title has-link-black-ter is-size-6 has-text-weight-normal">概率论与数理统计</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/学习/2020/06/无穷级数/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="无穷级数">
@@ -836,25 +879,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/日本語/2020/03/日语中的6种动词活用/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="日语中的6种动词活用">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T14:12:37.000Z">2020-03-02</time></div>
-                    <a href="/日本語/2020/03/日语中的6种动词活用/" class="title has-link-black-ter is-size-6 has-text-weight-normal">日语中的6种动词活用</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -873,7 +897,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -971,6 +995,25 @@
         
         <article class="media">
             
+            <a href="/uncategorized/2020/06/概率论与数理统计/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="概率论与数理统计">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-20T08:34:17.000Z">2020-06-20</time></div>
+                    <a href="/uncategorized/2020/06/概率论与数理统计/" class="title has-link-black-ter is-size-6 has-text-weight-normal">概率论与数理统计</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/学习/2020/06/无穷级数/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="无穷级数">
@@ -1045,25 +1088,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/日本語/2020/03/日语中的6种动词活用/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="日语中的6种动词活用">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-02T14:12:37.000Z">2020-03-02</time></div>
-                    <a href="/日本語/2020/03/日语中的6种动词活用/" class="title has-link-black-ter is-size-6 has-text-weight-normal">日语中的6种动词活用</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/日本語/">日本語</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1082,7 +1106,7 @@
                     <span class="level-item">June 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
