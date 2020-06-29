@@ -149,11 +149,15 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-06-20T08:34:17.000Z">2020-06-20</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/学习/">学习</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 minutes read (About 872 words)
+                    11 minutes read (About 1622 words)
                 </span>
                 
                 
@@ -162,7 +166,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/uncategorized/2020/06/概率论与数理统计/">概率论与数理统计</a>
+                <a class="has-link-black-ter" href="/学习/2020/06/概率论与数理统计/">概率论与数理统计</a>
             
         </h1>
         <div class="content">
@@ -243,7 +247,39 @@
 <li>样本方差比满足$\frac {S_1^2/\sigma_1^2} {S_2^2/\sigma_2^2}\sim F(n_1-1,n_2-1)$</li>
 </ul>
 </li>
-<li></li>
+<li>设$X_1,X_2,\cdots,X_n$为一组来自总体$X$的样本，$EX=\mu$，$DX=\sigma^2 &lt; +\infty$. <ul>
+<li>当样本容量充分大时，近似有$\frac {\sum_{i=1}^n X_i - n\mu} {\sqrt{n}\sigma} \sim N(0,1)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h1><ul>
+<li><strong>点估计</strong><ul>
+<li><strong>矩估计法</strong>：把未知参数$\theta$表示为总体（原点）矩的函数，再用样本矩估计总体矩，进而就可以用样本矩近似替代总体矩得到$\hat{\theta}$作为未知参数$\theta$的估计。</li>
+<li><strong>极大似然估计法</strong>：设似然函数$L = \prod_{i=1}^n p(x_i;\theta)$，当给定一组样本$x_1,x_2,\cdots,x_n$时，求出使得似然函数取最大值的$\theta=\hat{\theta}$，$\hat{\theta}$就作为未知参数$\theta$的估计。实际计算时通过微积分方法，解方程$\frac {\mathrm{d}} {\mathrm{d}\theta}\ln L = 0$得驻点后确定最大值。</li>
+<li>估计量优良性的标准<ul>
+<li><strong>无偏性</strong>：若$E \hat{\theta} = \theta$，则称$\hat{\theta}$为$\theta$的无偏估计量。（若相互独立地重复多次用无偏估计量进行实际估计，所得估计值的算术平均值与未知参数的真值基本上相同）</li>
+<li><strong>有效性</strong>：若$\hat{\theta}_1, \hat{\theta}_2$都是$\theta$的无偏估计，若$D\hat{\theta}_1 \leq D\hat{\theta}_2$，则称$\hat{\theta}_1$比$\hat{\theta}_2$有效。若对固定样本容量，$D\hat\theta$达到最小值，则称$\hat\theta$为$\theta$的有效估计量。（$\hat\theta_1$比$\hat\theta_2$在$\theta$附近取值的概率大）</li>
+<li><strong>一致性</strong>：如果$\hat\theta_n =\hat\theta_n(X_1,X_2,\cdots,X_n)$依概率收敛于$\theta$，则称$\hat\theta_n$是$\theta$的一致估计量。（样本容量越大，越能精确估计出未知参数）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>区间估计</strong><ul>
+<li>对未知参数$\theta$，找到两个统计量$\hat\theta_1,\hat\theta_2$使得对给定$\alpha$有$P{\hat\theta_1 &lt; \theta &lt; \hat\theta_2} = 1-\alpha$，则称$(\hat\theta_1 &lt; \theta &lt; \hat \theta_2)$为$\theta$的<strong>置信区间</strong>，$1-\alpha$为<strong>置信度</strong>，$\hat\theta_1$和$\hat\theta_2$分别为<strong>置信下限</strong>和<strong>置信上限</strong>。</li>
+<li>$P{\hat\theta_1 &lt; \theta &lt; \hat\theta_2} = 1-\alpha$表示的含义是随机区间$(\hat\theta_1,\hat\theta_2)$包含$\theta$的概率，而不能理解成未知参数落在区间$(\hat\theta_1,\hat\theta_2)$的概率。</li>
+<li>单个正态总体参数的区间估计<ul>
+<li>$\sigma^2$已知，$\mu$的置信区间$(\overline x - u_{\alpha/2} \frac \sigma {\sqrt{n}},\overline x + u_{\alpha/2} \frac \sigma {\sqrt{n}})$</li>
+<li>$\sigma^2$未知，$\mu$的置信区间$(\overline x - t_{\alpha/2}(n-1) \frac S {\sqrt{n}},\overline x + t_{\alpha/2}(n-1) \frac S {\sqrt{n}})$</li>
+<li>$\sigma^2$的置信区间$(\frac {(n-1)S^2} {\chi^2_{\alpha/2}(n-1)}, \frac {(n-1)S^2} {\chi^2_{1-\alpha/2}(n-1)})$</li>
+</ul>
+</li>
+<li>两个正态总体参数的区间估计<ul>
+<li>已知$\sigma_1^2=\sigma_2^2$，$\mu_1-\mu_2$的置信区间$(\overline x - \overline y - t_{\alpha/2}(n_1+n_2-2)S_w\sqrt{\frac 1 {n_1} + \frac 1 {n_2}},\overline x - \overline y + t_{\alpha/2}(n_1+n_2-2)S_w\sqrt{\frac 1 {n_1} + \frac 1 {n_2}})$，其中$S_w = \sqrt{\frac {(n_1-1)S_1^2 + (n_2-1)S_2^2} {n_1+n_2-2}}$</li>
+<li>$\sigma_1^2/\sigma_2^2$的置信区间$(\frac {S_1^2/S_2^2} {F_{\alpha/2}(n_1-1,n_2-1)},\frac {S_1^2/S_2^2} {F_{1-\alpha/2}(n_1-1,n_2-1)})$</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1138,7 +1174,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        17
+                        20
                     </p>
                 </div>
             </div>
@@ -1206,7 +1242,7 @@
                 <span class="level-item">学习</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/数据结构/">
@@ -1252,7 +1288,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/GBF/" style="font-size: 10px;">GBF</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/微积分/" style="font-size: 13.33px;">微积分</a> <a href="/tags/数据结构/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/日本語/" style="font-size: 10px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
+        <a href="/tags/CSP/" style="font-size: 20px;">CSP</a> <a href="/tags/CSP-J-S/" style="font-size: 10px;">CSP-J/S</a> <a href="/tags/Codeforces/" style="font-size: 16.67px;">Codeforces</a> <a href="/tags/Contest/" style="font-size: 10px;">Contest</a> <a href="/tags/GBF/" style="font-size: 10px;">GBF</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/Trie树/" style="font-size: 10px;">Trie树</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/中文分词/" style="font-size: 10px;">中文分词</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/微积分/" style="font-size: 13.33px;">微积分</a> <a href="/tags/数据结构/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/数理统计/" style="font-size: 10px;">数理统计</a> <a href="/tags/日本語/" style="font-size: 10px;">日本語</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/概率论/" style="font-size: 10px;">概率论</a> <a href="/tags/模拟/" style="font-size: 13.33px;">模拟</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/递推/" style="font-size: 10px;">递推</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a>
     </div>
 </div>
 
@@ -1329,6 +1365,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/学习/">
+                        <span class="tag">学习</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/微积分/">
                         <span class="tag">微积分</span>
                         <span class="tag is-grey">2</span>
@@ -1343,6 +1386,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/数理统计/">
+                        <span class="tag">数理统计</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/日本語/">
                         <span class="tag">日本語</span>
                         <span class="tag is-grey">1</span>
@@ -1352,6 +1402,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树/">
                         <span class="tag">树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/概率论/">
+                        <span class="tag">概率论</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1403,7 +1460,7 @@
         
         <article class="media">
             
-            <a href="/uncategorized/2020/06/概率论与数理统计/" class="media-left">
+            <a href="/学习/2020/06/概率论与数理统计/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="概率论与数理统计">
                 </p>
@@ -1412,9 +1469,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-20T08:34:17.000Z">2020-06-20</time></div>
-                    <a href="/uncategorized/2020/06/概率论与数理统计/" class="title has-link-black-ter is-size-6 has-text-weight-normal">概率论与数理统计</a>
+                    <a href="/学习/2020/06/概率论与数理统计/" class="title has-link-black-ter is-size-6 has-text-weight-normal">概率论与数理统计</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
                     </p>
                 </div>
             </div>
@@ -1612,7 +1669,7 @@
         
         <article class="media">
             
-            <a href="/uncategorized/2020/06/概率论与数理统计/" class="media-left">
+            <a href="/学习/2020/06/概率论与数理统计/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="概率论与数理统计">
                 </p>
@@ -1621,9 +1678,9 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-06-20T08:34:17.000Z">2020-06-20</time></div>
-                    <a href="/uncategorized/2020/06/概率论与数理统计/" class="title has-link-black-ter is-size-6 has-text-weight-normal">概率论与数理统计</a>
+                    <a href="/学习/2020/06/概率论与数理统计/" class="title has-link-black-ter is-size-6 has-text-weight-normal">概率论与数理统计</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/学习/">学习</a>
                     </p>
                 </div>
             </div>
